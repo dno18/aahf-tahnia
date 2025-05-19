@@ -164,14 +164,6 @@ html[dir="ltr"] h2.section-title::after {
     -webkit-appearance: none;
 }
 
-@media (max-width: 640px) {
-    .video-iframe {
-        object-fit: cover;
-        width: 100vw;
-        height: 100vh;
-    }
-}
-
 /* Header */
 header {
     background: transparent;
@@ -335,7 +327,7 @@ html[dir="ltr"] .fixed-nav .nav-link {
     width: 100%;
     background: linear-gradient(90deg, rgba(41, 35, 80, 0.9), rgba(0, 112, 95, 0.9));
     opacity: 0;
-  display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     padding: 0.3rem;
@@ -1309,27 +1301,38 @@ footer {
     .program-content p {
         font-size: 0.85rem;
     }
-    /* توسيط السلايدرات وزيادة عرض الصور */
+    /* الأخبار الحصرية والإعلانات: توسيط وتخطيط عمودي */
+    .news-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    .news-left, .news-right {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
     .exclusive-carousel {
         max-width: 100%;
-        height: 450px;
+        height: 350px;
         margin: 0 auto;
     }
     .ads-carousel {
         max-width: 100%;
-        height: 450px;
+        height: 350px;
         margin: 0 auto;
     }
     .exclusive-carousel .carousel-img,
     .ads-carousel .carousel-img {
         width: 100%;
-        max-width: 100%;
-        height: 100%;
+        height: 350px;
         object-fit: cover;
     }
     .exclusive-carousel .carousel-indicators,
     .ads-carousel .carousel-indicators {
-        bottom: 15px;
+        bottom: 10px;
     }
     .videos-carousel {
         max-width: 100%;
