@@ -28,10 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 title.setAttribute('data-ar', 'فيديوهاتنا');
                 title.setAttribute('data-en', 'Our Videos');
                 videosSection.prepend(title);
-                console.log('Videos section title added dynamically');
             }
         }
-        // Store video titles for language toggle
         document.querySelectorAll('.videos-carousel .carousel-item .video-title').forEach(title => {
             if (!title.getAttribute('data-ar')) {
                 title.setAttribute('data-ar', title.textContent.trim());
@@ -61,11 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!response.ok) throw new Error('Failed to fetch programs.json');
                 const programsData = await response.json();
                 programs = programsData.length;
-                console.log(`Program count from programs.json: ${programs}`);
             } catch (fetchError) {
-                console.warn('Error fetching programs.json, falling back to DOM count:', fetchError);
                 programs = document.querySelectorAll('.program-item').length;
-                console.log(`Program count from DOM: ${programs}`);
             }
 
             const programCountElement = document.getElementById('program-count');
@@ -79,406 +74,206 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Dynamic Program Switching for programs section
-    function initializeProgramSwitching() {
-        try {
-            const programItems = document.querySelectorAll('.program-item');
-            if (programItems.length === 0) return;
+    // Hamburger Menu Toggle
+    const hamburgers = document.querySelectorAll('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    
+    hamburgers.forEach(hamburger => {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('hidden');
+        });
+    });
 
-            let currentProgramIndex = 0;
+    // Close mobile menu when clicking a nav link
+    document.querySelectorAll('.mobile-menu .nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburgers.forEach(hamburger => hamburger.classList.remove('active'));
+            mobileMenu.classList.remove('active');
+            mobileMenu.classList.add('hidden');
+        });
+    });
 
-            window.updateProgramDisplay = function () {
-                programItems.forEach((item, index) => {
-                    item.classList.toggle('visible', index === currentProgramIndex);
-                    if (index === currentProgramIndex) {
-                        const image = item.querySelector('.program-image');
-                        const content = item.querySelector('.program-content');
-                        if (image && content) {
-                            image.style.opacity = '0';
-                            content.style.opacity = '0';
-                            requestAnimationFrame(() => {
-                                image.style.transition = 'opacity 0.6s ease';
-                                content.style.transition = 'opacity 0.6s ease';
-                                image.style.opacity = '1';
-                                content.style.opacity = '1';
-                            });
-                        }
-                    }
-                });
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        currentProgramIndex = (currentProgramIndex + 1) % programItems.length;
-                        window.updateProgramDisplay();
-                    }
-                });
-            }, {
-                threshold: 0.5,
-                rootMargin: '0px 0px -50px 0px'
-            });
-
-            observer.observe(document.querySelector('.programs-section'));
-            window.updateProgramDisplay();
-        } catch (error) {
-            console.error('Error in program switching:', error);
-        }
-    }
-
-    // Parallax Effect for program images
-    function initializeParallax() {
-        try {
-            const programItems = document.querySelectorAll('.program-item');
-            if (!programItems.length) return;
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    const image = entry.target.querySelector('.parallax-img');
-                    if (!image) return;
-
-                    if (entry.isIntersecting) {
-                        const rect = entry.target.getBoundingClientRect();
-                        const windowHeight = window.innerHeight;
-                        const scrollPercent = Math.min(Math.max((windowHeight - rect.top) / windowHeight, 0), 1);
-                        image.style.transform = `translateY(${scrollPercent * -15}px) scale(1.05)`;
-                        image.style.opacity = '1';
-                    } else {
-                        image.style.transform = 'translateY(0) scale(1)';
-                        image.style.opacity = '1';
-                    }
-                });
-            }, {
-                threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
-                rootMargin: '100px 0px 100px 0px'
-            });
-
-            programItems.forEach(item => observer.observe(item));
-        } catch (error) {
-            console.error('Error in parallax effect:', error);
-        }
-    }
-
-    // Vertical Carousel for News and Ads
-    function VerticalCarousel(selector, interval) {
-        try {
-            const carousel = document.querySelector(selector);
-            if (!carousel) {
-                console.warn('Carousel not found:', selector);
-                return;
-            }
-            const inner = carousel.querySelector('.carousel-inner');
+    // Initialize Carousels
+    function initializeCarousels() {
+        const carousels = document.querySelectorAll('.image-carousel');
+        carousels.forEach(carousel => {
+            const items = carousel.querySelectorAll('.carousel-item');
             const indicatorsContainer = carousel.querySelector('.carousel-indicators');
-            if (!inner || !indicatorsContainer) {
-                console.warn('Carousel elements missing:', { inner, indicatorsContainer });
-                return;
-            }
-
+            const prevBtn = carousel.querySelector('.prev-btn');
+            const nextBtn = carousel.querySelector('.next-btn');
+            const carouselPrev = carousel.querySelector('.carousel-prev');
+            const carouselNext = carousel.querySelector('.carousel-next');
             let currentIndex = 0;
-            const items = inner.querySelectorAll('.carousel-item');
-            if (!items.length) {
-                console.warn('No carousel items found:', selector);
-                return;
-            }
 
-            items.forEach((item, index) => {
-                const img = item.querySelector('img');
-                if (img) {
-                    const imgSrc = img.src;
-                    const testImg = new Image();
-                    testImg.src = imgSrc;
-                    testImg.onload = () => console.log(`Image ${index + 1} in ${selector} loaded successfully: ${imgSrc}`);
-                    testImg.onerror = () => console.error(`Failed to load image ${index + 1} in ${selector}: ${imgSrc}`);
-                }
+            // Create indicators
+            items.forEach((_, index) => {
+                const indicator = document.createElement('div');
+                indicator.classList.add('carousel-indicator');
+                if (index === 0) indicator.classList.add('active');
+                indicatorsContainer.appendChild(indicator);
             });
 
-            console.log(`Initializing carousel: ${selector} with ${items.length} items`);
-
-            if (!indicatorsContainer.dataset.initialized) {
-                indicatorsContainer.innerHTML = '';
-                items.forEach((_, index) => {
-                    const indicator = document.createElement('div');
-                    indicator.classList.add('carousel-indicator');
-                    indicator.classList.toggle('active', index === currentIndex);
-                    indicator.dataset.index = index;
-                    indicatorsContainer.appendChild(indicator);
-                });
-                indicatorsContainer.dataset.initialized = 'true';
-            }
-
-            const indicators = indicatorsContainer.querySelectorAll('.carousel-indicator');
+            const indicators = carousel.querySelectorAll('.carousel-indicator');
 
             function updateCarousel() {
                 items.forEach((item, index) => {
                     item.classList.toggle('active', index === currentIndex);
-                });
-                indicators.forEach((indicator, index) => {
-                    indicator.classList.toggle('active', index === currentIndex);
+                    indicators[index].classList.toggle('active', index === currentIndex);
                 });
             }
 
-            function nextSlide() {
+            function showNext() {
                 currentIndex = (currentIndex + 1) % items.length;
                 updateCarousel();
             }
 
-            indicators.forEach(indicator => {
-                indicator.addEventListener('click', () => {
-                    currentIndex = parseInt(indicator.dataset.index);
-                    updateCarousel();
-                });
-            });
-
-            updateCarousel();
-            const intervalId = setInterval(nextSlide, interval);
-
-            return {
-                destroy: () => clearInterval(intervalId)
-            };
-        } catch (error) {
-            console.error('Error in VerticalCarousel:', error);
-        }
-    }
-
-    // Horizontal Carousel for Videos
-    function HorizontalCarousel(selector, interval) {
-        try {
-            const carousel = document.querySelector(selector);
-            if (!carousel) {
-                console.warn('Carousel not found:', selector);
-                return;
-            }
-            const inner = carousel.querySelector('.carousel-inner');
-            const indicatorsContainer = carousel.querySelector('.carousel-indicators');
-            const prevBtn = document.querySelector('.video-controls .prev-btn');
-            const nextBtn = document.querySelector('.video-controls .next-btn');
-            if (!inner || !indicatorsContainer || !prevBtn || !nextBtn) {
-                console.warn('Carousel elements missing:', { inner, indicatorsContainer, prevBtn, nextBtn });
-                return;
-            }
-
-            let currentIndex = 0;
-            const items = inner.querySelectorAll('.carousel-item');
-            if (!items.length) {
-                console.warn('No carousel items found:', selector);
-                return;
-            }
-
-            console.log(`Initializing carousel: ${selector} with ${items.length} items`);
-
-            if (!indicatorsContainer.dataset.initialized) {
-                indicatorsContainer.innerHTML = '';
-                items.forEach((_, index) => {
-                    const indicator = document.createElement('div');
-                    indicator.classList.add('carousel-indicator');
-                    indicator.classList.toggle('active', index === currentIndex);
-                    indicator.dataset.index = index;
-                    indicatorsContainer.appendChild(indicator);
-                });
-                indicatorsContainer.dataset.initialized = 'true';
-            }
-
-            const indicators = indicatorsContainer.querySelectorAll('.carousel-indicator');
-
-            function updateCarousel() {
-                items.forEach((item, index) => {
-                    item.classList.toggle('active', index === currentIndex);
-                    const iframe = item.querySelector('iframe');
-                    if (iframe && index !== currentIndex) {
-                        const src = iframe.src.split('?')[0];
-                        iframe.src = src + '?autoplay=1&mute=1&loop=1&playlist=' + src.split('/').pop();
-                    }
-                });
-                indicators.forEach((indicator, index) => {
-                    indicator.classList.toggle('active', index === currentIndex);
-                });
-            }
-
-            function nextSlide() {
-                currentIndex = (currentIndex + 1) % items.length;
-                updateCarousel();
-            }
-
-            function prevSlide() {
+            function showPrev() {
                 currentIndex = (currentIndex - 1 + items.length) % items.length;
                 updateCarousel();
             }
 
-            indicators.forEach(indicator => {
+            if (prevBtn) prevBtn.addEventListener('click', showPrev);
+            if (nextBtn) nextBtn.addEventListener('click', showNext);
+            if (carouselPrev) carouselPrev.addEventListener('click', showPrev);
+            if (carouselNext) carouselNext.addEventListener('click', showNext);
+
+            indicators.forEach((indicator, index) => {
                 indicator.addEventListener('click', () => {
-                    currentIndex = parseInt(indicator.dataset.index);
+                    currentIndex = index;
                     updateCarousel();
                 });
             });
 
-            prevBtn.addEventListener('click', prevSlide);
-            nextBtn.addEventListener('click', nextSlide);
-
-            updateCarousel();
-            const intervalId = setInterval(nextSlide, interval);
-
-            return {
-                destroy: () => clearInterval(intervalId)
-            };
-        } catch (error) {
-            console.error('Error in HorizontalCarousel:', error);
-        }
+            setInterval(showNext, 5000);
+        });
     }
 
     // Fixed Navigation
-    function initializeFixedNav() {
-        try {
-            const fixedNav = document.querySelector('.fixed-nav');
-            if (!fixedNav) return;
+    const fixedNav = document.querySelector('.fixed-nav');
+    let lastScrollY = window.scrollY;
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    fixedNav.classList.toggle('scrolled', !entry.isIntersecting);
-                });
-            }, {
-                threshold: 0,
-                rootMargin: '-100px 0px 0px 0px'
-            });
-
-            observer.observe(document.querySelector('header'));
-        } catch (error) {
-            console.error('Error in fixed navigation:', error);
+    function handleScroll() {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > 200) {
+            fixedNav.classList.add('scrolled');
+        } else {
+            fixedNav.classList.remove('scrolled');
         }
+        lastScrollY = currentScrollY;
     }
 
+    window.addEventListener('scroll', handleScroll);
+
+    // Navigation Active Link
+    function setActiveNavLink() {
+        const sections = document.querySelectorAll('main > section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        let currentSectionId = '';
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            if (window.scrollY >= sectionTop) {
+                currentSectionId = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentSectionId}`) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', setActiveNavLink);
+
     // Language Toggle
-    function initializeLanguageToggle() {
-        try {
-            const langToggle = document.getElementById('langToggle');
-            if (!langToggle) return;
+    const langToggle = document.getElementById('langToggle');
+    let isArabic = true;
 
-            let isEnglish = false;
+    function toggleLanguage() {
+        isArabic = !isArabic;
+        document.documentElement.setAttribute('dir', isArabic ? 'rtl' : 'ltr');
+        document.documentElement.setAttribute('lang', isArabic ? 'ar' : 'en');
+        langToggle.innerHTML = isArabic ? '<i class="fas fa-globe"></i> English' : '<i class="fas fa-globe"></i> العربية';
 
-            langToggle.addEventListener('click', () => {
-                isEnglish = !isEnglish;
-                document.documentElement.setAttribute('dir', isEnglish ? 'ltr' : 'rtl');
-                langToggle.innerHTML = isEnglish
-                    ? '<i class="fas fa-globe"></i> العربية'
-                    : '<i class="fas fa-globe"></i> English';
+        document.querySelectorAll('[data-en]').forEach(element => {
+            const text = isArabic ? element.getAttribute('data-ar') : element.getAttribute('data-en');
+            if (element.tagName === 'INPUT' && element.hasAttribute('placeholder')) {
+                element.placeholder = text;
+            } else {
+                element.textContent = text;
+            }
+        });
 
-                document.querySelectorAll('[data-ar][data-en]').forEach(element => {
-                    const text = isEnglish ? element.getAttribute('data-en') : element.getAttribute('data-ar');
-                    if (element.tagName === 'A' || element.tagName === 'P' || element.tagName === 'LI' || element.tagName === 'H1' || element.tagName === 'H2' || element.tagName === 'H3' || element.tagName === 'H4') {
-                        element.textContent = text;
-                        const icon = element.querySelector('i');
-                        if (icon) {
-                            element.innerHTML = '';
-                            element.appendChild(icon);
-                            element.appendChild(document.createTextNode(` ${text}`));
-                        }
-                    }
-                });
+        document.querySelectorAll('.videos-carousel .carousel-item .video-title').forEach(title => {
+            title.textContent = isArabic ? title.getAttribute('data-ar') : title.getAttribute('data-en');
+        });
+    }
 
-                // Update video titles
-                document.querySelectorAll('.videos-carousel .carousel-item .video-title').forEach(title => {
-                    const text = isEnglish ? title.getAttribute('data-en') : title.getAttribute('data-ar');
-                    title.textContent = text;
-                });
-
-                const programItems = document.querySelectorAll('.program-item');
-                programItems.forEach((item, index) => {
-                    item.classList.toggle('reversed', isEnglish ? index % 2 === 1 : index % 2 === 0);
-                });
-            });
-        } catch (error) {
-            console.error('Error in language toggle:', error);
-        }
+    if (langToggle) {
+        langToggle.addEventListener('click', toggleLanguage);
     }
 
     // Dark Mode Toggle
-    function initializeDarkModeToggle() {
-        try {
-            const darkModeToggle = document.getElementById('darkModeToggle');
-            if (!darkModeToggle) return;
-
-            const isDarkMode = localStorage.getItem('darkMode') === 'true';
-            document.body.classList.toggle('dark-mode', isDarkMode);
-            darkModeToggle.innerHTML = isDarkMode
-                ? '<i class="fas fa-sun"></i> Light Mode'
-                : '<i class="fas fa-moon"></i> Dark Mode';
-
-            darkModeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-                const isDarkMode = document.body.classList.contains('dark-mode');
-                localStorage.setItem('darkMode', isDarkMode);
-                darkModeToggle.innerHTML = isDarkMode
-                    ? '<i class="fas fa-sun"></i> Light Mode'
-                    : '<i class="fas fa-moon"></i> Dark Mode';
-            });
-        } catch (error) {
-            console.error('Error in dark mode toggle:', error);
-        }
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        darkModeToggle.innerHTML = document.body.classList.contains('dark-mode')
+            ? '<i class="fas fa-sun"></i> Light Mode'
+            : '<i class="fas fa-moon"></i> Dark Mode';
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
     }
 
-    // Navigation Link Activation
-    function initializeNavLinks() {
-        try {
-            const navLinks = document.querySelectorAll('.nav-link');
-            if (!navLinks.length) return;
-
-            const sections = Array.from(navLinks).map(link => {
-                const href = link.getAttribute('href');
-                return href.startsWith('#') ? document.querySelector(href) : null;
-            }).filter(section => section);
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const sectionId = entry.target.getAttribute('id');
-                        navLinks.forEach(link => {
-                            link.classList.toggle('active', link.getAttribute('href') === `#${sectionId}`);
-                        });
-                    }
-                });
-            }, {
-                threshold: 0.2,
-                rootMargin: '0px 0px -50% 0px'
-            });
-
-            sections.forEach(section => observer.observe(section));
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetId = link.getAttribute('href').substring(1);
-                    const targetSection = document.getElementById(targetId);
-                    if (targetSection) {
-                        targetSection.scrollIntoView({ behavior: 'smooth' });
-                        navLinks.forEach(l => l.classList.remove('active'));
-                        link.classList.add('active');
-                    }
-                });
-            });
-        } catch (error) {
-            console.error('Error in nav links activation:', error);
-        }
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', toggleDarkMode);
     }
 
-    // Initialize all functionalities
-    try {
-        updateCounters();
-        initializeProgramSwitching();
-        initializeParallax();
-        initializeFixedNav();
-        initializeLanguageToggle();
-        initializeDarkModeToggle();
-        initializeNavLinks();
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+    }
 
-        const exclusiveCarousel = VerticalCarousel('.exclusive-carousel', 5000);
-        const adsCarousel = VerticalCarousel('.ads-carousel', 5000);
-        const videosCarousel = HorizontalCarousel('.videos-carousel', 5000);
+    // Intersection Observer for Animations
+    const isMobile = window.innerWidth <= 640;
+    if (!isMobile) {
+        const observerOptions = {
+            root: null,
+            threshold: 0.1,
+        };
 
-        window.addEventListener('beforeunload', () => {
-            if (exclusiveCarousel) exclusiveCarousel.destroy();
-            if (adsCarousel) adsCarousel.destroy();
-            if (videosCarousel) videosCarousel.destroy();
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.program-item, .link-card, .stat-card').forEach(item => {
+            observer.observe(item);
         });
-    } catch (error) {
-        console.error('Error initializing functionalities:', error);
+    } else {
+        document.querySelectorAll('.program-item, .link-card, .stat-card').forEach(item => {
+            item.classList.add('visible');
+        });
     }
+
+    // Optimize Video Background
+    const video = document.querySelector('.video-iframe');
+    if (video) {
+        video.addEventListener('loadeddata', () => {
+            video.play().catch(error => {
+                console.error('Error playing video:', error);
+            });
+        });
+    }
+
+    // Initialize Functions
+    updateCounters();
+    initializeCarousels();
+    setActiveNavLink();
 });
