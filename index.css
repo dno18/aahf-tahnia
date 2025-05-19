@@ -335,7 +335,7 @@ html[dir="ltr"] .fixed-nav .nav-link {
     width: 100%;
     background: linear-gradient(90deg, rgba(41, 35, 80, 0.9), rgba(0, 112, 95, 0.9));
     opacity: 0;
-    display: flex;
+  display: flex;
     justify-content: center;
     align-items: center;
     padding: 0.3rem;
@@ -1274,152 +1274,30 @@ footer {
         font-size: 0.75rem;
         padding: 0.3rem 0.6rem;
     }
-    .program-item {
+    /* تأكيد تشغيل فيديو الخلفية تلقائيًا */
+    .video-iframe {
+        object-fit: cover;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+    }
+    .video-iframe::-webkit-media-controls,
+    .video-iframe::-webkit-media-controls-panel,
+    .video-iframe::-webkit-media-controls-play-button {
+        display: none !important;
+        -webkit-appearance: none;
+    }
+    /* برامجنا التدريبية: صورة أعلى النص لكلا العنصرين */
+    .program-item,
+    .program-item.reversed {
         flex-direction: column;
         gap: 1rem;
         padding: 1rem;
     }
-    .program-image {
-        height: 350px;
-        object-fit: cover;
-    }
-    .program-content h3 {
-        font-size: 1.2rem;
-    }
-    .program-content p {
-        font-size: 0.85rem;
-    }
-    .exclusive-carousel {
-        max-width: 100%;
-        height: 450px;
-    }
-    .ads-carousel {
-        max-width: 100%;
-        height: 450px;
-    }
-    .exclusive-carousel .carousel-img,
-    .ads-carousel .carousel-img {
+    .program-media,
+    .program-content {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    .exclusive-carousel .carousel-indicators,
-    .ads-carousel .carousel-indicators {
-        bottom: 15px;
-    }
-    .videos-carousel {
         max-width: 100%;
-        height: 300px;
-    }
-    .videos-carousel .carousel-img {
-        height: calc(100% - 25px);
-    }
-    .videos-carousel .video-title {
-        font-size: 0.9rem;
-        padding: 4px 0;
-    }
-    .videos-carousel .carousel-indicators {
-        bottom: 35px;
-    }
-    .videos-carousel .carousel-prev,
-    .videos-carousel .carousel-next {
-        padding: 6px;
-        font-size: 1rem;
-    }
-    .about-item {
-        max-width: 100%;
-        height: auto;
-        max-height: 80vh;
-        padding: 1rem;
-        font-size: 0.9rem;
-    }
-    .about-item h3 {
-        font-size: 1rem;
-    }
-    .about-item p, .about-item ul, .about-item ol {
-    font-size: 0.8rem;
-}
-    .links-container {
-        grid-template-columns: 1fr;
-    }
-    .link-card {
-        padding: 0.8rem;
-    }
-    .link-logo {
-        width: 60px;
-        height: 60px;
-    }
-    .link-card h4 {
-        font-size: 1rem;
-    }
-    .link-btn {
-        padding: 0.4rem 1rem;
-        font-size: 0.8rem;
-    }
-    .statistics-container {
-        grid-template-columns: 1fr;
-    }
-    .stat-card {
-        padding: 1.5rem;
-        min-height: 120px;
-    }
-    .stat-card i {
-        font-size: 2rem;
-    }
-    .stat-card h3 {
-        font-size: 1.5rem;
-    }
-    .stat-card p {
-        font-size: 1rem;
-    }
-    .dynamic-card {
-        animation: none;
-    }
-}
-/* ... الأنماط الأخرى تبقى كما هي ... */
-
-/* Responsive Design for Mobile */
-@media (max-width: 640px) {
-    .logo-1 {
-        width: 10rem;
-    }
-    .fixed-nav .sticky-header-logos .logo-1 {
-        width: 6rem;
-    }
-    .nav-links {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    .fixed-nav .nav-links {
-        display: none; /* Hide navigation links in fixed nav on mobile */
-    }
-    .fixed-nav.scrolled .nav-links {
-        display: none; /* Ensure they stay hidden when scrolled */
-    }
-    .nav-link {
-        font-size: 1rem;
-        padding: 0.5rem;
-    }
-    .mode-toggle {
-        flex-direction: column;
-        gap: 0.3rem;
-        top: 0.5rem;
-        left: 0.5rem;
-    }
-    .mode-toggle-btn {
-        font-size: 0.75rem;
-        padding: 0.3rem 0.6rem;
-    }
-    .program-item {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
-    }
-    /* تغيير صورة الكابتن روبو إلى صورة القدرات على الجوال */
-    .program-item:nth-child(1) .program-image {
-        content: url('images/ability.jpg');
-        height: 350px;
-        object-fit: cover;
     }
     .program-image {
         height: 350px;
@@ -1431,7 +1309,7 @@ footer {
     .program-content p {
         font-size: 0.85rem;
     }
-    /* توسيط السلايدرات وضبط الصور */
+    /* توسيط السلايدرات وزيادة عرض الصور */
     .exclusive-carousel {
         max-width: 100%;
         height: 450px;
