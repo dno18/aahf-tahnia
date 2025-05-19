@@ -268,6 +268,12 @@ document.addEventListener('DOMContentLoaded', () => {
         video.addEventListener('loadeddata', () => {
             video.play().catch(error => {
                 console.error('Error playing video:', error);
+                // Retry playing after a short delay
+                setTimeout(() => {
+                    video.play().catch(retryError => {
+                        console.error('Retry failed:', retryError);
+                    });
+                }, 1000);
             });
         });
     }
