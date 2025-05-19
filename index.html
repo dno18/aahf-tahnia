@@ -20,7 +20,12 @@
                 <div class="header-logos">
                     <img src="https://i.postimg.cc/KcqPJFdD/1446-10-25-14-20-57-ab56ccdd.png" alt="شعار 1" class="logo-1">
                 </div>
-                <nav class="sticky-nav">
+                <button class="hamburger md:hidden" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="sticky-nav hidden md:flex">
                     <div class="nav-links flex flex-wrap justify-center items-center">
                         <a href="#about" class="nav-link" data-ar="من نحن" data-en="About Us">من نحن</a>
                         <a href="#programs" class="nav-link" data-ar="برامجنا التدريبية" data-en="Our Programs">برامجنا التدريبية</a>
@@ -39,7 +44,12 @@
                 <div class="sticky-header-logos">
                     <img src="https://i.postimg.cc/KcqPJFdD/1446-10-25-14-20-57-ab56ccdd.png" alt="شعار الشريط" class="logo-1">
                 </div>
-                <div class="nav-links flex flex-wrap justify-center items-center">
+                <button class="hamburger md:hidden" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="nav-links flex flex-wrap justify-center items-center hidden md:flex">
                     <a href="#about" class="nav-link" data-ar="من نحن" data-en="About Us">من نحن</a>
                     <a href="#programs" class="nav-link" data-ar="برامجنا التدريبية" data-en="Our Programs">برامجنا التدريبية</a>
                     <a href="#news" class="nav-link" data-ar="الأخبار الحصرية" data-en="Exclusive News">الأخبار الحصرية</a>
@@ -50,6 +60,16 @@
             </div>
         </div>
     </nav>
+    <div class="mobile-menu hidden md:hidden">
+        <div class="nav-links flex flex-col items-center gap-4 py-4">
+            <a href="#about" class="nav-link" data-ar="من نحن" data-en="About Us">من نحن</a>
+            <a href="#programs" class="nav-link" data-ar="برامجنا التدريبية" data-en="Our Programs">برامجنا التدريبية</a>
+            <a href="#news" class="nav-link" data-ar="الأخبار الحصرية" data-en="Exclusive News">الأخبار الحصرية</a>
+            <a href="#ads" class="nav-link" data-ar="الإعلانات" data-en="Advertisements">الإعلانات</a>
+            <a href="#videos" class="nav-link" data-ar="فيديوهاتنا" data-en="Our Videos">فيديوهاتنا</a>
+            <a href="#contact" class="nav-link" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a>
+        </div>
+    </div>
     <div class="video-background">
         <video autoplay muted loop playsinline class="video-iframe">
             <source src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4">
@@ -260,7 +280,6 @@
                         <button class="prev-btn"><i class="fas fa-chevron-right"></i></button>
                         <button class="next-btn"><i class="fas fa-chevron-left"></i></button>
                     </div>
-                    
                 </div>
             </div>
         </section>
