@@ -143,6 +143,7 @@ html[dir="ltr"] h2.section-title::after {
     height: 100vh;
     z-index: -1;
     overflow: hidden;
+    pointer-events: none;
 }
 
 .video-iframe {
@@ -177,6 +178,7 @@ header {
     position: absolute;
     top: 1rem;
     right: 1rem;
+    max-width: 20rem;
 }
 
 html[dir="ltr"] .header-logos {
@@ -189,7 +191,8 @@ html[dir="ltr"] .header-logos {
 }
 
 .logo-1 {
-    width: 20rem;
+    width: 100%;
+    max-width: 20rem;
     height: auto;
     object-fit: contain;
 }
@@ -256,6 +259,7 @@ html[dir="ltr"] .header-logos {
     font-size: 1.2rem;
     color: white;
     text-shadow: none;
+    padding: 0.5rem 1rem;
 }
 
 /* Navigation */
@@ -387,7 +391,8 @@ html[dir="ltr"] .fixed-nav .sticky-header-logos {
 }
 
 .fixed-nav .sticky-header-logos .logo-1 {
-    width: 12rem;
+    width: 100%;
+    max-width: 12rem;
     height: auto;
 }
 
@@ -445,8 +450,11 @@ main > section.card:last-child {
 
 .about-item {
     position: absolute;
-    width: 580px;
-    height: 420px;
+    width: 100%;
+    max-width: 580px;
+    height: auto;
+    min-height: 300px;
+    max-height: 80vh;
     background: rgba(0, 0, 0, 0.7);
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 8px;
@@ -566,6 +574,7 @@ html[dir="ltr"] .program-item.reversed {
 .program-image {
     width: 100%;
     height: 400px;
+    max-height: 50vh;
     object-fit: contain;
     border-radius: 8px;
     transition: transform 1.2s ease, opacity 1.2s ease;
@@ -615,6 +624,7 @@ html[dir="ltr"] .program-content {
     display: flex;
     gap: 10px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .gradient-btn,
@@ -658,12 +668,15 @@ html[dir="ltr"] .program-content {
 
 .news-container {
     display: flex;
+    flex-wrap: wrap;
     gap: 2rem;
+    justify-content: center;
 }
 
 .news-left, .news-right {
     position: relative;
-    width: 50%;
+    width: 100%;
+    max-width: 500px;
     padding: 0 1rem;
     display: flex;
     flex-direction: column;
@@ -680,15 +693,15 @@ html[dir="ltr"] .program-content {
 }
 
 .exclusive-carousel {
-    max-width: 500px;
     height: 600px;
+    max-height: 70vh;
     border: 2px solid transparent;
     border-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)) 1;
 }
 
 .ads-carousel {
-    max-width: 500px;
     height: 600px;
+    max-height: 70vh;
     border: 3px solid var(--secondary-blue);
 }
 
@@ -778,6 +791,7 @@ html[dir="ltr"] .program-content {
 
 .videos-right {
     width: 100%;
+    max-width: 700px;
     padding: 0 1rem;
     display: flex;
     flex-direction: column;
@@ -786,8 +800,8 @@ html[dir="ltr"] .program-content {
 
 .videos-carousel {
     width: 100%;
-    max-width: 700px;
     height: 450px;
+    max-height: 60vh;
     border: 2px solid transparent;
     border-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)) 1;
     border-radius: 12px;
@@ -917,6 +931,7 @@ html[dir="ltr"] .videos-carousel .carousel-next {
     margin-bottom: 15px;
     justify-content: center;
     z-index: 3;
+    flex-wrap: wrap;
 }
 
 .video-controls button {
@@ -943,7 +958,7 @@ html[dir="ltr"] .videos-carousel .carousel-next {
 
 .links-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -1020,7 +1035,7 @@ body.dark-mode .link-card h4 {
     width: 100%;
     max-width: 1000px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
     margin-top: 1rem;
 }
@@ -1127,10 +1142,10 @@ footer {
 /* Responsive Design */
 @media (max-width: 1024px) {
     .logo-1 {
-        width: 15rem;
+        max-width: 15rem;
     }
     .fixed-nav .sticky-header-logos .logo-1 {
-        width: 10rem;
+        max-width: 10rem;
     }
     .nav-links {
         gap: 0.75rem;
@@ -1155,30 +1170,19 @@ footer {
         width: 100%;
         padding: 0;
     }
-    .exclusive-carousel {
-        max-width: 450px;
-        height: 500px;
-    }
+    .exclusive-carousel,
     .ads-carousel {
-        max-width: 450px;
         height: 500px;
+        max-width: 450px;
     }
     .exclusive-carousel .carousel-indicators,
     .ads-carousel .carousel-indicators {
         bottom: 20px;
     }
     .videos-carousel {
-        max-width: 600px;
         height: 400px;
     }
-    .links-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .statistics-container {
-        grid-template-columns: 1fr;
-    }
     .about-item {
-        width: 100%;
         max-width: 500px;
         height: 350px;
     }
@@ -1186,10 +1190,10 @@ footer {
 
 @media (max-width: 768px) {
     .logo-1 {
-        width: 12rem;
+        max-width: 12rem;
     }
     .fixed-nav .sticky-header-logos .logo-1 {
-        width: 8rem;
+        max-width: 8rem;
     }
     .nav-link {
         font-size: 0.9rem;
@@ -1237,10 +1241,10 @@ footer {
 
 @media (max-width: 640px) {
     .logo-1 {
-        width: 10rem;
+        max-width: 10rem;
     }
     .fixed-nav .sticky-header-logos .logo-1 {
-        width: 6rem;
+        max-width: 6rem;
     }
     .nav-links {
         flex-direction: column;
@@ -1266,19 +1270,6 @@ footer {
         font-size: 0.75rem;
         padding: 0.3rem 0.6rem;
     }
-    /* تأكيد تشغيل فيديو الخلفية تلقائيًا */
-    .video-iframe {
-        object-fit: cover;
-        width: 100vw;
-        height: 100vh;
-        pointer-events: none;
-    }
-    .video-iframe::-webkit-media-controls,
-    .video-iframe::-webkit-media-controls-panel,
-    .video-iframe::-webkit-media-controls-play-button {
-        display: none !important;
-        -webkit-appearance: none;
-    }
     /* برامجنا التدريبية: صورة أعلى النص لكلا العنصرين */
     .program-item,
     .program-item.reversed {
@@ -1293,6 +1284,7 @@ footer {
     }
     .program-image {
         height: 350px;
+        max-height: 40vh;
         object-fit: cover;
     }
     .program-content h3 {
@@ -1337,6 +1329,7 @@ footer {
     .videos-carousel {
         max-width: 100%;
         height: 300px;
+        max-height: 40vh;
     }
     .videos-carousel .carousel-img {
         height: calc(100% - 25px);
@@ -1401,5 +1394,73 @@ footer {
     }
     .dynamic-card {
         animation: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-logos {
+        top: 0.5rem;
+        right: 0.5rem;
+        max-width: 8rem;
+    }
+    
+    .fixed-nav {
+        padding: 0.2rem;
+    }
+    
+    .fixed-nav .sticky-header-logos .logo-1 {
+        max-width: 5rem;
+    }
+    
+    .program-image {
+        height: 250px;
+    }
+    
+    .exclusive-carousel,
+    .ads-carousel,
+    .videos-carousel {
+        height: 250px;
+    }
+    
+    .stat-card {
+        padding: 1rem;
+    }
+    
+    .mobile-menu .nav-links {
+        gap: 1rem;
+    }
+    
+    .mobile-menu .nav-link {
+        font-size: 1.2rem;
+        padding: 0.8rem 1.2rem;
+    }
+    
+    .about-section {
+        padding: 4rem 1rem 1rem;
+    }
+    
+    .gradient-btn,
+    .outline-btn {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+    
+    .mode-toggle {
+        top: 0.5rem;
+        left: 0.5rem;
+    }
+    
+    .video-controls button {
+        padding: 8px 12px;
+        font-size: 1.2rem;
+    }
+    
+    .videos-carousel .video-title {
+        font-size: 0.8rem;
+    }
+    
+    .link-card {
+        max-width: 90%;
+        margin: 0 auto;
     }
 }
