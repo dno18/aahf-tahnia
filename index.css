@@ -24,7 +24,6 @@ body {
     font-family: 'Tajawal', sans-serif;
     background-color: #ffffff;
     color: #374151;
-    overflow-x: hidden;
     line-height: 1.8;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -288,14 +287,6 @@ html[dir="ltr"] .header-logos {
     text-decoration: none;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     transition: color 0.3s ease;
-}
-
-.fixed-nav .nav-link {
-    text-align: center;
-}
-
-html[dir="ltr"] .fixed-nav .nav-link {
-    text-align: center;
 }
 
 .nav-link:hover {
@@ -727,7 +718,7 @@ html[dir="ltr"] .program-content {
 .ads-carousel .carousel-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .exclusive-carousel .carousel-indicators,
@@ -1184,105 +1175,22 @@ footer {
     }
 }
 
-/* ... بداية الملف كما هو ... */
-
-/* إصلاح تخطيط البرامج للأجهزة المحمولة */
-@media (max-width: 768px) {
-    .program-container {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-    }
-    
-    .program-item {
-        flex-direction: column !important;
-        gap: 1.5rem;
-    }
-    
-    .program-media,
-    .program-content {
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-    
-    .program-image {
-        height: 300px;
-        object-fit: contain;
-    }
-}
-
-/* إصلاح تخطيط الأخبار والإعلانات */
-@media (max-width: 1024px) {
-    .news-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .news-left, 
-    .news-right {
-        width: 100%;
-        max-width: 100%;
-        padding: 0;
-    }
-}
-
-/* تحسين القوائم المنزلقة للهواتف */
+/* Mobile-Specific Fixes */
 @media (max-width: 640px) {
-    .exclusive-carousel,
-    .ads-carousel {
-        height: 350px;
+    /* Prevent scrolling beyond footer */
+    body {
+        height: 100vh;
+        overflow-y: hidden;
     }
-    
-    .videos-carousel {
-        height: 300px;
-    }
-    
-    .videos-carousel .carousel-img {
-        height: calc(100% - 25px);
-    }
-}
 
-/* تحسين القائمة الثابتة للهواتف */
-@media (max-width: 768px) {
-    .fixed-nav .nav-links {
-        display: none !important;
+    /* Fixed Navigation Bar */
+    .fixed-nav {
+        left: 0;
+        width: calc(100% - 2rem); /* Extend to mode toggle buttons */
+        margin-left: 1rem;
+        border-radius: 8px;
     }
-    
-    .fixed-nav.scrolled .nav-links {
-        display: none !important;
-    }
-    
-    .mode-toggle {
-        top: 0.5rem;
-        left: 0.5rem;
-        flex-direction: column;
-    }
-}
 
-/* تحسين القائمة المتحركة للهواتف */
-.mobile-menu {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--primary-blue);
-    z-index: 35;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-}
-
-.mobile-menu.active {
-    transform: translateX(0);
-}
-
-/* ... باقي الملف كما هو ... */
-
-@media (max-width: 640px) {
     .logo-1 {
         width: 10rem;
     }
@@ -1293,11 +1201,9 @@ footer {
         flex-direction: column;
         gap: 0.5rem;
     }
-    .fixed-nav .nav-links {
-        display: none; /* Hide navigation links in fixed nav on mobile */
-    }
+    .fixed-nav .nav-links,
     .fixed-nav.scrolled .nav-links {
-        display: none; /* Ensure they stay hidden when scrolled */
+        display: none;
     }
     .nav-link {
         font-size: 1rem;
@@ -1313,7 +1219,8 @@ footer {
         font-size: 0.75rem;
         padding: 0.3rem 0.6rem;
     }
-    /* تأكيد تشغيل فيديو الخلفية تلقائيًا */
+
+    /* Video Background */
     .video-iframe {
         object-fit: cover;
         width: 100vw;
@@ -1326,7 +1233,8 @@ footer {
         display: none !important;
         -webkit-appearance: none;
     }
-    /* برامجنا التدريبية: صورة أعلى النص لكلا العنصرين */
+
+    /* Programs Section */
     .program-item,
     .program-item.reversed {
         flex-direction: column;
@@ -1339,8 +1247,8 @@ footer {
         max-width: 100%;
     }
     .program-image {
-        height: 350px;
-        object-fit: cover;
+        height: 250px;
+        object-fit: contain;
     }
     .program-content h3 {
         font-size: 1.2rem;
@@ -1348,7 +1256,8 @@ footer {
     .program-content p {
         font-size: 0.85rem;
     }
-    /* الأخبار الحصرية والإعلانات: توسيط وتخطيط عمودي */
+
+    /* News and Ads Section */
     .news-container {
         flex-direction: column;
         align-items: center;
@@ -1360,33 +1269,50 @@ footer {
         padding: 0;
         display: flex;
         justify-content: center;
+        flex-direction: column;
+        align-items: center;
     }
-    .exclusive-carousel {
-        max-width: 100%;
-        height: 350px;
-        margin: 0 auto;
-    }
+    .exclusive-carousel,
     .ads-carousel {
-        max-width: 100%;
-        height: 350px;
+        max-width: 90%;
+        height: 300px;
         margin: 0 auto;
     }
     .exclusive-carousel .carousel-img,
     .ads-carousel .carousel-img {
         width: 100%;
-        height: 350px;
-        object-fit: cover;
+        height: 300px;
+        object-fit: contain;
     }
     .exclusive-carousel .carousel-indicators,
     .ads-carousel .carousel-indicators {
-        bottom: 10px;
+        position: static;
+        transform: none;
+        margin-top: 10px;
+        bottom: auto;
+        left: auto;
     }
+    .exclusive-carousel .carousel-indicator,
+    .ads-carousel .carousel-indicator {
+        width: 8px;
+        height: 8px;
+    }
+    .news-controls,
+    .ads-controls {
+        display: none;
+    }
+    .news-left .text-center.mt-4,
+    .news-right .text-center.mt-4 {
+        margin-top: 10px;
+    }
+
+    /* Videos Section */
     .videos-carousel {
         max-width: 100%;
         height: 300px;
     }
     .videos-carousel .carousel-img {
-        height: calc(100% - 25px);
+        height: 100%;
     }
     .videos-carousel .video-title {
         font-size: 0.9rem;
@@ -1400,6 +1326,8 @@ footer {
         padding: 6px;
         font-size: 1rem;
     }
+
+    /* About Section */
     .about-item {
         max-width: 100%;
         height: auto;
@@ -1413,6 +1341,8 @@ footer {
     .about-item p, .about-item ul, .about-item ol {
         font-size: 0.8rem;
     }
+
+    /* Links Section */
     .links-container {
         grid-template-columns: 1fr;
     }
@@ -1430,6 +1360,8 @@ footer {
         padding: 0.4rem 1rem;
         font-size: 0.8rem;
     }
+
+    /* Statistics Section */
     .statistics-container {
         grid-template-columns: 1fr;
     }
@@ -1446,6 +1378,7 @@ footer {
     .stat-card p {
         font-size: 1rem;
     }
+
     .dynamic-card {
         animation: none;
     }
