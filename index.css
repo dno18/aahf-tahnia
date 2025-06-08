@@ -1418,8 +1418,8 @@ footer {
         gap: 1rem;
     }
     .news-left, .news-right {
-        width: 100%;
-        max-width: 100%;
+        width: 150%;
+        max-width: 200%;
         padding: 0;
         display: flex;
         justify-content: center;
