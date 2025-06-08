@@ -319,20 +319,26 @@ html[dir="ltr"] .fixed-nav .nav-link {
     border-bottom: 2px solid var(--secondary-blue);
 }
 
-/* Fixed Navigation */
+/* Fixed Navigation - إخفاء في الجوال */
 .fixed-nav {
+    display: none; /* مخفي افتراضيًا للجوال */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     background: linear-gradient(90deg, rgba(41, 35, 80, 0.9), rgba(0, 112, 95, 0.9));
     opacity: 0;
-    display: flex;
     justify-content: center;
     align-items: center;
     padding: 0.3rem;
     transition: opacity 0.3s ease;
     z-index: 30;
+}
+
+@media (min-width: 768px) {
+    .fixed-nav {
+        display: flex; /* إظهار فقط في الشاشات الكبيرة */
+    }
 }
 
 .fixed-nav.scrolled {
@@ -648,6 +654,25 @@ html[dir="ltr"] .program-content {
     border-color: var(--secondary-blue);
 }
 
+/* زر المزيد في قسم البرامج */
+.programs-section .read-more-btn {
+    background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.programs-section .read-more-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(41, 35, 80, 0.3);
+}
+
 /* News Section */
 .news-section {
     padding: 2rem;
@@ -910,6 +935,7 @@ html[dir="ltr"] .videos-carousel .carousel-next {
     color: white;
 }
 
+/* إخفاء أزرار التحكم في الجوال */
 .video-controls {
     display: flex;
     gap: 10px;
@@ -917,6 +943,12 @@ html[dir="ltr"] .videos-carousel .carousel-next {
     margin-bottom: 15px;
     justify-content: center;
     z-index: 3;
+}
+
+@media (max-width: 768px) {
+    .video-controls {
+        display: none; /* إخفاء أزرار التحكم في الجوال */
+    }
 }
 
 .video-controls button {
@@ -1209,6 +1241,11 @@ footer {
         height: 300px;
         object-fit: contain;
     }
+
+    /* زر المزيد تحت الأزرار */
+    .program-actions {
+        margin-bottom: 1rem;
+    }
 }
 
 /* إصلاح تخطيط الأخبار والإعلانات */
@@ -1223,6 +1260,32 @@ footer {
         width: 100%;
         max-width: 100%;
         padding: 0;
+        margin-bottom: 2rem;
+    }
+
+    /* توسيع البوكس في الجوال */
+    .exclusive-carousel,
+    .ads-carousel {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 3/4;
+    }
+
+    /* إعادة تموضع مؤشرات التبديل */
+    .exclusive-carousel .carousel-indicators,
+    .ads-carousel .carousel-indicators {
+        position: relative;
+        bottom: 0;
+        margin-top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* زر المزيد تحت مؤشرات التبديل */
+    .news-left .read-more-btn,
+    .news-right .read-more-btn {
+        margin-top: 15px;
     }
 }
 
