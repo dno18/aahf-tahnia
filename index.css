@@ -1274,43 +1274,64 @@ footer {
 }
 
 /* إصلاح تخطيط الأخبار والإعلانات */
-@media (max-width: 1024px) {
+@media (max-width: 640px) {
+    /* حاوية الأخبار: تأخذ العرض الكامل وترتب البوكسات عموديًا */
     .news-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .news-left, 
-    .news-right {
-        width: 100%;
-        max-width: 100%;
-        padding: 0;
-        margin-bottom: 2rem;
+        width: 100%; /* العرض الكامل للشاشة */
+        max-width: 100%; /* لا يتجاوز عرض الشاشة */
+        flex-direction: column; /* ترتيب عمودي */
+        align-items: center; /* توسيط البوكسات */
+        gap: 1rem; /* مسافة بين الأخبار الحصرية والإعلانات */
+        padding: 0; /* إزالة أي حشوة */
     }
 
+    /* الأقسام اليمنى واليسرى: تأخذ العرض الكامل وتوسّط البوكس */
+    .news-left, .news-right {
+        width: 100%; /* العرض الكامل */
+        max-width: 100%; /* لا يتجاوز الشاشة */
+        padding: 0; /* إزالة الحشوة */
+        display: flex; /* استخدام flex للتوسيط */
+        justify-content: center; /* توسيط البوكس أفقيًا */
+        margin: 0; /* إزالة الهوامش */
+    }
+
+    /* بوكسات الأخبار الحصرية والإعلانات: تملأ الشاشة بالكامل */
     .exclusive-carousel,
     .ads-carousel {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-        aspect-ratio: 3/4;
+        width: 100%; /* العرض الكامل */
+        max-width: 100%; /* لا يتجاوز الشاشة */
+        height: 350px; /* الارتفاع الثابت */
+        margin: 0 auto; /* توسيط البوكس */
+        padding: 0; /* إزالة الحشوة */
+        box-sizing: border-box; /* التأكد من أن الحشوة والهوامش لا تؤثر على العرض */
+        overflow: hidden; /* منع أي محتوى زائد من التأثير */
     }
 
+    /* الصور داخل البوكسات: تملأ البوكس بالكامل */
+    .exclusive-carousel .carousel-img,
+    .ads-carousel .carousel-img {
+        width: 100%; /* العرض الكامل */
+        height: 350px; /* نفس ارتفاع البوكس */
+        object-fit: cover; /* ملء الصورة مع قص الأجزاء الزائدة */
+        display: block; /* إزالة الهوامش الافتراضية للصور */
+    }
+
+    /* مؤشرات الكاروسيل: تظهر أسفل البوكس */
     .exclusive-carousel .carousel-indicators,
     .ads-carousel .carousel-indicators {
-        position: relative;
-        bottom: 0;
-        margin-top: 10px;
-        left: 50%;
-        transform: translateX(-50%);
+        position: relative; /* خارج البوكس */
+        bottom: 0; /* أسفل البوكس */
+        margin-top: 10px; /* مسافة فوق زر المزيد */
+        left: 50%; /* توسيط أفقي */
+        transform: translateX(-50%); /* إزاحة للتوسيط */
     }
 
+    /* زر المزيد: يظهر أسفل المؤشرات */
     .news-left .read-more-btn,
     .news-right .read-more-btn {
-        margin-top: 15px;
+        margin-top: 15px; /* مسافة أسفل المؤشرات */
     }
 }
-
 /* تحسين القوائم المنزلقة للهواتف */
 @media (max-width: 640px) {
     .mobile-menu {
