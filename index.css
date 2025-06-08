@@ -445,7 +445,7 @@ html[dir="ltr"] .about-item h3 i {
     margin-right: 0.5rem;
 }
 
-/* Programs Section - إصلاح مشاكل الجوال */
+/* Programs Section - إصلاح مشاكل الجوال وإعادة التصميم القديم للأجهزة الكبيرة */
 .programs-section {
     padding: 2rem;
     background: #f9f9f9;
@@ -456,32 +456,24 @@ html[dir="ltr"] .about-item h3 i {
     min-height: 400px;
 }
 
-.program-container {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-}
-
+/* إعادة التصميم القديم للأجهزة الكبيرة */
 .program-item {
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 2rem;
     padding: 1.5rem;
+    margin-bottom: 1.5rem;
     background: white;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* التصميم المطلوب للجوال - صورة ثم نص */
-@media (max-width: 768px) {
-    .program-item.reversed {
-        flex-direction: column;
-    }
+.program-item.reversed {
+    flex-direction: row-reverse;
 }
 
 .program-media {
-    width: 100%;
+    flex: 1;
     max-width: 450px;
     position: relative;
     transition: transform 0.5s ease;
@@ -516,8 +508,8 @@ html[dir="ltr"] .about-item h3 i {
 }
 
 .program-content {
-    width: 100%;
-    text-align: center;
+    flex: 1;
+    text-align: right;
 }
 
 .program-content h3 {
@@ -630,6 +622,7 @@ html[dir="ltr"] .about-item h3 i {
     transition: box-shadow 0.3s ease;
 }
 
+/* زيادة عرض البوكس كما طلبت */
 .exclusive-carousel {
     height: 500px;
     max-height: 60vh;
@@ -681,7 +674,7 @@ html[dir="ltr"] .about-item h3 i {
     object-fit: cover;
 }
 
-/* أزرار التحكم تحت الصور مباشرة */
+/* أزرار التحكم تحت الصور مباشرة (إزالة كما طلبت) */
 .exclusive-carousel .carousel-indicators,
 .ads-carousel .carousel-indicators {
     position: relative;
@@ -709,31 +702,10 @@ html[dir="ltr"] .about-item h3 i {
     transform: scale(1.2);
 }
 
-/* أزرار التبديل أسفل المؤشرات */
+/* إزالة أزرار التبديل كما طلبت */
 .news-controls,
 .ads-controls {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 10px;
-    margin-bottom: 15px;
-}
-
-.news-controls button,
-.ads-controls button {
-    background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.3s ease;
-}
-
-.news-controls button:hover,
-.ads-controls button:hover {
-    background: var(--primary-blue);
+    display: none !important;
 }
 
 /* Videos Section */
@@ -884,29 +856,9 @@ html[dir="ltr"] .videos-carousel .carousel-next {
     color: white;
 }
 
+/* إزالة أزرار التحكم أسفل الفيديو كما طلبت */
 .video-controls {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    justify-content: center;
-    z-index: 3;
-    flex-wrap: wrap;
-}
-
-.video-controls button {
-    background: rgba(255, 255, 255, 0.8);
-    border: none;
-    padding: 10px 15px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.5rem;
-    transition: background 0.3s ease, color 0.3s ease;
-}
-
-.video-controls button:hover {
-    background: var(--secondary-blue);
-    color: white;
+    display: none !important;
 }
 
 /* Links Section - إصلاح مشاكل الجوال */
@@ -918,7 +870,7 @@ html[dir="ltr"] .videos-carousel .carousel-next {
 
 .links-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -1114,9 +1066,6 @@ footer {
     .logo-1 {
         max-width: 15rem;
     }
-    .program-container {
-        gap: 2rem;
-    }
     .program-image {
         height: 350px;
     }
@@ -1167,9 +1116,6 @@ footer {
         padding: 8px;
         font-size: 1.2rem;
     }
-    .video-controls button {
-        padding: 8px 12px;
-    }
     .news-container {
         flex-direction: column;
         gap: 3rem;
@@ -1177,6 +1123,22 @@ footer {
     .news-left, .news-right {
         width: 100%;
         padding: 0;
+    }
+    
+    /* تحويل البرامج إلى تصميم عمودي للجوال */
+    .program-item,
+    .program-item.reversed {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .program-media,
+    .program-content {
+        width: 100%;
+    }
+    
+    .program-content {
+        text-align: center;
     }
 }
 
@@ -1231,10 +1193,6 @@ footer {
         height: 250px;
         max-height: 40vh;
         object-fit: cover;
-    }
-    
-    .program-content {
-        text-align: center !important;
     }
     
     .gradient-btn,
@@ -1349,11 +1307,6 @@ footer {
     
     .videos-carousel {
         height: 250px;
-    }
-    
-    .video-controls button {
-        padding: 6px 10px;
-        font-size: 1.2rem;
     }
     
     .stat-card {
