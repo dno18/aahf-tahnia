@@ -673,7 +673,7 @@ html[dir="ltr"] .program-content {
     box-shadow: 0 5px 15px rgba(41, 35, 80, 0.3);
 }
 
-/* News Section */
+/* News Section - تم تعديلها لتكون مثل قسم البرامج */
 .news-section {
     padding: 2rem;
     background: #ffffff;
@@ -683,13 +683,14 @@ html[dir="ltr"] .program-content {
 
 .news-container {
     display: flex;
+    flex-direction: column;
     gap: 2rem;
 }
 
 .news-left, .news-right {
     position: relative;
-    width: 50%;
-    padding: 0 1rem;
+    width: 100%;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -698,22 +699,20 @@ html[dir="ltr"] .program-content {
 .exclusive-carousel,
 .ads-carousel {
     width: 100%;
+    max-width: 700px;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
+    margin-bottom: 1rem;
 }
 
 .exclusive-carousel {
-    max-width: 500px;
-    height: 600px;
     border: 2px solid transparent;
     border-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)) 1;
 }
 
 .ads-carousel {
-    max-width: 500px;
-    height: 600px;
     border: 3px solid var(--secondary-blue);
 }
 
@@ -757,21 +756,20 @@ html[dir="ltr"] .program-content {
 
 .exclusive-carousel .carousel-indicators,
 .ads-carousel .carousel-indicators {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
     display: flex;
     flex-direction: row;
     gap: 8px;
     z-index: 3;
+    margin-top: 10px;
+    justify-content: center;
 }
 
 .exclusive-carousel .carousel-indicator,
 .ads-carousel .carousel-indicator {
     width: 10px;
     height: 10px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.2);
     border-radius: 50%;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.3s ease;
@@ -1216,8 +1214,6 @@ footer {
     }
 }
 
-/* ... بداية الملف كما هو ... */
-
 /* إصلاح تخطيط البرامج للأجهزة المحمولة */
 @media (max-width: 768px) {
     .program-container {
@@ -1245,47 +1241,6 @@ footer {
     /* زر المزيد تحت الأزرار */
     .program-actions {
         margin-bottom: 1rem;
-    }
-}
-
-/* إصلاح تخطيط الأخبار والإعلانات */
-@media (max-width: 1024px) {
-    .news-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .news-left, 
-    .news-right {
-        width: 100%;
-        max-width: 100%;
-        padding: 0;
-        margin-bottom: 2rem;
-    }
-
-    /* توسيع البوكس في الجوال */
-    .exclusive-carousel,
-    .ads-carousel {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-        aspect-ratio: 3/4;
-    }
-
-    /* إعادة تموضع مؤشرات التبديل */
-    .exclusive-carousel .carousel-indicators,
-    .ads-carousel .carousel-indicators {
-        position: relative;
-        bottom: 0;
-        margin-top: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    /* زر المزيد تحت مؤشرات التبديل */
-    .news-left .read-more-btn,
-    .news-right .read-more-btn {
-        margin-top: 15px;
     }
 }
 
@@ -1323,27 +1278,15 @@ footer {
 }
 
 /* تحسين القائمة المتحركة للهواتف */
-.mobile-menu {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--primary-blue);
-    z-index: 35;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
+@media (max-width: 768px) {
+    .mobile-menu {
+        display: none;
+    }
+    
+    .mobile-menu.active {
+        display: flex;
+    }
 }
-
-.mobile-menu.active {
-    transform: translateX(0);
-}
-
-/* ... باقي الملف كما هو ... */
 
 @media (max-width: 640px) {
     .logo-1 {
