@@ -1,4 +1,4 @@
-/* ملف CSS معدل بالكامل */
+/* ملف CSS معدل بالكامل مع إصلاح مشاكل الجوال */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -191,8 +191,9 @@ html[dir="ltr"] .header-logos {
     left: 1rem;
 }
 
-.fixed-nav.scrolled ~ header .header-logos {
-    display: none;
+/* إخفاء الشريط الثابت عند التمرير كما طلبت */
+.fixed-nav {
+    display: none !important;
 }
 
 .logo-1 {
@@ -302,14 +303,6 @@ html[dir="ltr"] .header-logos {
     transition: color 0.3s ease;
 }
 
-.fixed-nav .nav-link {
-    text-align: center;
-}
-
-html[dir="ltr"] .fixed-nav .nav-link {
-    text-align: center;
-}
-
 .nav-link:hover {
     color: var(--secondary-blue);
 }
@@ -329,79 +322,6 @@ html[dir="ltr"] .fixed-nav .nav-link {
 .nav-link.active {
     color: var(--secondary-blue);
     border-bottom: 2px solid var(--secondary-blue);
-}
-
-/* Fixed Navigation */
-.fixed-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(90deg, rgba(41, 35, 80, 0.9), rgba(0, 112, 95, 0.9));
-    opacity: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.3rem;
-    transition: opacity 0.3s ease;
-    z-index: 30;
-}
-
-.fixed-nav.scrolled {
-    opacity: 1;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.fixed-nav .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.3rem 1rem;
-}
-
-.fixed-nav .flex {
-    width: 100%;
-    max-width: 1200px;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.fixed-nav .nav-links {
-    display: none;
-    gap: 0.5rem;
-    justify-content: center;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.fixed-nav.scrolled .nav-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    width: 100%;
-    padding: 0;
-}
-
-.fixed-nav .sticky-header-logos {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-}
-
-html[dir="ltr"] .fixed-nav .sticky-header-logos {
-    right: auto;
-    left: 1rem;
-}
-
-.fixed-nav .sticky-header-logos .logo-1 {
-    width: 100%;
-    max-width: 12rem;
-    height: auto;
 }
 
 /* Mode Toggle */
@@ -525,7 +445,7 @@ html[dir="ltr"] .about-item h3 i {
     margin-right: 0.5rem;
 }
 
-/* Programs Section */
+/* Programs Section - إصلاح مشاكل الجوال */
 .programs-section {
     padding: 2rem;
     background: #f9f9f9;
@@ -544,6 +464,7 @@ html[dir="ltr"] .about-item h3 i {
 
 .program-item {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 2rem;
     padding: 1.5rem;
@@ -552,20 +473,15 @@ html[dir="ltr"] .about-item h3 i {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.program-item.reversed {
-    flex-direction: row-reverse;
-}
-
-html[dir="ltr"] .program-item {
-    flex-direction: row;
-}
-
-html[dir="ltr"] .program-item.reversed {
-    flex-direction: row-reverse;
+/* التصميم المطلوب للجوال - صورة ثم نص */
+@media (max-width: 768px) {
+    .program-item.reversed {
+        flex-direction: column;
+    }
 }
 
 .program-media {
-    flex: 1;
+    width: 100%;
     max-width: 450px;
     position: relative;
     transition: transform 0.5s ease;
@@ -600,12 +516,8 @@ html[dir="ltr"] .program-item.reversed {
 }
 
 .program-content {
-    flex: 1;
-    text-align: right;
-}
-
-html[dir="ltr"] .program-content {
-    text-align: left;
+    width: 100%;
+    text-align: center;
 }
 
 .program-content h3 {
@@ -662,12 +574,34 @@ html[dir="ltr"] .program-content {
     border-color: var(--secondary-blue);
 }
 
-/* News Section */
+/* زر المزيد بنفس لون الأزرار الأخرى */
+.read-more-btn {
+    background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    width: auto;
+    min-width: 150px;
+}
+
+.read-more-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(41, 35, 80, 0.3);
+}
+
+/* News Section - إصلاح مشاكل الجوال */
 .news-section {
     padding: 2rem;
     background: #ffffff;
     z-index: 10;
-    min-height: 700px;
+    min-height: auto;
 }
 
 .news-container {
@@ -697,15 +631,15 @@ html[dir="ltr"] .program-content {
 }
 
 .exclusive-carousel {
-    height: 600px;
-    max-height: 70vh;
+    height: 500px;
+    max-height: 60vh;
     border: 2px solid transparent;
     border-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)) 1;
 }
 
 .ads-carousel {
-    height: 600px;
-    max-height: 70vh;
+    height: 500px;
+    max-height: 60vh;
     border: 3px solid var(--secondary-blue);
 }
 
@@ -747,23 +681,23 @@ html[dir="ltr"] .program-content {
     object-fit: cover;
 }
 
+/* أزرار التحكم تحت الصور مباشرة */
 .exclusive-carousel .carousel-indicators,
 .ads-carousel .carousel-indicators {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
     display: flex;
     flex-direction: row;
     gap: 8px;
     z-index: 3;
+    margin-top: 15px;
+    justify-content: center;
 }
 
 .exclusive-carousel .carousel-indicator,
 .ads-carousel .carousel-indicator {
     width: 10px;
     height: 10px;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 50%;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.3s ease;
@@ -775,9 +709,31 @@ html[dir="ltr"] .program-content {
     transform: scale(1.2);
 }
 
+/* أزرار التبديل أسفل المؤشرات */
 .news-controls,
 .ads-controls {
-    display: none;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.news-controls button,
+.ads-controls button {
+    background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.news-controls button:hover,
+.ads-controls button:hover {
+    background: var(--primary-blue);
 }
 
 /* Videos Section */
@@ -953,7 +909,7 @@ html[dir="ltr"] .videos-carousel .carousel-next {
     color: white;
 }
 
-/* Links Section */
+/* Links Section - إصلاح مشاكل الجوال */
 .links-section {
     padding: 2rem;
     background: #ffffff;
@@ -963,7 +919,7 @@ html[dir="ltr"] .videos-carousel .carousel-next {
 .links-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
+    gap: 1.5rem;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -973,11 +929,14 @@ html[dir="ltr"] .videos-carousel .carousel-next {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
+    padding: 1.5rem;
     text-align: center;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    height: 100%;
+    min-height: 250px;
+    justify-content: space-between;
 }
 
 .link-card:hover {
@@ -989,20 +948,24 @@ body.dark-mode .link-card {
 }
 
 .link-logo {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 0.5rem;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
     border-radius: 50%;
-    object-fit: cover;
+    object-fit: contain;
     border: 2px solid var(--secondary-blue);
-    box-shadow: 0 0 10px var(--glow-blue);
+    padding: 5px;
 }
 
 .link-card h4 {
     font-size: 1.125rem;
     font-weight: 700;
     color: var(--primary-blue);
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 body.dark-mode .link-card h4 {
@@ -1012,11 +975,13 @@ body.dark-mode .link-card h4 {
 .link-btn {
     background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
     color: white;
-    padding: 0.5rem 1.5rem;
+    padding: 0.7rem 1.5rem;
     border-radius: 8px;
     font-size: 0.9rem;
     text-decoration: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    width: auto;
 }
 
 .link-btn:hover {
@@ -1040,7 +1005,7 @@ body.dark-mode .link-card h4 {
     max-width: 1000px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
+    gap: 1.5rem;
     margin-top: 1rem;
 }
 
@@ -1113,15 +1078,6 @@ body.dark-mode .stat-card p {
     color: #d1d5db;
 }
 
-/* Ensure no navigation buttons appear in statistics section */
-.statistics-section .prev-btn,
-.statistics-section .next-btn,
-.statistics-section .news-controls,
-.statistics-section .ads-controls,
-.statistics-section .video-controls {
-    display: none !important;
-}
-
 /* Footer */
 footer {
     background: var(--primary-blue);
@@ -1132,6 +1088,12 @@ footer {
 .social-icon {
     font-size: 1.5rem;
     color: white;
+    margin: 0 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
 }
 
 .map-box {
@@ -1139,8 +1101,9 @@ footer {
     max-width: 300px;
     height: 250px;
     border: 1px solid var(--secondary-blue);
-    border-radius: 0;
-    margin: 0 auto;
+    border-radius: 8px;
+    margin: 1rem auto;
+    overflow: hidden;
 }
 
 /* ========================================= */
@@ -1151,46 +1114,15 @@ footer {
     .logo-1 {
         max-width: 15rem;
     }
-    .fixed-nav .sticky-header-logos .logo-1 {
-        max-width: 10rem;
-    }
-    .nav-links {
-        gap: 0.75rem;
-    }
     .program-container {
         gap: 2rem;
     }
-    .program-item {
-        flex-direction: column;
-        align-items: center;
-    }
-    .program-media,
-    .program-content {
-        width: 100%;
-        max-width: 100%;
-    }
     .program-image {
-        height: 300px;
-        object-fit: contain;
-    }
-    .news-container {
-        flex-direction: column;
-    }
-    .news-left, .news-right {
-        width: 100%;
-        padding: 0;
+        height: 350px;
     }
     .exclusive-carousel,
     .ads-carousel {
-        height: 500px;
-        max-width: 450px;
-    }
-    .exclusive-carousel .carousel-indicators,
-    .ads-carousel .carousel-indicators {
-        bottom: 20px;
-    }
-    .videos-carousel {
-        height: 400px;
+        height: 450px;
     }
     .about-item {
         max-width: 500px;
@@ -1199,21 +1131,12 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .logo-1 {
+    .header-logos {
         max-width: 12rem;
-    }
-    .fixed-nav .sticky-header-logos .logo-1 {
-        max-width: 8rem;
     }
     .nav-link {
         font-size: 0.9rem;
         padding: 0.4rem 0.8rem;
-    }
-    .fixed-nav .nav-links {
-        display: none !important;
-    }
-    .fixed-nav.scrolled .nav-links {
-        display: none !important;
     }
     .mode-toggle-btn {
         font-size: 0.8rem;
@@ -1247,6 +1170,14 @@ footer {
     .video-controls button {
         padding: 8px 12px;
     }
+    .news-container {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    .news-left, .news-right {
+        width: 100%;
+        padding: 0;
+    }
 }
 
 @media (max-width: 640px) {
@@ -1254,14 +1185,6 @@ footer {
         top: 0.5rem;
         right: 0.5rem;
         max-width: 8rem;
-    }
-    
-    .fixed-nav {
-        padding: 0.2rem;
-    }
-    
-    .fixed-nav .sticky-header-logos .logo-1 {
-        max-width: 5rem;
     }
     
     .mode-toggle {
@@ -1323,7 +1246,7 @@ footer {
     .news-container {
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
+        gap: 3rem;
     }
     
     .news-left, .news-right {
@@ -1358,10 +1281,12 @@ footer {
     
     .links-container {
         grid-template-columns: 1fr;
+        max-width: 300px;
+        margin: 0 auto;
     }
     
     .link-card {
-        max-width: 90%;
+        max-width: 100%;
         margin: 0 auto;
     }
     
@@ -1445,5 +1370,73 @@ footer {
     
     .stat-card p {
         font-size: 1rem;
+    }
+    
+    .read-more-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+/* إصلاح مشاكل تبديل اللغة */
+html[dir="ltr"] body {
+    font-family: 'Cairo', sans-serif;
+}
+
+html[dir="ltr"] .nav-link {
+    font-family: 'Cairo', sans-serif;
+}
+
+html[dir="ltr"] .program-content {
+    text-align: left;
+}
+
+html[dir="ltr"] .about-content {
+    text-align: left;
+}
+
+html[dir="ltr"] .video-title {
+    font-family: 'Cairo', sans-serif;
+}
+
+html[dir="ltr"] .stat-card p,
+html[dir="ltr"] .link-card h4,
+html[dir="ltr"] .program-content p {
+    font-family: 'Cairo', sans-serif;
+}
+
+/* إصلاحات إضافية للتخطيط */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* إصلاح مشاكل القائمة المتنقلة */
+@media (max-width: 768px) {
+    .sticky-nav {
+        display: none;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    .mobile-menu {
+        display: none;
+    }
+    
+    .mobile-menu.active {
+        display: flex;
     }
 }
