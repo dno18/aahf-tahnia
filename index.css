@@ -99,13 +99,13 @@ html[dir="ltr"] h2.section-title::after {
 
 .dynamic-card {
     animation: cardSlide 0.8s ease-out;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .dynamic-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 @keyframes slideIn {
@@ -189,7 +189,7 @@ html[dir="ltr"] .header-logos {
 }
 
 .logo-1 {
-    width: 20rem;
+    width: 15rem;
     height: auto;
     object-fit: contain;
 }
@@ -394,15 +394,15 @@ html[dir="ltr"] .fixed-nav .sticky-header-logos {
 }
 
 .fixed-nav .sticky-header-logos .logo-1 {
-    width: 12rem;
+    width: 10rem;
     height: auto;
 }
 
 /* Mode Toggle */
 .mode-toggle {
     position: fixed;
-    top: 1rem;
-    left: 1rem;
+    top: 0.5rem;
+    left: 0.5rem;
     display: flex;
     gap: 0.5rem;
     z-index: 40;
@@ -452,12 +452,14 @@ main > section.card:last-child {
 
 .about-item {
     position: absolute;
-    width: 580px;
-    height: 420px;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    max-height: 350px;
     background: rgba(0, 0, 0, 0.7);
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 8px;
-    padding: 1.5rem;
+    padding: 1rem;
     color: white;
     opacity: 0;
     margin: 0 auto;
@@ -518,9 +520,15 @@ html[dir="ltr"] .about-item h3 i {
 
 /* Programs Section */
 .programs-section {
-    padding: 2rem;
+    padding: 2rem 1rem;
     background: #f9f9f9;
     z-index: 10;
+}
+
+.program-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .program-list {
@@ -529,10 +537,10 @@ html[dir="ltr"] .about-item h3 i {
 
 .program-item {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    gap: 2rem;
-    padding: 1.5rem;
+    gap: 1.5rem;
+    padding: 1rem;
     margin-bottom: 1.5rem;
     background: white;
     border-radius: 8px;
@@ -548,20 +556,17 @@ html[dir="ltr"] .about-item h3 i {
 }
 
 .program-item.reversed {
-    flex-direction: row-reverse;
+    flex-direction: column;
 }
 
-html[dir="ltr"] .program-item {
-    flex-direction: row;
-}
-
+html[dir="ltr"] .program-item,
 html[dir="ltr"] .program-item.reversed {
-    flex-direction: row-reverse;
+    flex-direction: column;
 }
 
 .program-media {
-    width: 50%;
-    max-width: 450px;
+    width: 100%;
+    max-width: 100%;
     position: relative;
     transition: transform 0.5s ease;
 }
@@ -572,8 +577,8 @@ html[dir="ltr"] .program-item.reversed {
 
 .program-image {
     width: 100%;
-    height: 400px;
-    object-fit: contain;
+    max-height: 250px;
+    object-fit: cover;
     border-radius: 8px;
     transition: transform 1.2s ease, opacity 1.2s ease;
 }
@@ -584,7 +589,7 @@ html[dir="ltr"] .program-item.reversed {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, rgba(41,35,80,0.9), rgba(0,112,95,0.7));
+    background: linear-gradient(45deg, rgba(41, 35, 80, 0.9), rgba(0, 112, 95, 0.7));
     opacity: 0.3;
     transition: opacity 0.3s ease;
 }
@@ -594,12 +599,12 @@ html[dir="ltr"] .program-item.reversed {
 }
 
 .program-content {
-    width: 50%;
-    text-align: right;
+    width: 100%;
+    text-align: center;
 }
 
 html[dir="ltr"] .program-content {
-    text-align: left;
+    text-align: center;
 }
 
 .program-content h3 {
@@ -619,15 +624,17 @@ html[dir="ltr"] .program-content {
 
 .program-actions {
     margin-top: 1rem;
+    margin-bottom: 1rem;
     display: flex;
     gap: 10px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .gradient-btn,
 .outline-btn {
-    padding: 12px 25px;
-    border-radius: 30px;
+    padding: 10px 20px;
+    border-radius: 25px;
     display: inline-flex;
     align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
@@ -655,18 +662,18 @@ html[dir="ltr"] .program-content {
     border-color: var(--secondary-blue);
 }
 
-/* زر المزيد في قسم البرامج */
 .programs-section .read-more-btn {
     background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
     color: white;
-    padding: 12px 25px;
-    border-radius: 30px;
+    padding: 10px 20px;
+    border-radius: 25px;
     display: inline-flex;
     align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none;
     margin-top: 1rem;
     font-weight: 600;
+    font-size: 0.9rem;
 }
 
 .programs-section .read-more-btn:hover {
@@ -676,21 +683,24 @@ html[dir="ltr"] .program-content {
 
 /* News Section */
 .news-section {
-    padding: 2rem;
+    padding: 2rem 1rem;
     background: #ffffff;
     z-index: 10;
-    min-height: 700px;
+    min-height: auto;
 }
 
 .news-container {
     display: flex;
-    gap: 2rem;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    align-items: center;
 }
 
 .news-left, .news-right {
-    position: relative;
-    width: 50%;
-    padding: 0 1rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -699,22 +709,21 @@ html[dir="ltr"] .program-content {
 .exclusive-carousel,
 .ads-carousel {
     width: 100%;
+    max-width: 100%;
+    height: 300px;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
+    margin: 0 auto;
 }
 
 .exclusive-carousel {
-    max-width: 500px;
-    height: 600px;
     border: 2px solid transparent;
     border-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)) 1;
 }
 
 .ads-carousel {
-    max-width: 500px;
-    height: 600px;
     border: 3px solid var(--secondary-blue);
 }
 
@@ -754,12 +763,14 @@ html[dir="ltr"] .program-content {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .exclusive-carousel .carousel-indicators,
 .ads-carousel .carousel-indicators {
-    position: absolute;
-    bottom: 30px;
+    position: relative;
+    bottom: 0;
+    margin-top: 10px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -789,19 +800,19 @@ html[dir="ltr"] .program-content {
     display: none;
 }
 
-/* زر المزيد في قسم الأخبار */
 .news-left .read-more-btn,
 .news-right .read-more-btn {
     background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
     color: white;
-    padding: 12px 25px;
-    border-radius: 30px;
+    padding: 10px 20px;
+    border-radius: 25px;
     display: inline-flex;
     align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none;
     margin-top: 15px;
     font-weight: 600;
+    font-size: 0.9rem;
 }
 
 .news-left .read-more-btn:hover,
@@ -812,20 +823,21 @@ html[dir="ltr"] .program-content {
 
 /* Videos Section */
 .videos-section {
-    padding: 2rem;
+    padding: 2rem 1rem;
     background: #ffffff;
     z-index: 10;
-    min-height: 600px;
+    min-height: auto;
 }
 
 .videos-container {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .videos-right {
     width: 100%;
-    padding: 0 1rem;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -833,8 +845,8 @@ html[dir="ltr"] .program-content {
 
 .videos-carousel {
     width: 100%;
-    max-width: 700px;
-    height: 450px;
+    max-width: 100%;
+    height: 250px;
     border: 2px solid transparent;
     border-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)) 1;
     border-radius: 12px;
@@ -876,7 +888,7 @@ html[dir="ltr"] .program-content {
 
 .videos-carousel .carousel-img {
     width: 100%;
-    height: calc(100% - 30px);
+    height: calc(100% - 25px);
     object-fit: cover;
     background: #000;
 }
@@ -888,14 +900,14 @@ html[dir="ltr"] .program-content {
     text-align: center;
     background: rgba(0, 0, 0, 0.7);
     color: white;
-    padding: 5px 0;
-    font-size: 1rem;
+    padding: 4px 0;
+    font-size: 0.9rem;
     font-family: 'Cairo', sans-serif;
 }
 
 .videos-carousel .carousel-indicators {
     position: absolute;
-    bottom: 40px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -924,10 +936,10 @@ html[dir="ltr"] .program-content {
     transform: translateY(-50%);
     background: rgba(255, 255, 255, 0.8);
     border: none;
-    padding: 10px;
+    padding: 6px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: #333;
     transition: background 0.3s ease, color 0.3s ease;
     z-index: 3;
@@ -957,7 +969,6 @@ html[dir="ltr"] .videos-carousel .carousel-next {
     color: white;
 }
 
-/* إخفاء أزرار التحكم في الجوال */
 .video-controls {
     display: flex;
     gap: 10px;
@@ -967,19 +978,13 @@ html[dir="ltr"] .videos-carousel .carousel-next {
     z-index: 3;
 }
 
-@media (max-width: 768px) {
-    .video-controls {
-        display: none;
-    }
-}
-
 .video-controls button {
     background: rgba(255, 255, 255, 0.8);
     border: none;
-    padding: 10px 15px;
+    padding: 8px 12px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     transition: background 0.3s ease, color 0.3s ease;
 }
 
@@ -990,16 +995,16 @@ html[dir="ltr"] .videos-carousel .carousel-next {
 
 /* Links Section */
 .links-section {
-    padding: 2rem;
+    padding: 2rem 1rem;
     background: #ffffff;
     z-index: 10;
 }
 
 .links-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr;
     gap: 1rem;
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -1008,7 +1013,7 @@ html[dir="ltr"] .videos-carousel .carousel-next {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
+    padding: 0.8rem;
     text-align: center;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -1024,8 +1029,8 @@ body.dark-mode .link-card {
 }
 
 .link-logo {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     margin-bottom: 0.5rem;
     border-radius: 50%;
     object-fit: cover;
@@ -1034,7 +1039,7 @@ body.dark-mode .link-card {
 }
 
 .link-card h4 {
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--primary-blue);
     margin-bottom: 0.5rem;
@@ -1047,9 +1052,9 @@ body.dark-mode .link-card h4 {
 .link-btn {
     background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
     color: white;
-    padding: 0.5rem 1.5rem;
+    padding: 0.4rem 1rem;
     border-radius: 8px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     text-decoration: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -1061,20 +1066,20 @@ body.dark-mode .link-card h4 {
 
 /* Statistics Section */
 .statistics-section {
-    padding: 2rem;
+    padding: 2rem 1rem;
     background: #ffffff;
     z-index: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 400px;
+    min-height: auto;
 }
 
 .statistics-container {
     width: 100%;
-    max-width: 1000px;
+    max-width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 1rem;
     margin-top: 1rem;
 }
@@ -1084,13 +1089,13 @@ body.dark-mode .link-card h4 {
     border: 2px solid transparent;
     border-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)) 1;
     border-radius: 12px;
-    padding: 2rem;
+    padding: 1.5rem;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 150px;
+    min-height: 120px;
     position: relative;
     overflow: hidden;
 }
@@ -1112,9 +1117,8 @@ body.dark-mode .link-card h4 {
 }
 
 .stat-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    animation: pulse 1.5s infinite;
 }
 
 body.dark-mode .stat-card {
@@ -1124,15 +1128,14 @@ body.dark-mode .stat-card {
 .stat-card i {
     color: var(--secondary-blue);
     margin-bottom: 0.75rem;
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 .stat-card h3 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
     color: var(--primary-blue);
-    animation: flip 1s ease-in-out;
 }
 
 body.dark-mode .stat-card h3 {
@@ -1140,7 +1143,7 @@ body.dark-mode .stat-card h3 {
 }
 
 .stat-card p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #4a5568;
 }
 
@@ -1151,7 +1154,7 @@ body.dark-mode .stat-card p {
 /* Footer */
 footer {
     background: var(--primary-blue);
-    padding: 2rem 0;
+    padding: 2rem 1rem;
     border-top: 1px solid #e5e7eb;
 }
 
@@ -1163,175 +1166,155 @@ footer {
 .map-box {
     width: 100%;
     max-width: 300px;
-    height: 250px;
+    height: 200px;
     border: 1px solid var(--secondary-blue);
     border-radius: 0;
     margin: 0 auto;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
+/* Responsive Design for Tablets */
+@media (min-width: 768px) {
     .logo-1 {
         width: 15rem;
     }
+
     .fixed-nav .sticky-header-logos .logo-1 {
         width: 10rem;
     }
+
     .nav-links {
         gap: 0.75rem;
     }
+
     .program-item {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
     }
-    .program-media,
-    .program-content {
-        width: 100%;
-        max-width: 100%;
+
+    .program-item.reversed {
+        flex-direction: row-reverse;
     }
-    .program-image {
-        height: 300px;
-        object-fit: contain;
-    }
-    .news-container {
-        flex-direction: column;
-    }
-    .news-left, .news-right {
-        width: 100%;
-        padding: 0;
-    }
-    .exclusive-carousel {
+
+    .program-media {
+        width: 50%;
         max-width: 450px;
-        height: 500px;
     }
+
+    .program-content {
+        width: 50%;
+        text-align: right;
+    }
+
+    html[dir="ltr"] .program-content {
+        text-align: left;
+    }
+
+    .program-image {
+        max-height: 300px;
+    }
+
+    .news-container {
+        flex-direction: row;
+    }
+
+    .news-left, .news-right {
+        width: 50%;
+        padding: 0 1rem;
+    }
+
+    .exclusive-carousel,
     .ads-carousel {
         max-width: 450px;
-        height: 500px;
-    }
-    .exclusive-carousel .carousel-indicators,
-    .ads-carousel .carousel-indicators {
-        bottom: 20px;
-    }
-    .videos-carousel {
-        max-width: 600px;
         height: 400px;
     }
+
+    .videos-carousel {
+        max-width: 600px;
+        height: 350px;
+    }
+
     .links-container {
         grid-template-columns: repeat(2, 1fr);
     }
+
     .statistics-container {
-        grid-template-columns: 1fr;
-    }
-    .about-item {
-        width: 100%;
-        max-width: 500px;
-        height: 350px;
-    }
-}
-
-/* إصلاح تخطيط البرامج للأجهزة المحمولة */
-@media (max-width: 768px) {
-    .program-container {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-    }
-    
-    .program-item {
-        flex-direction: column !important;
-        gap: 1.5rem;
-    }
-    
-    .program-media,
-    .program-content {
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-    
-    .program-image {
-        height: 300px;
-        object-fit: contain;
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    /* زر المزيد تحت الأزرار */
-    .program-actions {
-        margin-bottom: 1rem;
-    }
-
-    .fixed-nav .nav-links {
-        display: none !important;
-    }
-    
-    .fixed-nav.scrolled .nav-links {
-        display: none !important;
-    }
-    
     .mode-toggle {
-        top: 0.5rem;
-        left: 0.5rem;
-        flex-direction: column;
+        flex-direction: row;
+    }
+
+    .video-controls {
+        display: none;
     }
 }
 
-@media (max-width: 640px) {
-    /* حاوية الأخبار: تأخذ العرض الكامل وترتب البوكسات عموديًا */
-    .news-container {
-        width: 100%; /* العرض الكامل للشاشة */
-        max-width: 100%; /* لا يتجاوز عرض الشاشة */
-        flex-direction: column; /* ترتيب عمودي */
-        align-items: center; /* توسيط البوكسات */
-        gap: 1rem; /* مسافة بين الأخبار الحصرية والإعلانات */
-        padding: 0; /* إزالة أي حشوة */
+/* Responsive Design for Desktops/Laptops */
+@media (min-width: 1024px) {
+    .logo-1 {
+        width: 20rem;
     }
 
-    /* الأقسام اليمنى واليسرى: تأخذ العرض الكامل وتوسّط البوكس */
-    .news-left, .news-right {
-        width: 100%; /* العرض الكامل */
-        max-width: 100%; /* لا يتجاوز الشاشة */
-        padding: 0; /* إزالة الحشوة */
-        display: flex; /* استخدام flex للتوسيط */
-        justify-content: center; /* توسيط البوكس أفقيًا */
-        margin: 0; /* إزالة الهوامش */
+    .fixed-nav .sticky-header-logos .logo-1 {
+        width: 12rem;
     }
 
-    /* بوكسات الأخبار الحصرية والإعلانات: تملأ الشاشة بالكامل */
+    .program-content h3 {
+        font-size: 1.8rem;
+    }
+
+    .program-content p {
+        font-size: 1.1rem;
+    }
+
     .exclusive-carousel,
     .ads-carousel {
-        width: 100%; /* العرض الكامل */
-        max-width: 100%; /* لا يتجاوز الشاشة */
-        height: 350px; /* الارتفاع الثابت */
-        margin: 0 auto; /* توسيط البوكس */
-        padding: 0; /* إزالة الحشوة */
-        box-sizing: border-box; /* التأكد من أن الحشوة والهوامش لا تؤثر على العرض */
-        overflow: hidden; /* منع أي محتوى زائد من التأثير */
+        max-width: 500px;
+        height: 500px;
     }
 
-    /* الصور داخل البوكسات: تملأ البوكس بالكامل */
-    .exclusive-carousel .carousel-img,
-    .ads-carousel .carousel-img {
-        width: 100%; /* العرض الكامل */
-        height: 350px; /* نفس ارتفاع البوكس */
-        object-fit: cover; /* ملء الصورة مع قص الأجزاء الزائدة */
-        display: block; /* إزالة الهوامش الافتراضية للصور */
+    .videos-carousel {
+        max-width: 700px;
+        height: 450px;
     }
 
-    /* مؤشرات الكاروسيل: تظهر أسفل البوكس */
-    .exclusive-carousel .carousel-indicators,
-    .ads-carousel .carousel-indicators {
-        position: relative; /* خارج البوكس */
-        bottom: 0; /* أسفل البوكس */
-        margin-top: 10px; /* مسافة فوق زر المزيد */
-        left: 50%; /* توسيط أفقي */
-        transform: translateX(-50%); /* إزاحة للتوسيط */
+    .links-container {
+        grid-template-columns: repeat(4, 1fr);
     }
 
-    /* زر المزيد: يظهر أسفل المؤشرات */
-    .news-left .read-more-btn,
-    .news-right .read-more-btn {
-        margin-top: 15px; /* مسافة أسفل المؤشرات */
+    .link-logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .link-card h4 {
+        font-size: 1.125rem;
+    }
+
+    .link-btn {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .stat-card {
+        padding: 2rem;
+        min-height: 150px;
+    }
+
+    .stat-card i {
+        font-size: 2.5rem;
+    }
+
+    .stat-card h3 {
+        font-size: 2rem;
+    }
+
+    .stat-card p {
+        font-size: 1.1rem;
     }
 }
-/* تحسين القوائم المنزلقة للهواتف */
+
+/* Mobile-Specific Fixes */
 @media (max-width: 640px) {
     .mobile-menu {
         display: flex;
@@ -1339,25 +1322,13 @@ footer {
         align-items: center;
     }
 
+    .fixed-nav,
+    .fixed-nav.scrolled {
+        display: none;
+    }
+
     .logo-1 {
         width: 10rem;
-    }
-
-    .fixed-nav .sticky-header-logos .logo-1 {
-        width: 6rem;
-    }
-
-    .nav-links {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .fixed-nav .nav-links {
-        display: none;
-    }
-
-    .fixed-nav.scrolled .nav-links {
-        display: none;
     }
 
     .nav-link {
@@ -1377,113 +1348,9 @@ footer {
         padding: 0.3rem 0.6rem;
     }
 
-    .video-iframe {
-        object-fit: cover;
-        width: 100vw;
-        height: 100vh;
-        pointer-events: none;
-    }
-
-    .video-iframe::-webkit-media-controls,
-    .video-iframe::-webkit-media-controls-panel,
-    .video-iframe::-webkit-media-controls-play-button {
-        display: none !important;
-        -webkit-appearance: none;
-    }
-
-    .program-item,
-    .program-item.reversed {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
-    }
-
-    .program-media,
-    .program-content {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .program-image {
-        height: 350px;
-        object-fit: cover;
-    }
-
-    .program-content h3 {
-        font-size: 1.2rem;
-    }
-
-    .program-content p {
-        font-size: 0.85rem;
-    }
-
-    .news-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    .news-left, .news-right {
-        width: 100%;
-        max-width: 100%;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-    }
-
-    .exclusive-carousel,
-    .ads-carousel {
-        width: 100%;
-        max-width: 100%;
-        height: 350px;
-        margin: 0 auto;
-    }
-
-    .exclusive-carousel .carousel-img,
-    .ads-carousel .carousel-img {
-        width: 100%;
-        height: 350px;
-        object-fit: cover;
-    }
-
-    .exclusive-carousel .carousel-indicators,
-    .ads-carousel .carousel-indicators {
-        position: relative;
-        bottom: 0;
-        margin-top: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .videos-carousel {
-        max-width: 100%;
-        height: 300px;
-    }
-
-    .videos-carousel .carousel-img {
-        height: calc(100% - 25px);
-    }
-
-    .videos-carousel .video-title {
-        font-size: 0.9rem;
-        padding: 4px 0;
-    }
-
-    .videos-carousel .carousel-indicators {
-        bottom: 35px;
-    }
-
-    .videos-carousel .carousel-prev,
-    .videos-carousel .carousel-next {
-        padding: 6px;
-        font-size: 1rem;
-    }
-
     .about-item {
         max-width: 100%;
-        height: auto;
-        max-height: 80vh;
-        padding: 1rem;
+        max-height: 300px;
         font-size: 0.9rem;
     }
 
@@ -1495,47 +1362,12 @@ footer {
         font-size: 0.8rem;
     }
 
-    .links-container {
-        grid-template-columns: 1fr;
+    .program-content h3 {
+        font-size: 1.2rem;
     }
 
-    .link-card {
-        padding: 0.8rem;
-    }
-
-    .link-logo {
-        width: 60px;
-        height: 60px;
-    }
-
-    .link-card h4 {
-        font-size: 1rem;
-    }
-
-    .link-btn {
-        padding: 0.4rem 1rem;
-        font-size: 0.8rem;
-    }
-
-    .statistics-container {
-        grid-template-columns: 1fr;
-    }
-
-    .stat-card {
-        padding: 1.5rem;
-        min-height: 120px;
-    }
-
-    .stat-card i {
-        font-size: 2rem;
-    }
-
-    .stat-card h3 {
-        font-size: 1.5rem;
-    }
-
-    .stat-card p {
-        font-size: 1rem;
+    .program-content p {
+        font-size: 0.85rem;
     }
 
     .dynamic-card {
