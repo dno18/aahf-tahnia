@@ -708,29 +708,60 @@ html[dir="ltr"] .program-content {
 .news-container {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    align-items: center; /* توسيط العناصر */
+    gap: 3rem;
 }
 
 .news-left, .news-right {
     width: 100%;
+    max-width: 600px; /* تحديد أقصى عرض */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.news-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.news-header h3 {
+    font-size: 1.8rem;
+    color: var(--primary-blue);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.news-header h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+    border-radius: 2px;
+}
+
 .exclusive-carousel,
 .ads-carousel {
     width: 100%;
-    max-width: 100%;
-    height: 400px;
-    border-radius: 12px;
+    height: 450px; /* ارتفاع أكبر للصور */
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2); /* ظل أكثر وضوحًا */
     position: relative;
+    transition: transform 0.3s ease;
+}
+
+.exclusive-carousel:hover,
+.ads-carousel:hover {
+    transform: scale(1.02);
 }
 
 .exclusive-carousel {
-    border: 2px solid transparent;
+    border: 3px solid transparent;
     border-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)) 1;
 }
 
@@ -769,24 +800,30 @@ html[dir="ltr"] .program-content {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 10s ease; /* حركة بطيئة للصورة */
+}
+
+.exclusive-carousel .carousel-img:hover,
+.ads-carousel .carousel-img:hover {
+    transform: scale(1.1);
 }
 
 .exclusive-carousel .carousel-indicators,
 .ads-carousel .carousel-indicators {
     position: absolute;
-    bottom: 15px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 8px;
+    gap: 10px;
     z-index: 3;
 }
 
 .exclusive-carousel .carousel-indicator,
 .ads-carousel .carousel-indicator {
-    width: 12px;
-    height: 12px;
-    background: rgba(255, 255, 255, 0.5);
+    width: 14px;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 50%;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.3s ease;
@@ -795,7 +832,7 @@ html[dir="ltr"] .program-content {
 .exclusive-carousel .carousel-indicator.active,
 .ads-carousel .carousel-indicator.active {
     background: var(--secondary-blue);
-    transform: scale(1.2);
+    transform: scale(1.3);
 }
 
 /* إخفاء الأسهم في الجوال */
@@ -810,23 +847,22 @@ html[dir="ltr"] .program-content {
 .news-right .read-more-btn {
     background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
     color: white;
-    padding: 12px 25px;
+    padding: 12px 30px;
     border-radius: 30px;
     display: inline-flex;
     align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none;
-    margin-top: 15px;
-    font-weight: 600;
-    width: 100%;
-    max-width: 200px;
-    justify-content: center;
+    margin-top: 20px;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .news-left .read-more-btn:hover,
 .news-right .read-more-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(41, 35, 80, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(41, 35, 80, 0.4);
 }
 
 /* Videos Section */
@@ -853,7 +889,7 @@ html[dir="ltr"] .program-content {
 
 .videos-carousel {
     width: 100%;
-    border: 2px solid transparent;
+    border: 3px solid transparent;
     border-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)) 1;
     border-radius: 12px;
     overflow: hidden;
@@ -909,25 +945,26 @@ html[dir="ltr"] .program-content {
     text-align: center;
     background: rgba(0, 0, 0, 0.7);
     color: white;
-    padding: 10px 0;
-    font-size: 1rem;
+    padding: 12px 0;
+    font-size: 1.1rem;
     font-family: 'Cairo', sans-serif;
+    font-weight: 600;
 }
 
 .videos-carousel .carousel-indicators {
     position: absolute;
-    bottom: 10px;
+    bottom: 15px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 8px;
+    gap: 10px;
     z-index: 3;
 }
 
 .videos-carousel .carousel-indicator {
-    width: 10px;
-    height: 10px;
-    background: rgba(255, 255, 255, 0.5);
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 50%;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.3s ease;
@@ -935,7 +972,7 @@ html[dir="ltr"] .program-content {
 
 .videos-carousel .carousel-indicator.active {
     background: var(--secondary-blue);
-    transform: scale(1.2);
+    transform: scale(1.3);
 }
 
 .videos-carousel .carousel-prev,
@@ -943,37 +980,38 @@ html[dir="ltr"] .program-content {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
     border: none;
-    padding: 10px;
+    padding: 12px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: #333;
     transition: background 0.3s ease, color 0.3s ease;
     z-index: 3;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .videos-carousel .carousel-prev {
-    right: 10px;
+    right: 15px;
 }
 
 .videos-carousel .carousel-next {
-    left: 10px;
+    left: 15px;
 }
 
 html[dir="ltr"] .videos-carousel .carousel-prev {
-    left: 10px;
+    left: 15px;
     right: auto;
 }
 
 html[dir="ltr"] .videos-carousel .carousel-next {
-    right: 10px;
+    right: 15px;
     left: auto;
 }
 
@@ -1024,7 +1062,7 @@ html[dir="ltr"] .videos-carousel .carousel-next {
 .links-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    gap: 1.5rem;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -1034,10 +1072,10 @@ html[dir="ltr"] .videos-carousel .carousel-next {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
+    padding: 1.5rem;
     text-align: center;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
@@ -1050,20 +1088,25 @@ body.dark-mode .link-card {
 }
 
 .link-logo {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 0.5rem;
+    width: 90px;
+    height: 90px;
+    margin-bottom: 1rem;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--secondary-blue);
-    box-shadow: 0 0 10px var(--glow-blue);
+    border: 3px solid var(--secondary-blue);
+    box-shadow: 0 0 15px var(--glow-blue);
+    transition: transform 0.3s ease;
+}
+
+.link-logo:hover {
+    transform: scale(1.1);
 }
 
 .link-card h4 {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: var(--primary-blue);
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 body.dark-mode .link-card h4 {
@@ -1073,16 +1116,18 @@ body.dark-mode .link-card h4 {
 .link-btn {
     background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
     color: white;
-    padding: 0.5rem 1.5rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
+    padding: 0.75rem 2rem;
+    border-radius: 10px;
+    font-size: 1rem;
     text-decoration: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .link-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Statistics Section */
@@ -1101,22 +1146,22 @@ body.dark-mode .link-card h4 {
     max-width: 1000px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 1.5rem;
     margin-top: 1rem;
 }
 
 .stat-card {
     background: #f9fafb;
-    border: 2px solid transparent;
+    border: 3px solid transparent;
     border-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)) 1;
-    border-radius: 12px;
-    padding: 2rem;
+    border-radius: 15px;
+    padding: 2.5rem;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 150px;
+    min-height: 180px;
     position: relative;
     overflow: hidden;
 }
@@ -1139,7 +1184,7 @@ body.dark-mode .link-card h4 {
 
 .stat-card:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
     animation: pulse 1.5s infinite;
 }
 
@@ -1149,13 +1194,13 @@ body.dark-mode .stat-card {
 
 .stat-card i {
     color: var(--secondary-blue);
-    margin-bottom: 0.75rem;
-    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-size: 3rem;
 }
 
 .stat-card h3 {
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: 2.5rem;
+    font-weight: 800;
     margin-bottom: 0.5rem;
     color: var(--primary-blue);
     animation: flip 1s ease-in-out;
@@ -1166,8 +1211,9 @@ body.dark-mode .stat-card h3 {
 }
 
 .stat-card p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: #4a5568;
+    font-weight: 600;
 }
 
 body.dark-mode .stat-card p {
@@ -1177,22 +1223,30 @@ body.dark-mode .stat-card p {
 /* Footer */
 footer {
     background: var(--primary-blue);
-    padding: 2rem 0;
+    padding: 3rem 0;
     border-top: 1px solid #e5e7eb;
 }
 
 .social-icon {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: white;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: var(--secondary-blue);
+    transform: translateY(-5px);
 }
 
 .map-box {
     width: 100%;
-    max-width: 300px;
-    height: 250px;
-    border: 1px solid var(--secondary-blue);
-    border-radius: 0;
+    max-width: 350px;
+    height: 280px;
+    border: 2px solid var(--secondary-blue);
+    border-radius: 5px;
     margin: 0 auto;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive Design */
@@ -1282,8 +1336,8 @@ footer {
     }
     
     .videos-carousel .video-title {
-        font-size: 0.9rem;
-        padding: 8px 0;
+        font-size: 1rem;
+        padding: 10px 0;
     }
     
     .links-section {
@@ -1303,19 +1357,29 @@ footer {
     }
     
     .stat-card {
-        padding: 1.5rem;
+        padding: 2rem;
     }
     
     .stat-card i {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
     
     .stat-card h3 {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
     
     .stat-card p {
-        font-size: 1rem;
+        font-size: 1.1rem;
+    }
+
+    /* تعديلات الجوال لقسم الأخبار */
+    .news-section {
+        padding: 1.5rem;
+    }
+    
+    .exclusive-carousel,
+    .ads-carousel {
+        height: 380px;
     }
 }
 
