@@ -1274,17 +1274,33 @@ footer {
     .news-container {
         flex-direction: column;
         gap: 2rem;
+        align-items: center;
+        justify-content: center;
     }
 
     .news-left, .news-right {
         width: 100%;
-        max-width: 100%;
+        max-width: 95vw;
+        margin: 0 auto;
     }
 
     .exclusive-carousel,
     .ads-carousel {
-        max-width: 100%;
-        height: 400px;
+        width: 95vw;
+        max-width: 95vw;
+        height: 450px;
+        max-height: 500px;
+    }
+
+    .exclusive-carousel .carousel-img,
+    .ads-carousel .carousel-img {
+        object-fit: contain;
+        max-height: 500px;
+    }
+
+    .exclusive-carousel .carousel-indicators,
+    .ads-carousel .carousel-indicators {
+        bottom: 15px;
     }
 
     .videos-carousel {
@@ -1303,27 +1319,26 @@ footer {
 
 @media (max-width: 640px) {
     .mobile-menu {
-        display: flex; /* إظهار قائمة الجوال */
+        display: flex;
     }
 
     .sticky-nav {
-        display: none; /* إخفاء القائمة العادية في الجوال */
+        display: none;
     }
 
     .fixed-nav,
     .fixed-nav.scrolled {
-        display: none; /* إخفاء القائمة الثابتة في الجوال */
+        display: none;
     }
 
     .logo-1 {
-        width: 10rem; /* تصغير الشعار في الجوال */
+        width: 10rem;
     }
 
     .hamburger {
-        display: flex; /* إظهار زر القائمة */
+        display: flex;
     }
 
-    /* إصلاح تخطيط البرامج للجوال */
     .program-item,
     .program-item.reversed {
         flex-direction: column !important;
@@ -1334,37 +1349,51 @@ footer {
         width: 100% !important;
     }
 
-    /* إصلاح تخطيط الأخبار للجوال */
     .news-container {
         flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        justify-content: center;
     }
 
     .news-left,
     .news-right {
         width: 100%;
+        max-width: 98vw;
+        margin: 0 auto;
     }
 
     .exclusive-carousel,
     .ads-carousel {
-        height: 300px;
+        width: 98vw;
+        max-width: 98vw;
+        height: 350px;
+        max-height: 400px;
     }
 
-    /* إصلاح تخطيط الفيديوهات للجوال */
+    .exclusive-carousel .carousel-img,
+    .ads-carousel .carousel-img {
+        object-fit: contain;
+        max-height: 400px;
+    }
+
+    .exclusive-carousel .carousel-indicators,
+    .ads-carousel .carousel-indicators {
+        bottom: 10px;
+    }
+
     .videos-carousel {
         height: 250px;
     }
 
-    /* إصلاح تخطيط الروابط للجوال */
     .links-container {
         grid-template-columns: 1fr;
     }
 
-    /* إصلاح تخطيط الإحصائيات للجوال */
     .statistics-container {
         grid-template-columns: 1fr;
     }
 
-    /* تعديلات أخرى للجوال */
     .about-item {
         width: 100%;
         max-width: 100%;
