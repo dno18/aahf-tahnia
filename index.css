@@ -702,12 +702,13 @@ html[dir="ltr"] .program-content {
 .exclusive-carousel,
 .ads-carousel {
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
     aspect-ratio: 16 / 9;
+    max-height: 700px;
 }
 
 .exclusive-carousel {
@@ -754,14 +755,14 @@ html[dir="ltr"] .program-content {
 .ads-carousel .carousel-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    max-height: 600px;
+    object-fit: contain;
+    max-height: 700px;
 }
 
 .exclusive-carousel .carousel-indicators,
 .ads-carousel .carousel-indicators {
     position: absolute;
-    bottom: 15px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -1255,13 +1256,18 @@ footer {
     .exclusive-carousel,
     .ads-carousel {
         width: 100%;
-        max-width: none;
+        max-width: 550px;
         height: auto;
         aspect-ratio: 16 / 9;
+        max-height: 600px;
+    }
+    .exclusive-carousel .carousel-img,
+    .ads-carousel .carousel-img {
+        max-height: 600px;
     }
     .exclusive-carousel .carousel-indicators,
     .ads-carousel .carousel-indicators {
-        bottom: 10px;
+        bottom: 15px;
     }
     .videos-carousel {
         max-width: 600px;
@@ -1331,22 +1337,22 @@ footer {
 
     .news-left, .news-right {
         width: 100%;
-        max-width: 90vw;
+        max-width: 95vw;
         margin: 0 auto;
     }
 
     .exclusive-carousel,
     .ads-carousel {
-        width: 90vw;
+        width: 95vw;
         height: auto;
         aspect-ratio: 16 / 9;
-        max-height: 400px;
+        max-height: 500px;
     }
 
     .exclusive-carousel .carousel-img,
     .ads-carousel .carousel-img {
         object-fit: contain;
-        max-height: 400px;
+        max-height: 500px;
     }
 
     .exclusive-carousel .carousel-indicators,
@@ -1355,7 +1361,7 @@ footer {
     }
 
     .videos-carousel {
-        width: 90vw;
+        width: 95vw;
         height: auto;
         aspect-ratio: 16 / 9;
         max-height: 350px;
@@ -1409,25 +1415,25 @@ footer {
     .news-left,
     .news-right {
         width: 100%;
-        max-width: 95vw;
+        max-width: 98vw;
     }
 
     .exclusive-carousel,
     .ads-carousel {
-        width: 95vw;
+        width: 98vw;
         height: auto;
         aspect-ratio: 16 / 9;
-        max-height: 300px;
+        max-height: 400px;
     }
 
     .exclusive-carousel .carousel-img,
     .ads-carousel .carousel-img {
         object-fit: contain;
-        max-height: 300px;
+        max-height: 400px;
     }
 
     .videos-carousel {
-        width: 95vw;
+        width: 98vw;
         height: auto;
         aspect-ratio: 16 / 9;
         max-height: 250px;
