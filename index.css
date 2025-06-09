@@ -1229,78 +1229,71 @@ footer {
     }
 }
 
-/* Mobile-Specific Fixes */
-@media (max-width: 768px) {
-    .program-container {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-    }
-    
-    .program-item {
-        flex-direction: column !important;
-        gap: 1.5rem;
-    }
-    
-    .program-media,
-    .program-content {
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-    
-    .program-image {
-        height: 300px;
-        object-fit: contain;
-    }
+  /* تحسينات قسم الأخبار للجوالات */
+        @media (max-width: 768px) {
+            .news-section {
+                padding: 1rem;
+            }
+            
+            .news-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .news-left, .news-right {
+                width: 100%;
+                padding: 0;
+            }
+            
+            .exclusive-carousel, .ads-carousel {
+                width: 100%;
+                max-width: 100%;
+                height: 300px;
+                margin: 0 auto;
+            }
+            
+            .carousel-img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            
+            .exclusive-carousel .carousel-indicators,
+            .ads-carousel .carousel-indicators {
+                bottom: 15px;
+                gap: 6px;
+            }
+            
+            .exclusive-carousel .carousel-indicator,
+            .ads-carousel .carousel-indicator {
+                width: 12px;
+                height: 12px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .read-more-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
 
-    .program-actions {
-        margin-bottom: 1rem;
-    }
-
-    .fixed-nav .nav-links {
-        display: none !important;
-    }
-    
-    .fixed-nav.scrolled .nav-links {
-        display: none !important;
-    }
-    
-    .mode-toggle {
-        top: 0.5rem;
-        left: 0.5rem;
-        flex-direction: column;
-    }
-
-    .news-container {
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .news-left, .news-right {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .exclusive-carousel,
-    .ads-carousel {
-        max-width: 100%;
-        height: 400px;
-    }
-
-    .videos-carousel {
-        max-width: 100%;
-        height: 350px;
-    }
-
-    .links-container {
-        grid-template-columns: 1fr;
-    }
-
-    .statistics-container {
-        grid-template-columns: 1fr;
-    }
-}
-
+        @media (max-width: 480px) {
+            .exclusive-carousel, .ads-carousel {
+                height: 250px;
+            }
+            
+            .carousel-indicator {
+                width: 10px;
+                height: 10px;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
 @media (max-width: 640px) {
     .mobile-menu {
         display: flex; /* إظهار قائمة الجوال */
