@@ -697,7 +697,7 @@ html[dir="ltr"] .program-content {
     box-shadow: 0 5px 15px rgba(41, 35, 80, 0.3);
 }
 
-/* News Section - تصميم جديد للجوال */
+/* News Section - تصميم جديد للجوال فقط */
 .news-section {
     padding: 2rem;
     background: #ffffff;
@@ -711,96 +711,122 @@ html[dir="ltr"] .program-content {
     gap: 2rem;
 }
 
-.news-header {
-    text-align: center;
-    margin-bottom: 1.5rem;
-}
-
-.news-tabs {
+.news-left, .news-right {
+    width: 100%;
     display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    flex-direction: column;
+    align-items: center;
 }
 
-.news-tab {
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    background: #f1f1f1;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.news-tab.active {
-    background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
-    color: white;
-}
-
-.news-content {
-    display: none;
-}
-
-.news-content.active {
-    display: block;
-}
-
-.news-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-}
-
-.news-card {
-    background: white;
-    border-radius: 10px;
+.exclusive-carousel,
+.ads-carousel {
+    width: 100%;
+    max-width: 100%;
+    height: 400px;
+    border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    position: relative;
 }
 
-.news-card:hover {
-    transform: translateY(-5px);
+.exclusive-carousel {
+    border: 2px solid transparent;
+    border-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)) 1;
 }
 
-.news-img {
+.ads-carousel {
+    border: 3px solid var(--secondary-blue);
+}
+
+.exclusive-carousel .carousel-inner,
+.ads-carousel .carousel-inner {
+    position: relative;
     width: 100%;
-    height: 200px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.exclusive-carousel .carousel-item,
+.ads-carousel .carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease;
+}
+
+.exclusive-carousel .carousel-item.active,
+.ads-carousel .carousel-item.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.exclusive-carousel .carousel-img,
+.ads-carousel .carousel-img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
-.news-body {
-    padding: 1.2rem;
+.exclusive-carousel .carousel-indicators,
+.ads-carousel .carousel-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 3;
 }
 
-.news-date {
-    font-size: 0.85rem;
-    color: var(--secondary-blue);
-    margin-bottom: 0.5rem;
+.exclusive-carousel .carousel-indicator,
+.ads-carousel .carousel-indicator {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.news-title {
-    font-size: 1.1rem;
-    color: var(--primary-blue);
-    margin-bottom: 0.5rem;
-    font-weight: 700;
+.exclusive-carousel .carousel-indicator.active,
+.ads-carousel .carousel-indicator.active {
+    background: var(--secondary-blue);
+    transform: scale(1.2);
 }
 
-.news-excerpt {
-    font-size: 0.95rem;
-    color: #4a5568;
-    margin-bottom: 1rem;
+/* إخفاء الأسهم في الجوال */
+.exclusive-carousel .carousel-prev,
+.exclusive-carousel .carousel-next,
+.ads-carousel .carousel-prev,
+.ads-carousel .carousel-next {
+    display: none;
 }
 
-.news-link {
-    display: inline-block;
-    color: var(--secondary-blue);
-    font-weight: 600;
+.news-left .read-more-btn,
+.news-right .read-more-btn {
+    background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none;
-    transition: color 0.3s ease;
+    margin-top: 15px;
+    font-weight: 600;
+    width: 100%;
+    max-width: 200px;
+    justify-content: center;
 }
 
-.news-link:hover {
-    color: var(--primary-blue);
+.news-left .read-more-btn:hover,
+.news-right .read-more-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(41, 35, 80, 0.3);
 }
 
 /* Videos Section */
@@ -1193,12 +1219,6 @@ footer {
         height: 300px;
         object-fit: contain;
     }
-    .news-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
-    .videos-carousel {
-        max-width: 600px;
-    }
     .links-container {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1212,7 +1232,6 @@ footer {
     }
 }
 
-/* Mobile-Specific Fixes */
 @media (max-width: 768px) {
     .program-container {
         display: flex;
@@ -1252,18 +1271,6 @@ footer {
         top: 0.5rem;
         left: 0.5rem;
         flex-direction: column;
-    }
-
-    .news-section {
-        padding: 1rem;
-    }
-    
-    .news-tabs {
-        flex-wrap: wrap;
-    }
-    
-    .news-grid {
-        grid-template-columns: 1fr;
     }
     
     .videos-section {
@@ -1353,10 +1360,5 @@ footer {
 
     .program-image {
         max-height: 200px;
-    }
-    
-    .news-tab {
-        padding: 0.5rem;
-        font-size: 0.9rem;
     }
 }
