@@ -25,7 +25,7 @@ body {
     background-color: #ffffff;
     color: #374151;
     overflow-x: hidden;
-    line-height: 1.6;
+    line-height: 1.8;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -529,7 +529,7 @@ html[dir="ltr"] .about-item h3 i {
 
 .program-item {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     gap: 2rem;
     padding: 1.5rem;
@@ -547,8 +547,20 @@ html[dir="ltr"] .about-item h3 i {
     transform: translateY(0);
 }
 
+.program-item.reversed {
+    flex-direction: row-reverse;
+}
+
+html[dir="ltr"] .program-item {
+    flex-direction: row;
+}
+
+html[dir="ltr"] .program-item.reversed {
+    flex-direction: row-reverse;
+}
+
 .program-media {
-    width: 100%;
+    width: 50%;
     max-width: 450px;
     position: relative;
     transition: transform 0.5s ease;
@@ -560,7 +572,7 @@ html[dir="ltr"] .about-item h3 i {
 
 .program-image {
     width: 100%;
-    height: 300px;
+    height: 400px;
     object-fit: contain;
     border-radius: 8px;
     transition: transform 1.2s ease, opacity 1.2s ease;
@@ -582,8 +594,12 @@ html[dir="ltr"] .about-item h3 i {
 }
 
 .program-content {
-    width: 100%;
-    text-align: center;
+    width: 50%;
+    text-align: right;
+}
+
+html[dir="ltr"] .program-content {
+    text-align: left;
 }
 
 .program-content h3 {
@@ -606,7 +622,6 @@ html[dir="ltr"] .about-item h3 i {
     display: flex;
     gap: 10px;
     justify-content: center;
-    flex-wrap: wrap;
 }
 
 .gradient-btn,
@@ -640,24 +655,42 @@ html[dir="ltr"] .about-item h3 i {
     border-color: var(--secondary-blue);
 }
 
+/* زر المزيد في قسم البرامج */
+.programs-section .read-more-btn {
+    background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.programs-section .read-more-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(41, 35, 80, 0.3);
+}
+
 /* News Section */
 .news-section {
     padding: 2rem;
     background: #ffffff;
     z-index: 10;
-    min-height: auto;
+    min-height: 700px;
 }
 
 .news-container {
     display: flex;
-    flex-direction: column;
     gap: 2rem;
-    width: 100%;
 }
 
 .news-left, .news-right {
-    width: 100%;
-    padding: 0;
+    position: relative;
+    width: 50%;
+    padding: 0 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -666,8 +699,6 @@ html[dir="ltr"] .about-item h3 i {
 .exclusive-carousel,
 .ads-carousel {
     width: 100%;
-    max-width: 100%;
-    height: 350px;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -675,12 +706,21 @@ html[dir="ltr"] .about-item h3 i {
 }
 
 .exclusive-carousel {
+    max-width: 500px;
+    height: 600px;
     border: 2px solid transparent;
     border-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)) 1;
 }
 
 .ads-carousel {
+    max-width: 500px;
+    height: 600px;
     border: 3px solid var(--secondary-blue);
+}
+
+.exclusive-carousel:hover,
+.ads-carousel:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .exclusive-carousel .carousel-inner,
@@ -719,7 +759,7 @@ html[dir="ltr"] .about-item h3 i {
 .exclusive-carousel .carousel-indicators,
 .ads-carousel .carousel-indicators {
     position: absolute;
-    bottom: 20px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -744,12 +784,38 @@ html[dir="ltr"] .about-item h3 i {
     transform: scale(1.2);
 }
 
+.news-controls,
+.ads-controls {
+    display: none;
+}
+
+/* زر المزيد في قسم الأخبار */
+.news-left .read-more-btn,
+.news-right .read-more-btn {
+    background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.news-left .read-more-btn:hover,
+.news-right .read-more-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(41, 35, 80, 0.3);
+}
+
 /* Videos Section */
 .videos-section {
     padding: 2rem;
     background: #ffffff;
     z-index: 10;
-    min-height: auto;
+    min-height: 600px;
 }
 
 .videos-container {
@@ -759,7 +825,7 @@ html[dir="ltr"] .about-item h3 i {
 
 .videos-right {
     width: 100%;
-    padding: 0;
+    padding: 0 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -767,8 +833,8 @@ html[dir="ltr"] .about-item h3 i {
 
 .videos-carousel {
     width: 100%;
-    max-width: 100%;
-    height: 350px;
+    max-width: 700px;
+    height: 450px;
     border: 2px solid transparent;
     border-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)) 1;
     border-radius: 12px;
@@ -829,7 +895,7 @@ html[dir="ltr"] .about-item h3 i {
 
 .videos-carousel .carousel-indicators {
     position: absolute;
-    bottom: 30px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -851,6 +917,77 @@ html[dir="ltr"] .about-item h3 i {
     transform: scale(1.2);
 }
 
+.videos-carousel .carousel-prev,
+.videos-carousel .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #333;
+    transition: background 0.3s ease, color 0.3s ease;
+    z-index: 3;
+}
+
+.videos-carousel .carousel-prev {
+    right: 10px;
+}
+
+.videos-carousel .carousel-next {
+    left: 10px;
+}
+
+html[dir="ltr"] .videos-carousel .carousel-prev {
+    left: 10px;
+    right: auto;
+}
+
+html[dir="ltr"] .videos-carousel .carousel-next {
+    right: 10px;
+    left: auto;
+}
+
+.videos-carousel .carousel-prev:hover,
+.videos-carousel .carousel-next:hover {
+    background: var(--secondary-blue);
+    color: white;
+}
+
+/* إخفاء أزرار التحكم في الجوال */
+.video-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    justify-content: center;
+    z-index: 3;
+}
+
+@media (max-width: 768px) {
+    .video-controls {
+        display: none;
+    }
+}
+
+.video-controls button {
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.video-controls button:hover {
+    background: var(--secondary-blue);
+    color: white;
+}
+
 /* Links Section */
 .links-section {
     padding: 2rem;
@@ -860,7 +997,7 @@ html[dir="ltr"] .about-item h3 i {
 
 .links-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -882,6 +1019,10 @@ html[dir="ltr"] .about-item h3 i {
     transform: scale(1.05);
 }
 
+body.dark-mode .link-card {
+    background: var(--dark-card-bg);
+}
+
 .link-logo {
     width: 80px;
     height: 80px;
@@ -897,6 +1038,10 @@ html[dir="ltr"] .about-item h3 i {
     font-weight: 700;
     color: var(--primary-blue);
     margin-bottom: 0.5rem;
+}
+
+body.dark-mode .link-card h4 {
+    color: var(--dark-text);
 }
 
 .link-btn {
@@ -922,14 +1067,14 @@ html[dir="ltr"] .about-item h3 i {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: auto;
+    min-height: 400px;
 }
 
 .statistics-container {
     width: 100%;
     max-width: 1000px;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     margin-top: 1rem;
 }
@@ -950,9 +1095,30 @@ html[dir="ltr"] .about-item h3 i {
     overflow: hidden;
 }
 
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.stat-card:hover::before {
+    opacity: 1;
+}
+
 .stat-card:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    animation: pulse 1.5s infinite;
+}
+
+body.dark-mode .stat-card {
+    background: var(--dark-card-bg);
 }
 
 .stat-card i {
@@ -966,11 +1132,20 @@ html[dir="ltr"] .about-item h3 i {
     font-weight: 700;
     margin-bottom: 0.5rem;
     color: var(--primary-blue);
+    animation: flip 1s ease-in-out;
+}
+
+body.dark-mode .stat-card h3 {
+    color: var(--dark-text);
 }
 
 .stat-card p {
     font-size: 1.1rem;
     color: #4a5568;
+}
+
+body.dark-mode .stat-card p {
+    color: #d1d5db;
 }
 
 /* Footer */
@@ -994,160 +1169,376 @@ footer {
     margin: 0 auto;
 }
 
-/* Responsive Design for Tablets */
-@media (min-width: 768px) {
-    .program-item {
-        flex-direction: row;
-    }
-    
-    .program-item.reversed {
-        flex-direction: row-reverse;
-    }
-    
-    .program-media {
-        width: 50%;
-    }
-    
-    .program-content {
-        width: 50%;
-        text-align: right;
-    }
-    
-    .news-container {
-        flex-direction: row;
-    }
-    
-    .news-left, .news-right {
-        width: 50%;
-    }
-    
-    .links-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .statistics-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Responsive Design for Desktops */
-@media (min-width: 1024px) {
+/* Responsive Design */
+@media (max-width: 1024px) {
     .logo-1 {
         width: 15rem;
     }
-    
     .fixed-nav .sticky-header-logos .logo-1 {
         width: 10rem;
     }
-    
     .nav-links {
         gap: 0.75rem;
     }
-    
     .program-item {
-        flex-direction: row;
+        flex-direction: column;
+        align-items: center;
     }
-    
-    .program-media {
-        width: 50%;
-        max-width: 450px;
-    }
-    
+    .program-media,
     .program-content {
-        width: 50%;
+        width: 100%;
+        max-width: 100%;
     }
-    
+    .program-image {
+        height: 300px;
+        object-fit: contain;
+    }
     .news-container {
-        flex-direction: row;
+        flex-direction: column;
     }
-    
     .news-left, .news-right {
-        width: 50%;
+        width: 100%;
+        padding: 0;
     }
-    
     .exclusive-carousel {
-        max-width: 500px;
+        max-width: 450px;
         height: 500px;
     }
-    
     .ads-carousel {
-        max-width: 500px;
+        max-width: 450px;
         height: 500px;
     }
-    
+    .exclusive-carousel .carousel-indicators,
+    .ads-carousel .carousel-indicators {
+        bottom: 20px;
+    }
     .videos-carousel {
-        max-width: 700px;
-        height: 450px;
+        max-width: 600px;
+        height: 400px;
     }
-    
     .links-container {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    
-    .statistics-container {
         grid-template-columns: repeat(2, 1fr);
+    }
+    .statistics-container {
+        grid-template-columns: 1fr;
+    }
+    .about-item {
+        width: 100%;
+        max-width: 500px;
+        height: 350px;
     }
 }
 
-/* Mobile Menu Fixes */
-@media (max-width: 767px) {
-    .mobile-menu {
+/* إصلاح تخطيط البرامج للأجهزة المحمولة */
+@media (max-width: 768px) {
+    .program-container {
         display: flex;
+        flex-direction: column;
+        gap: 2rem;
     }
     
+    .program-item {
+        flex-direction: column !important;
+        gap: 1.5rem;
+    }
+    
+    .program-media,
+    .program-content {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .program-image {
+        height: 300px;
+        object-fit: contain;
+    }
+
+    /* زر المزيد تحت الأزرار */
+    .program-actions {
+        margin-bottom: 1rem;
+    }
+
     .fixed-nav .nav-links {
         display: none !important;
     }
     
+    .fixed-nav.scrolled .nav-links {
+        display: none !important;
+    }
+    
+    .mode-toggle {
+        top: 0.5rem;
+        left: 0.5rem;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 640px) {
+    /* حاوية الأخبار: تأخذ العرض الكامل وترتب البوكسات عموديًا */
+    .news-container {
+        width: 100%; /* العرض الكامل للشاشة */
+        max-width: 100%; /* لا يتجاوز عرض الشاشة */
+        flex-direction: column; /* ترتيب عمودي */
+        align-items: center; /* توسيط البوكسات */
+        gap: 1rem; /* مسافة بين الأخبار الحصرية والإعلانات */
+        padding: 0; /* إزالة أي حشوة */
+    }
+
+    /* الأقسام اليمنى واليسرى: تأخذ العرض الكامل وتوسّط البوكس */
+    .news-left, .news-right {
+        width: 100%; /* العرض الكامل */
+        max-width: 100%; /* لا يتجاوز الشاشة */
+        padding: 0; /* إزالة الحشوة */
+        display: flex; /* استخدام flex للتوسيط */
+        justify-content: center; /* توسيط البوكس أفقيًا */
+        margin: 0; /* إزالة الهوامش */
+    }
+
+    /* بوكسات الأخبار الحصرية والإعلانات: تملأ الشاشة بالكامل */
+    .exclusive-carousel,
+    .ads-carousel {
+        width: 100%; /* العرض الكامل */
+        max-width: 100%; /* لا يتجاوز الشاشة */
+        height: 350px; /* الارتفاع الثابت */
+        margin: 0 auto; /* توسيط البوكس */
+        padding: 0; /* إزالة الحشوة */
+        box-sizing: border-box; /* التأكد من أن الحشوة والهوامش لا تؤثر على العرض */
+        overflow: hidden; /* منع أي محتوى زائد من التأثير */
+    }
+
+    /* الصور داخل البوكسات: تملأ البوكس بالكامل */
+    .exclusive-carousel .carousel-img,
+    .ads-carousel .carousel-img {
+        width: 100%; /* العرض الكامل */
+        height: 350px; /* نفس ارتفاع البوكس */
+        object-fit: cover; /* ملء الصورة مع قص الأجزاء الزائدة */
+        display: block; /* إزالة الهوامش الافتراضية للصور */
+    }
+
+    /* مؤشرات الكاروسيل: تظهر أسفل البوكس */
+    .exclusive-carousel .carousel-indicators,
+    .ads-carousel .carousel-indicators {
+        position: relative; /* خارج البوكس */
+        bottom: 0; /* أسفل البوكس */
+        margin-top: 10px; /* مسافة فوق زر المزيد */
+        left: 50%; /* توسيط أفقي */
+        transform: translateX(-50%); /* إزاحة للتوسيط */
+    }
+
+    /* زر المزيد: يظهر أسفل المؤشرات */
+    .news-left .read-more-btn,
+    .news-right .read-more-btn {
+        margin-top: 15px; /* مسافة أسفل المؤشرات */
+    }
+}
+/* تحسين القوائم المنزلقة للهواتف */
+@media (max-width: 640px) {
+    .mobile-menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .logo-1 {
-        width: 12rem;
+        width: 10rem;
     }
-    
+
     .fixed-nav .sticky-header-logos .logo-1 {
-        width: 8rem;
+        width: 6rem;
     }
-    
-    .about-item {
-        width: 100%;
-        height: auto;
-        max-height: 70vh;
+
+    .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .fixed-nav .nav-links {
+        display: none;
+    }
+
+    .fixed-nav.scrolled .nav-links {
+        display: none;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
+
+    .mode-toggle {
+        flex-direction: column;
+        gap: 0.3rem;
+        top: 0.5rem;
+        left: 0.5rem;
+    }
+
+    .mode-toggle-btn {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .video-iframe {
+        object-fit: cover;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+    }
+
+    .video-iframe::-webkit-media-controls,
+    .video-iframe::-webkit-media-controls-panel,
+    .video-iframe::-webkit-media-controls-play-button {
+        display: none !important;
+        -webkit-appearance: none;
+    }
+
+    .program-item,
+    .program-item.reversed {
+        flex-direction: column;
+        gap: 1rem;
         padding: 1rem;
     }
-    
+
+    .program-media,
+    .program-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
     .program-image {
-        height: 250px;
+        height: 350px;
+        object-fit: cover;
     }
-    
+
     .program-content h3 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
-    
+
     .program-content p {
+        font-size: 0.85rem;
+    }
+
+    .news-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .news-left, .news-right {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .exclusive-carousel,
+    .ads-carousel {
+        width: 100%;
+        max-width: 100%;
+        height: 350px;
+        margin: 0 auto;
+    }
+
+    .exclusive-carousel .carousel-img,
+    .ads-carousel .carousel-img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+    }
+
+    .exclusive-carousel .carousel-indicators,
+    .ads-carousel .carousel-indicators {
+        position: relative;
+        bottom: 0;
+        margin-top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .videos-carousel {
+        max-width: 100%;
+        height: 300px;
+    }
+
+    .videos-carousel .carousel-img {
+        height: calc(100% - 25px);
+    }
+
+    .videos-carousel .video-title {
+        font-size: 0.9rem;
+        padding: 4px 0;
+    }
+
+    .videos-carousel .carousel-indicators {
+        bottom: 35px;
+    }
+
+    .videos-carousel .carousel-prev,
+    .videos-carousel .carousel-next {
+        padding: 6px;
+        font-size: 1rem;
+    }
+
+    .about-item {
+        max-width: 100%;
+        height: auto;
+        max-height: 80vh;
+        padding: 1rem;
         font-size: 0.9rem;
     }
-    
+
+    .about-item h3 {
+        font-size: 1rem;
+    }
+
+    .about-item p, .about-item ul, .about-item ol {
+        font-size: 0.8rem;
+    }
+
     .links-container {
         grid-template-columns: 1fr;
     }
-}
 
-/* Dark Mode Adjustments */
-body.dark-mode .link-card {
-    background: var(--dark-card-bg);
-}
+    .link-card {
+        padding: 0.8rem;
+    }
 
-body.dark-mode .link-card h4 {
-    color: var(--dark-text);
-}
+    .link-logo {
+        width: 60px;
+        height: 60px;
+    }
 
-body.dark-mode .stat-card {
-    background: var(--dark-card-bg);
-}
+    .link-card h4 {
+        font-size: 1rem;
+    }
 
-body.dark-mode .stat-card h3 {
-    color: var(--dark-text);
-}
+    .link-btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+    }
 
-body.dark-mode .stat-card p {
-    color: #d1d5db;
+    .statistics-container {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        padding: 1.5rem;
+        min-height: 120px;
+    }
+
+    .stat-card i {
+        font-size: 2rem;
+    }
+
+    .stat-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .stat-card p {
+        font-size: 1rem;
+    }
+
+    .dynamic-card {
+        animation: none;
+    }
 }
