@@ -158,11 +158,6 @@ html[dir="ltr"] h2.section-title::after {
 }
 
 /* إصلاح مشكلة تشغيل الفيديو في الجوال */
-.video-iframe {
-    -webkit-overflow-scrolling: touch;
-    overflow: hidden;
-}
-
 @media (max-width: 768px) {
     .video-background {
         display: block;
@@ -702,152 +697,118 @@ html[dir="ltr"] .program-content {
     box-shadow: 0 5px 15px rgba(41, 35, 80, 0.3);
 }
 
-/* News Section - تحسينات للجوال */
+/* News Section - تصميم جديد للجوال */
 .news-section {
     padding: 2rem;
     background: #ffffff;
     z-index: 10;
-    min-height: auto; /* تغيير الارتفاع الثابت */
+    min-height: auto;
 }
 
 .news-container {
     display: flex;
-    flex-direction: column; /* تغيير الاتجاه إلى عمودي للجوال */
-    gap: 2rem;
-    align-items: center; /* توسيط العناصر */
-}
-
-.news-left, .news-right {
-    width: 100%;
-    max-width: 500px; /* تحديد عرض ثابت للعناصر */
-    padding: 0 1rem;
-    display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 2rem;
 }
 
-.exclusive-carousel,
-.ads-carousel {
-    width: 100%;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-    height: auto; /* ارتفاع تلقائي */
-    aspect-ratio: 3/4; /* نسب ثابتة */
+.news-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
 }
 
-.exclusive-carousel {
-    border: 2px solid transparent;
-    border-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)) 1;
-}
-
-.ads-carousel {
-    border: 3px solid var(--secondary-blue);
-}
-
-.exclusive-carousel:hover,
-.ads-carousel:hover {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-.exclusive-carousel .carousel-inner,
-.ads-carousel .carousel-inner {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 133%; /* نسب 3:4 */
-    overflow: hidden;
-}
-
-.exclusive-carousel .carousel-item,
-.ads-carousel .carousel-item {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.6s ease;
-}
-
-.exclusive-carousel .carousel-item.active,
-.ads-carousel .carousel-item.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.exclusive-carousel .carousel-img,
-.ads-carousel .carousel-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.exclusive-carousel .carousel-indicators,
-.ads-carousel .carousel-indicators {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
+.news-tabs {
     display: flex;
-    flex-direction: row;
-    gap: 8px;
-    z-index: 3;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
 }
 
-.exclusive-carousel .carousel-indicator,
-.ads-carousel .carousel-indicator {
-    width: 10px;
-    height: 10px;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
+.news-tab {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background: #f1f1f1;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-.exclusive-carousel .carousel-indicator.active,
-.ads-carousel .carousel-indicator.active {
-    background: var(--secondary-blue);
-    transform: scale(1.2);
+.news-tab.active {
+    background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
 }
 
-.news-controls,
-.ads-controls {
+.news-content {
     display: none;
 }
 
-/* زر المزيد في قسم الأخبار */
-.news-left .read-more-btn,
-.news-right .read-more-btn {
-    background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
-    color: white;
-    padding: 12px 25px;
-    border-radius: 30px;
-    display: inline-flex;
-    align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-decoration: none;
-    margin-top: 15px;
-    font-weight: 600;
+.news-content.active {
+    display: block;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.news-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+}
+
+.news-img {
     width: 100%;
-    max-width: 200px;
-    justify-content: center;
+    height: 200px;
+    object-fit: cover;
 }
 
-.news-left .read-more-btn:hover,
-.news-right .read-more-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(41, 35, 80, 0.3);
+.news-body {
+    padding: 1.2rem;
 }
 
-/* Videos Section - تحسينات للجوال */
+.news-date {
+    font-size: 0.85rem;
+    color: var(--secondary-blue);
+    margin-bottom: 0.5rem;
+}
+
+.news-title {
+    font-size: 1.1rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.news-excerpt {
+    font-size: 0.95rem;
+    color: #4a5568;
+    margin-bottom: 1rem;
+}
+
+.news-link {
+    display: inline-block;
+    color: var(--secondary-blue);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.news-link:hover {
+    color: var(--primary-blue);
+}
+
+/* Videos Section */
 .videos-section {
     padding: 2rem;
     background: #ffffff;
     z-index: 10;
-    min-height: auto; /* إزالة الارتفاع الثابت */
+    min-height: auto;
 }
 
 .videos-container {
@@ -857,7 +818,7 @@ html[dir="ltr"] .program-content {
 
 .videos-right {
     width: 100%;
-    max-width: 700px; /* تحديد أقصى عرض */
+    max-width: 700px;
     padding: 0 1rem;
     display: flex;
     flex-direction: column;
@@ -873,8 +834,8 @@ html[dir="ltr"] .program-content {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
     position: relative;
-    height: auto; /* ارتفاع تلقائي */
-    aspect-ratio: 16/9; /* نسب الفيديو */
+    height: auto;
+    aspect-ratio: 16/9;
 }
 
 .videos-carousel:hover {
@@ -885,7 +846,7 @@ html[dir="ltr"] .program-content {
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: 56.25%; /* نسب 16:9 */
+    padding-bottom: 56.25%;
     overflow: hidden;
 }
 
@@ -1106,7 +1067,7 @@ body.dark-mode .link-card h4 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: auto; /* إزالة الارتفاع الثابت */
+    min-height: auto;
 }
 
 .statistics-container {
@@ -1232,22 +1193,8 @@ footer {
         height: 300px;
         object-fit: contain;
     }
-    .news-container {
-        flex-direction: column;
-    }
-    .news-left, .news-right {
-        width: 100%;
-        padding: 0;
-    }
-    .exclusive-carousel {
-        max-width: 450px;
-    }
-    .ads-carousel {
-        max-width: 450px;
-    }
-    .exclusive-carousel .carousel-indicators,
-    .ads-carousel .carousel-indicators {
-        bottom: 20px;
+    .news-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
     .videos-carousel {
         max-width: 600px;
@@ -1307,63 +1254,61 @@ footer {
         flex-direction: column;
     }
 
-    .news-container {
-        flex-direction: column;
-        gap: 2rem;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .news-left, .news-right {
-        width: 100%;
-        max-width: 95vw;
-        margin: 0 auto;
-    }
-
-    .exclusive-carousel,
-    .ads-carousel {
-        width: 95vw;
-        max-width: 95vw;
-        max-height: 500px;
-    }
-
-    .exclusive-carousel .carousel-img,
-    .ads-carousel .carousel-img {
-        object-fit: contain;
-        max-height: 500px;
-    }
-
-    .exclusive-carousel .carousel-indicators,
-    .ads-carousel .carousel-indicators {
-        bottom: 15px;
-    }
-
-    .videos-carousel {
-        max-width: 100%;
-    }
-
-    .links-container {
-        grid-template-columns: 1fr;
-    }
-
-    .statistics-container {
-        grid-template-columns: 1fr;
-    }
-    
-    /* تحسينات إضافية للأخبار في الجوال */
     .news-section {
         padding: 1rem;
     }
     
-    .exclusive-carousel .carousel-inner,
-    .ads-carousel .carousel-inner {
-        padding-bottom: 150%; /* نسب مختلفة للجوال */
+    .news-tabs {
+        flex-wrap: wrap;
     }
     
-    .news-left .read-more-btn,
-    .news-right .read-more-btn {
-        padding: 10px 20px;
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .videos-section {
+        padding: 1rem;
+    }
+    
+    .videos-carousel .carousel-inner {
+        padding-bottom: 75%;
+    }
+    
+    .videos-carousel .video-title {
         font-size: 0.9rem;
+        padding: 8px 0;
+    }
+    
+    .links-section {
+        padding: 1rem;
+    }
+    
+    .links-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .statistics-section {
+        padding: 1rem;
+    }
+    
+    .statistics-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-card {
+        padding: 1.5rem;
+    }
+    
+    .stat-card i {
+        font-size: 2rem;
+    }
+    
+    .stat-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .stat-card p {
+        font-size: 1rem;
     }
 }
 
@@ -1399,50 +1344,6 @@ footer {
         width: 100% !important;
     }
 
-    .news-container {
-        flex-direction: column;
-        gap: 2rem;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .news-left,
-    .news-right {
-        width: 100%;
-        max-width: 98vw;
-        margin: 0 auto;
-    }
-
-    .exclusive-carousel,
-    .ads-carousel {
-        width: 98vw;
-        max-width: 98vw;
-        max-height: 400px;
-    }
-
-    .exclusive-carousel .carousel-img,
-    .ads-carousel .carousel-img {
-        object-fit: contain;
-        max-height: 400px;
-    }
-
-    .exclusive-carousel .carousel-indicators,
-    .ads-carousel .carousel-indicators {
-        bottom: 10px;
-    }
-
-    .videos-carousel {
-        height: auto;
-    }
-
-    .links-container {
-        grid-template-columns: 1fr;
-    }
-
-    .statistics-container {
-        grid-template-columns: 1fr;
-    }
-
     .about-item {
         width: 100%;
         max-width: 100%;
@@ -1454,17 +1355,8 @@ footer {
         max-height: 200px;
     }
     
-    /* تحسينات إضافية للفيديو في الجوال */
-    .videos-section {
-        padding: 1rem;
-    }
-    
-    .videos-carousel .carousel-inner {
-        padding-bottom: 75%; /* نسب 4:3 للجوال */
-    }
-    
-    .videos-carousel .video-title {
+    .news-tab {
+        padding: 0.5rem;
         font-size: 0.9rem;
-        padding: 8px 0;
     }
 }
