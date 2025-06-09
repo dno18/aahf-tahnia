@@ -685,8 +685,6 @@ html[dir="ltr"] .program-content {
 .news-container {
     display: flex;
     gap: 2rem;
-    align-items: center;
-    justify-content: center;
 }
 
 .news-left, .news-right {
@@ -696,26 +694,27 @@ html[dir="ltr"] .program-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 auto;
 }
 
 .exclusive-carousel,
 .ads-carousel {
     width: 100%;
-    max-width: 500px;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
-    aspect-ratio: 16 / 9;
 }
 
 .exclusive-carousel {
+    max-width: 500px;
+    height: 600px;
     border: 2px solid transparent;
     border-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)) 1;
 }
 
 .ads-carousel {
+    max-width: 500px;
+    height: 600px;
     border: 3px solid var(--secondary-blue);
 }
 
@@ -755,13 +754,12 @@ html[dir="ltr"] .program-content {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    max-height: 600px;
 }
 
 .exclusive-carousel .carousel-indicators,
 .ads-carousel .carousel-indicators {
     position: absolute;
-    bottom: 15px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -786,59 +784,9 @@ html[dir="ltr"] .program-content {
     transform: scale(1.2);
 }
 
-/* Control Buttons for News and Ads Carousel */
 .news-controls,
 .ads-controls {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    z-index: 3;
-}
-
-.news-controls .carousel-prev,
-.news-controls .carousel-next,
-.ads-controls .carousel-prev,
-.ads-controls .carousel-next {
-    background: rgba(255, 255, 255, 0.8);
-    border: none;
-    padding: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: #333;
-    transition: background 0.3s ease, color 0.3s ease;
-}
-
-.news-controls .carousel-prev,
-.ads-controls .carousel-prev {
-    right: 10px;
-}
-
-.news-controls .carousel-next,
-.ads-controls .carousel-next {
-    left: 10px;
-}
-
-html[dir="ltr"] .news-controls .carousel-prev,
-html[dir="ltr"] .ads-controls .carousel-prev {
-    left: 10px;
-    right: auto;
-}
-
-html[dir="ltr"] .news-controls .carousel-next,
-html[dir="ltr"] .ads-controls .carousel-next {
-    right: 10px;
-    left: auto;
-}
-
-.news-controls .carousel-prev:hover,
-.news-controls .carousel-next:hover,
-.ads-controls .carousel-prev:hover,
-.ads-controls .carousel-next:hover {
-    background: var(--secondary-blue);
-    color: white;
+    display: none;
 }
 
 /* زر المزيد في قسم الأخبار */
@@ -1239,7 +1187,7 @@ footer {
     .program-media,
     .program-content {
         width: 100%;
-        max-width: none;
+        max-width: 100%;
     }
     .program-image {
         height: 300px;
@@ -1252,16 +1200,17 @@ footer {
         width: 100%;
         padding: 0;
     }
-    .exclusive-carousel,
+    .exclusive-carousel {
+        max-width: 450px;
+        height: 500px;
+    }
     .ads-carousel {
-        width: 100%;
-        max-width: none;
-        height: auto;
-        aspect-ratio: 16 / 9;
+        max-width: 450px;
+        height: 500px;
     }
     .exclusive-carousel .carousel-indicators,
     .ads-carousel .carousel-indicators {
-        bottom: 10px;
+        bottom: 20px;
     }
     .videos-carousel {
         max-width: 600px;
@@ -1280,12 +1229,12 @@ footer {
     }
 }
 
-/* Mobile-Specific Adjustments */
+/* Mobile-Specific Fixes */
 @media (max-width: 768px) {
     .program-container {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 2rem;
     }
     
     .program-item {
@@ -1296,7 +1245,7 @@ footer {
     .program-media,
     .program-content {
         width: 100% !important;
-        max-width: none !important;
+        max-width: 100% !important;
     }
     
     .program-image {
@@ -1305,7 +1254,7 @@ footer {
     }
 
     .program-actions {
-        margin-bottom: 15px;
+        margin-bottom: 1rem;
     }
 
     .fixed-nav .nav-links {
@@ -1324,41 +1273,23 @@ footer {
 
     .news-container {
         flex-direction: column;
-        gap: 20px;
-        align-items: center;
-        justify-content: center;
+        gap: 2rem;
     }
 
     .news-left, .news-right {
         width: 100%;
-        max-width: 90vw;
-        margin: 0 auto;
+        max-width: 100%;
     }
 
     .exclusive-carousel,
     .ads-carousel {
-        width: 90vw;
-        height: auto;
-        aspect-ratio: 16 / 9;
-        max-height: 400px;
-    }
-
-    .exclusive-carousel .carousel-img,
-    .ads-carousel .carousel-img {
-        object-fit: contain;
-        max-height: 400px;
-    }
-
-    .exclusive-carousel .carousel-indicators,
-    .ads-carousel .carousel-indicators {
-        bottom: 10px;
+        max-width: 100%;
+        height: 400px;
     }
 
     .videos-carousel {
-        width: 90vw;
-        height: auto;
-        aspect-ratio: 16 / 9;
-        max-height: 350px;
+        max-width: 100%;
+        height: 350px;
     }
 
     .links-container {
@@ -1372,26 +1303,27 @@ footer {
 
 @media (max-width: 640px) {
     .mobile-menu {
-        display: flex;
+        display: flex; /* إظهار قائمة الجوال */
     }
 
     .sticky-nav {
-        display: none;
+        display: none; /* إخفاء القائمة العادية في الجوال */
     }
 
     .fixed-nav,
     .fixed-nav.scrolled {
-        display: none;
+        display: none; /* إخفاء القائمة الثابتة في الجوال */
     }
 
     .logo-1 {
-        width: 10rem;
+        width: 10rem; /* تصغير الشعار في الجوال */
     }
 
     .hamburger {
-        display: flex;
+        display: flex; /* إظهار زر القائمة */
     }
 
+    /* إصلاح تخطيط البرامج للجوال */
     .program-item,
     .program-item.reversed {
         flex-direction: column !important;
@@ -1402,6 +1334,7 @@ footer {
         width: 100% !important;
     }
 
+    /* إصلاح تخطيط الأخبار للجوال */
     .news-container {
         flex-direction: column;
     }
@@ -1409,38 +1342,29 @@ footer {
     .news-left,
     .news-right {
         width: 100%;
-        max-width: 95vw;
     }
 
     .exclusive-carousel,
     .ads-carousel {
-        width: 95vw;
-        height: auto;
-        aspect-ratio: 16 / 9;
-        max-height: 300px;
+        height: 300px;
     }
 
-    .exclusive-carousel .carousel-img,
-    .ads-carousel .carousel-img {
-        object-fit: contain;
-        max-height: 300px;
-    }
-
+    /* إصلاح تخطيط الفيديوهات للجوال */
     .videos-carousel {
-        width: 95vw;
-        height: auto;
-        aspect-ratio: 16 / 9;
-        max-height: 250px;
+        height: 250px;
     }
 
+    /* إصلاح تخطيط الروابط للجوال */
     .links-container {
         grid-template-columns: 1fr;
     }
 
+    /* إصلاح تخطيط الإحصائيات للجوال */
     .statistics-container {
         grid-template-columns: 1fr;
     }
 
+    /* تعديلات أخرى للجوال */
     .about-item {
         width: 100%;
         max-width: 100%;
