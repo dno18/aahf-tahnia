@@ -99,13 +99,13 @@ html[dir="ltr"] h2.section-title::after {
 
 .dynamic-card {
     animation: cardSlide 0.8s ease-out;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .dynamic-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
 }
 
 @keyframes slideIn {
@@ -189,7 +189,7 @@ html[dir="ltr"] .header-logos {
 }
 
 .logo-1 {
-    width: 15rem;
+    width: 20rem;
     height: auto;
     object-fit: contain;
 }
@@ -394,15 +394,15 @@ html[dir="ltr"] .fixed-nav .sticky-header-logos {
 }
 
 .fixed-nav .sticky-header-logos .logo-1 {
-    width: 10rem;
+    width: 12rem;
     height: auto;
 }
 
 /* Mode Toggle */
 .mode-toggle {
     position: fixed;
-    top: 0.5rem;
-    left: 0.5rem;
+    top: 1rem;
+    left: 1rem;
     display: flex;
     gap: 0.5rem;
     z-index: 40;
@@ -452,14 +452,12 @@ main > section.card:last-child {
 
 .about-item {
     position: absolute;
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-    max-height: 350px;
+    width: 580px;
+    height: 420px;
     background: rgba(0, 0, 0, 0.7);
     border: 1px solid rgba(0, 0, 0, 0.5);
     border-radius: 8px;
-    padding: 1rem;
+    padding: 1.5rem;
     color: white;
     opacity: 0;
     margin: 0 auto;
@@ -520,15 +518,9 @@ html[dir="ltr"] .about-item h3 i {
 
 /* Programs Section */
 .programs-section {
-    padding: 2rem 1rem;
+    padding: 2rem;
     background: #f9f9f9;
     z-index: 10;
-}
-
-.program-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
 }
 
 .program-list {
@@ -537,10 +529,10 @@ html[dir="ltr"] .about-item h3 i {
 
 .program-item {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 1.5rem;
-    padding: 1rem;
+    gap: 2rem;
+    padding: 1.5rem;
     margin-bottom: 1.5rem;
     background: white;
     border-radius: 8px;
@@ -556,17 +548,20 @@ html[dir="ltr"] .about-item h3 i {
 }
 
 .program-item.reversed {
-    flex-direction: column;
+    flex-direction: row-reverse;
 }
 
-html[dir="ltr"] .program-item,
+html[dir="ltr"] .program-item {
+    flex-direction: row;
+}
+
 html[dir="ltr"] .program-item.reversed {
-    flex-direction: column;
+    flex-direction: row-reverse;
 }
 
 .program-media {
-    width: 100%;
-    max-width: 100%;
+    width: 50%;
+    max-width: 450px;
     position: relative;
     transition: transform 0.5s ease;
 }
@@ -577,8 +572,8 @@ html[dir="ltr"] .program-item.reversed {
 
 .program-image {
     width: 100%;
-    max-height: 250px;
-    object-fit: cover;
+    height: 400px;
+    object-fit: contain;
     border-radius: 8px;
     transition: transform 1.2s ease, opacity 1.2s ease;
 }
@@ -589,7 +584,7 @@ html[dir="ltr"] .program-item.reversed {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, rgba(41, 35, 80, 0.9), rgba(0, 112, 95, 0.7));
+    background: linear-gradient(45deg, rgba(41,35,80,0.9), rgba(0,112,95,0.7));
     opacity: 0.3;
     transition: opacity 0.3s ease;
 }
@@ -599,12 +594,12 @@ html[dir="ltr"] .program-item.reversed {
 }
 
 .program-content {
-    width: 100%;
-    text-align: center;
+    width: 50%;
+    text-align: right;
 }
 
 html[dir="ltr"] .program-content {
-    text-align: center;
+    text-align: left;
 }
 
 .program-content h3 {
@@ -624,17 +619,15 @@ html[dir="ltr"] .program-content {
 
 .program-actions {
     margin-top: 1rem;
-    margin-bottom: 1rem;
     display: flex;
     gap: 10px;
     justify-content: center;
-    flex-wrap: wrap;
 }
 
 .gradient-btn,
 .outline-btn {
-    padding: 10px 20px;
-    border-radius: 25px;
+    padding: 12px 25px;
+    border-radius: 30px;
     display: inline-flex;
     align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
@@ -662,18 +655,18 @@ html[dir="ltr"] .program-content {
     border-color: var(--secondary-blue);
 }
 
+/* زر المزيد في قسم البرامج */
 .programs-section .read-more-btn {
     background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
     color: white;
-    padding: 10px 20px;
-    border-radius: 25px;
+    padding: 12px 25px;
+    border-radius: 30px;
     display: inline-flex;
     align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none;
     margin-top: 1rem;
     font-weight: 600;
-    font-size: 0.9rem;
 }
 
 .programs-section .read-more-btn:hover {
@@ -683,24 +676,21 @@ html[dir="ltr"] .program-content {
 
 /* News Section */
 .news-section {
-    padding: 2rem 1rem;
+    padding: 2rem;
     background: #ffffff;
     z-index: 10;
-    min-height: auto;
+    min-height: 700px;
 }
 
 .news-container {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-    align-items: center;
+    gap: 2rem;
 }
 
 .news-left, .news-right {
-    width: 100%;
-    max-width: 100%;
-    padding: 0;
+    position: relative;
+    width: 50%;
+    padding: 0 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -709,21 +699,22 @@ html[dir="ltr"] .program-content {
 .exclusive-carousel,
 .ads-carousel {
     width: 100%;
-    max-width: 100%;
-    height: 300px;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
-    margin: 0 auto;
 }
 
 .exclusive-carousel {
+    max-width: 500px;
+    height: 600px;
     border: 2px solid transparent;
     border-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)) 1;
 }
 
 .ads-carousel {
+    max-width: 500px;
+    height: 600px;
     border: 3px solid var(--secondary-blue);
 }
 
@@ -763,14 +754,12 @@ html[dir="ltr"] .program-content {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
 }
 
 .exclusive-carousel .carousel-indicators,
 .ads-carousel .carousel-indicators {
-    position: relative;
-    bottom: 0;
-    margin-top: 10px;
+    position: absolute;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -800,19 +789,19 @@ html[dir="ltr"] .program-content {
     display: none;
 }
 
+/* زر المزيد في قسم الأخبار */
 .news-left .read-more-btn,
 .news-right .read-more-btn {
     background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
     color: white;
-    padding: 10px 20px;
-    border-radius: 25px;
+    padding: 12px 25px;
+    border-radius: 30px;
     display: inline-flex;
     align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none;
     margin-top: 15px;
     font-weight: 600;
-    font-size: 0.9rem;
 }
 
 .news-left .read-more-btn:hover,
@@ -823,21 +812,20 @@ html[dir="ltr"] .program-content {
 
 /* Videos Section */
 .videos-section {
-    padding: 2rem 1rem;
+    padding: 2rem;
     background: #ffffff;
     z-index: 10;
-    min-height: auto;
+    min-height: 600px;
 }
 
 .videos-container {
     display: flex;
     justify-content: center;
-    width: 100%;
 }
 
 .videos-right {
     width: 100%;
-    padding: 0;
+    padding: 0 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -845,8 +833,8 @@ html[dir="ltr"] .program-content {
 
 .videos-carousel {
     width: 100%;
-    max-width: 100%;
-    height: 250px;
+    max-width: 700px;
+    height: 450px;
     border: 2px solid transparent;
     border-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)) 1;
     border-radius: 12px;
@@ -888,7 +876,7 @@ html[dir="ltr"] .program-content {
 
 .videos-carousel .carousel-img {
     width: 100%;
-    height: calc(100% - 25px);
+    height: calc(100% - 30px);
     object-fit: cover;
     background: #000;
 }
@@ -900,14 +888,14 @@ html[dir="ltr"] .program-content {
     text-align: center;
     background: rgba(0, 0, 0, 0.7);
     color: white;
-    padding: 4px 0;
-    font-size: 0.9rem;
+    padding: 5px 0;
+    font-size: 1rem;
     font-family: 'Cairo', sans-serif;
 }
 
 .videos-carousel .carousel-indicators {
     position: absolute;
-    bottom: 30px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -936,10 +924,10 @@ html[dir="ltr"] .program-content {
     transform: translateY(-50%);
     background: rgba(255, 255, 255, 0.8);
     border: none;
-    padding: 6px;
+    padding: 10px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: #333;
     transition: background 0.3s ease, color 0.3s ease;
     z-index: 3;
@@ -969,6 +957,7 @@ html[dir="ltr"] .videos-carousel .carousel-next {
     color: white;
 }
 
+/* إخفاء أزرار التحكم في الجوال */
 .video-controls {
     display: flex;
     gap: 10px;
@@ -978,13 +967,19 @@ html[dir="ltr"] .videos-carousel .carousel-next {
     z-index: 3;
 }
 
+@media (max-width: 768px) {
+    .video-controls {
+        display: none;
+    }
+}
+
 .video-controls button {
     background: rgba(255, 255, 255, 0.8);
     border: none;
-    padding: 8px 12px;
+    padding: 10px 15px;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     transition: background 0.3s ease, color 0.3s ease;
 }
 
@@ -995,16 +990,16 @@ html[dir="ltr"] .videos-carousel .carousel-next {
 
 /* Links Section */
 .links-section {
-    padding: 2rem 1rem;
+    padding: 2rem;
     background: #ffffff;
     z-index: 10;
 }
 
 .links-container {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
-    max-width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -1013,7 +1008,7 @@ html[dir="ltr"] .videos-carousel .carousel-next {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0.8rem;
+    padding: 1rem;
     text-align: center;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -1029,8 +1024,8 @@ body.dark-mode .link-card {
 }
 
 .link-logo {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     margin-bottom: 0.5rem;
     border-radius: 50%;
     object-fit: cover;
@@ -1039,7 +1034,7 @@ body.dark-mode .link-card {
 }
 
 .link-card h4 {
-    font-size: 1rem;
+    font-size: 1.125rem;
     font-weight: 700;
     color: var(--primary-blue);
     margin-bottom: 0.5rem;
@@ -1052,9 +1047,9 @@ body.dark-mode .link-card h4 {
 .link-btn {
     background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
     color: white;
-    padding: 0.4rem 1rem;
+    padding: 0.5rem 1.5rem;
     border-radius: 8px;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     text-decoration: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -1066,20 +1061,20 @@ body.dark-mode .link-card h4 {
 
 /* Statistics Section */
 .statistics-section {
-    padding: 2rem 1rem;
+    padding: 2rem;
     background: #ffffff;
     z-index: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: auto;
+    min-height: 400px;
 }
 
 .statistics-container {
     width: 100%;
-    max-width: 100%;
+    max-width: 1000px;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     margin-top: 1rem;
 }
@@ -1089,13 +1084,13 @@ body.dark-mode .link-card h4 {
     border: 2px solid transparent;
     border-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)) 1;
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 2rem;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 120px;
+    min-height: 150px;
     position: relative;
     overflow: hidden;
 }
@@ -1117,8 +1112,9 @@ body.dark-mode .link-card h4 {
 }
 
 .stat-card:hover {
-    transform: scale(1.03);
+    transform: scale(1.05);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    animation: pulse 1.5s infinite;
 }
 
 body.dark-mode .stat-card {
@@ -1128,14 +1124,15 @@ body.dark-mode .stat-card {
 .stat-card i {
     color: var(--secondary-blue);
     margin-bottom: 0.75rem;
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 .stat-card h3 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
     color: var(--primary-blue);
+    animation: flip 1s ease-in-out;
 }
 
 body.dark-mode .stat-card h3 {
@@ -1143,7 +1140,7 @@ body.dark-mode .stat-card h3 {
 }
 
 .stat-card p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #4a5568;
 }
 
@@ -1154,7 +1151,7 @@ body.dark-mode .stat-card p {
 /* Footer */
 footer {
     background: var(--primary-blue);
-    padding: 2rem 1rem;
+    padding: 2rem 0;
     border-top: 1px solid #e5e7eb;
 }
 
@@ -1166,211 +1163,216 @@ footer {
 .map-box {
     width: 100%;
     max-width: 300px;
-    height: 200px;
+    height: 250px;
     border: 1px solid var(--secondary-blue);
     border-radius: 0;
     margin: 0 auto;
 }
 
-/* Responsive Design for Tablets */
-@media (min-width: 768px) {
+/* Responsive Design */
+@media (max-width: 1024px) {
     .logo-1 {
         width: 15rem;
     }
-
     .fixed-nav .sticky-header-logos .logo-1 {
         width: 10rem;
     }
-
     .nav-links {
         gap: 0.75rem;
     }
-
     .program-item {
-        flex-direction: row;
+        flex-direction: column;
+        align-items: center;
     }
-
-    .program-item.reversed {
-        flex-direction: row-reverse;
-    }
-
-    .program-media {
-        width: 50%;
-        max-width: 450px;
-    }
-
+    .program-media,
     .program-content {
-        width: 50%;
-        text-align: right;
+        width: 100%;
+        max-width: 100%;
     }
-
-    html[dir="ltr"] .program-content {
-        text-align: left;
-    }
-
     .program-image {
-        max-height: 300px;
+        height: 300px;
+        object-fit: contain;
     }
-
     .news-container {
-        flex-direction: row;
+        flex-direction: column;
     }
-
     .news-left, .news-right {
-        width: 50%;
-        padding: 0 1rem;
+        width: 100%;
+        padding: 0;
     }
-
-    .exclusive-carousel,
-    .ads-carousel {
+    .exclusive-carousel {
         max-width: 450px;
-        height: 400px;
-    }
-
-    .videos-carousel {
-        max-width: 600px;
-        height: 350px;
-    }
-
-    .links-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .statistics-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .mode-toggle {
-        flex-direction: row;
-    }
-
-    .video-controls {
-        display: none;
-    }
-}
-
-/* Responsive Design for Desktops/Laptops */
-@media (min-width: 1024px) {
-    .logo-1 {
-        width: 20rem;
-    }
-
-    .fixed-nav .sticky-header-logos .logo-1 {
-        width: 12rem;
-    }
-
-    .program-content h3 {
-        font-size: 1.8rem;
-    }
-
-    .program-content p {
-        font-size: 1.1rem;
-    }
-
-    .exclusive-carousel,
-    .ads-carousel {
-        max-width: 500px;
         height: 500px;
     }
-
+    .ads-carousel {
+        max-width: 450px;
+        height: 500px;
+    }
+    .exclusive-carousel .carousel-indicators,
+    .ads-carousel .carousel-indicators {
+        bottom: 20px;
+    }
     .videos-carousel {
-        max-width: 700px;
-        height: 450px;
+        max-width: 600px;
+        height: 400px;
     }
-
     .links-container {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
-
-    .link-logo {
-        width: 80px;
-        height: 80px;
+    .statistics-container {
+        grid-template-columns: 1fr;
     }
-
-    .link-card h4 {
-        font-size: 1.125rem;
-    }
-
-    .link-btn {
-        padding: 0.5rem 1.5rem;
-        font-size: 0.9rem;
-    }
-
-    .stat-card {
-        padding: 2rem;
-        min-height: 150px;
-    }
-
-    .stat-card i {
-        font-size: 2.5rem;
-    }
-
-    .stat-card h3 {
-        font-size: 2rem;
-    }
-
-    .stat-card p {
-        font-size: 1.1rem;
+    .about-item {
+        width: 100%;
+        max-width: 500px;
+        height: 350px;
     }
 }
 
 /* Mobile-Specific Fixes */
+@media (max-width: 768px) {
+    .program-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .program-item {
+        flex-direction: column !important;
+        gap: 1.5rem;
+    }
+    
+    .program-media,
+    .program-content {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .program-image {
+        height: 300px;
+        object-fit: contain;
+    }
+
+    .program-actions {
+        margin-bottom: 1rem;
+    }
+
+    .fixed-nav .nav-links {
+        display: none !important;
+    }
+    
+    .fixed-nav.scrolled .nav-links {
+        display: none !important;
+    }
+    
+    .mode-toggle {
+        top: 0.5rem;
+        left: 0.5rem;
+        flex-direction: column;
+    }
+
+    .news-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .news-left, .news-right {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .exclusive-carousel,
+    .ads-carousel {
+        max-width: 100%;
+        height: 400px;
+    }
+
+    .videos-carousel {
+        max-width: 100%;
+        height: 350px;
+    }
+
+    .links-container {
+        grid-template-columns: 1fr;
+    }
+
+    .statistics-container {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 640px) {
     .mobile-menu {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        display: flex; /* إظهار قائمة الجوال */
+    }
+
+    .sticky-nav {
+        display: none; /* إخفاء القائمة العادية في الجوال */
     }
 
     .fixed-nav,
     .fixed-nav.scrolled {
-        display: none;
+        display: none; /* إخفاء القائمة الثابتة في الجوال */
     }
 
     .logo-1 {
-        width: 10rem;
+        width: 10rem; /* تصغير الشعار في الجوال */
     }
 
-    .nav-link {
-        font-size: 1rem;
-        padding: 0.5rem;
+    .hamburger {
+        display: flex; /* إظهار زر القائمة */
     }
 
-    .mode-toggle {
+    /* إصلاح تخطيط البرامج للجوال */
+    .program-item,
+    .program-item.reversed {
+        flex-direction: column !important;
+    }
+
+    .program-media,
+    .program-content {
+        width: 100% !important;
+    }
+
+    /* إصلاح تخطيط الأخبار للجوال */
+    .news-container {
         flex-direction: column;
-        gap: 0.3rem;
-        top: 0.5rem;
-        left: 0.5rem;
     }
 
-    .mode-toggle-btn {
-        font-size: 0.75rem;
-        padding: 0.3rem 0.6rem;
+    .news-left,
+    .news-right {
+        width: 100%;
     }
 
+    .exclusive-carousel,
+    .ads-carousel {
+        height: 300px;
+    }
+
+    /* إصلاح تخطيط الفيديوهات للجوال */
+    .videos-carousel {
+        height: 250px;
+    }
+
+    /* إصلاح تخطيط الروابط للجوال */
+    .links-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* إصلاح تخطيط الإحصائيات للجوال */
+    .statistics-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* تعديلات أخرى للجوال */
     .about-item {
+        width: 100%;
         max-width: 100%;
-        max-height: 300px;
-        font-size: 0.9rem;
+        height: auto;
+        padding: 1rem;
     }
 
-    .about-item h3 {
-        font-size: 1rem;
-    }
-
-    .about-item p, .about-item ul, .about-item ol {
-        font-size: 0.8rem;
-    }
-
-    .program-content h3 {
-        font-size: 1.2rem;
-    }
-
-    .program-content p {
-        font-size: 0.85rem;
-    }
-
-    .dynamic-card {
-        animation: none;
+    .program-image {
+        max-height: 200px;
     }
 }
