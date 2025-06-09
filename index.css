@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* Variables */
 :root {
     --primary-blue: #292350;
@@ -1233,44 +1229,40 @@ footer {
 @media (max-width: 768px) {
     /* إصلاح خلفية الفيديو للجوال */
     .video-background {
-        display: none;
+        height: 100vh;
+        width: 100vw;
     }
-    body:not(.dark-mode) {
-        background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    
+    .video-iframe {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
     
     /* إصلاح تصميم الأخبار الحصرية والإعلانات للجوال */
     .exclusive-carousel, .ads-carousel {
-        aspect-ratio: 16/9;
+        width: 100%;
+        max-width: 100%;
         height: auto;
-        max-height: none;
+        aspect-ratio: 16/9;
     }
-    .exclusive-carousel .carousel-inner,
-    .ads-carousel .carousel-inner {
-        height: 100%;
-    }
-    .exclusive-carousel .carousel-item,
-    .ads-carousel .carousel-item {
-        height: 100%;
-    }
+    
     .exclusive-carousel .carousel-img,
     .ads-carousel .carousel-img {
-        height: 100%;
-        object-fit: cover;
+        object-fit: contain;
+        background-color: #000;
     }
-
+    
     .videos-carousel {
-        aspect-ratio: 16/9;
+        width: 100%;
+        max-width: 100%;
         height: auto;
+        aspect-ratio: 16/9;
     }
-    .videos-carousel .carousel-inner {
-        height: 100%;
-    }
-    .videos-carousel .carousel-item {
-        height: 100%;
-    }
+    
     .videos-carousel .carousel-img {
-        height: calc(100% - 30px);
+        height: 100%;
+        object-fit: contain;
     }
     
     /* بقية إصلاحات الجوال */
@@ -1327,28 +1319,6 @@ footer {
         margin: 0 auto;
     }
 
-    .exclusive-carousel,
-    .ads-carousel {
-        width: 95vw;
-        max-width: 95vw;
-        height: auto;
-    }
-
-    .exclusive-carousel .carousel-img,
-    .ads-carousel .carousel-img {
-        object-fit: cover;
-    }
-
-    .exclusive-carousel .carousel-indicators,
-    .ads-carousel .carousel-indicators {
-        bottom: 15px;
-    }
-
-    .videos-carousel {
-        max-width: 100%;
-        height: auto;
-    }
-
     .links-container {
         grid-template-columns: 1fr;
     }
@@ -1402,27 +1372,6 @@ footer {
         width: 100%;
         max-width: 98vw;
         margin: 0 auto;
-    }
-
-    .exclusive-carousel,
-    .ads-carousel {
-        width: 98vw;
-        max-width: 98vw;
-        height: auto;
-    }
-
-    .exclusive-carousel .carousel-img,
-    .ads-carousel .carousel-img {
-        object-fit: cover;
-    }
-
-    .exclusive-carousel .carousel-indicators,
-    .ads-carousel .carousel-indicators {
-        bottom: 10px;
-    }
-
-    .videos-carousel {
-        height: auto;
     }
 
     .links-container {
