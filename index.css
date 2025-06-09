@@ -398,17 +398,18 @@ html[dir="ltr"] .fixed-nav .sticky-header-logos {
     height: auto;
 }
 
-/* Mode Toggle */
+/* Mode and Language Toggle */
 .mode-toggle {
     position: fixed;
     top: 1rem;
     left: 1rem;
     display: flex;
+    flex-direction: column;
     gap: 0.5rem;
     z-index: 40;
 }
 
-.mode-toggle-btn {
+.mode-toggle-btn, .lang-toggle-btn {
     background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
     color: white;
     padding: 0.5rem 1rem;
@@ -419,6 +420,12 @@ html[dir="ltr"] .fixed-nav .sticky-header-logos {
     align-items: center;
     gap: 0.5rem;
     font-size: 0.9rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mode-toggle-btn:hover, .lang-toggle-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Sections */
@@ -609,21 +616,28 @@ html[dir="ltr"] .about-item h3 i {
     flex-wrap: wrap;
 }
 
+/* Unified Button Styles */
 .gradient-btn,
-.outline-btn {
+.outline-btn,
+.read-more-btn {
     padding: 12px 25px;
     border-radius: 30px;
     display: inline-flex;
     align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
 }
 
-.gradient-btn {
+.gradient-btn,
+.read-more-btn {
     background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
     color: white;
 }
 
-.gradient-btn:hover {
+.gradient-btn:hover,
+.read-more-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(41, 35, 80, 0.3);
 }
@@ -640,23 +654,30 @@ html[dir="ltr"] .about-item h3 i {
     border-color: var(--secondary-blue);
 }
 
-/* News Section */
+/* News Section - Centered with Increased Width */
 .news-section {
     padding: 2rem;
     background: #ffffff;
     z-index: 10;
     min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .news-container {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
 }
 
 .news-left, .news-right {
     width: 100%;
+    max-width: 800px; /* Increased width */
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -667,7 +688,7 @@ html[dir="ltr"] .about-item h3 i {
 .ads-carousel {
     width: 100%;
     max-width: 100%;
-    height: 350px;
+    height: 400px;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -744,21 +765,26 @@ html[dir="ltr"] .about-item h3 i {
     transform: scale(1.2);
 }
 
-/* Videos Section */
+/* Videos Section - Removed Arrows */
 .videos-section {
     padding: 2rem;
     background: #ffffff;
     z-index: 10;
     min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .videos-container {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .videos-right {
     width: 100%;
+    max-width: 800px; /* Increased width */
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -768,7 +794,7 @@ html[dir="ltr"] .about-item h3 i {
 .videos-carousel {
     width: 100%;
     max-width: 100%;
-    height: 350px;
+    height: 400px;
     border: 2px solid transparent;
     border-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)) 1;
     border-radius: 12px;
@@ -822,8 +848,8 @@ html[dir="ltr"] .about-item h3 i {
     text-align: center;
     background: rgba(0, 0, 0, 0.7);
     color: white;
-    padding: 5px 0;
-    font-size: 1rem;
+    padding: 8px 0;
+    font-size: 1.1rem;
     font-family: 'Cairo', sans-serif;
 }
 
@@ -856,14 +882,18 @@ html[dir="ltr"] .about-item h3 i {
     padding: 2rem;
     background: #ffffff;
     z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .links-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 1.5rem;
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
 }
 
 .link-card {
@@ -871,7 +901,7 @@ html[dir="ltr"] .about-item h3 i {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
+    padding: 1.5rem;
     text-align: center;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -885,7 +915,7 @@ html[dir="ltr"] .about-item h3 i {
 .link-logo {
     width: 80px;
     height: 80px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--secondary-blue);
@@ -896,17 +926,18 @@ html[dir="ltr"] .about-item h3 i {
     font-size: 1.125rem;
     font-weight: 700;
     color: var(--primary-blue);
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .link-btn {
     background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
     color: white;
-    padding: 0.5rem 1.5rem;
+    padding: 0.6rem 1.5rem;
     border-radius: 8px;
     font-size: 0.9rem;
     text-decoration: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-weight: 600;
 }
 
 .link-btn:hover {
@@ -930,7 +961,7 @@ html[dir="ltr"] .about-item h3 i {
     max-width: 1000px;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 1.5rem;
     margin-top: 1rem;
 }
 
@@ -978,6 +1009,9 @@ footer {
     background: var(--primary-blue);
     padding: 2rem 0;
     border-top: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .social-icon {
@@ -987,11 +1021,11 @@ footer {
 
 .map-box {
     width: 100%;
-    max-width: 300px;
+    max-width: 400px;
     height: 250px;
     border: 1px solid var(--secondary-blue);
     border-radius: 0;
-    margin: 0 auto;
+    margin: 1rem auto;
 }
 
 /* Responsive Design for Tablets */
@@ -1015,10 +1049,12 @@ footer {
     
     .news-container {
         flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     
     .news-left, .news-right {
-        width: 50%;
+        width: 45%;
     }
     
     .links-container {
@@ -1059,25 +1095,26 @@ footer {
     
     .news-container {
         flex-direction: row;
+        justify-content: space-between;
+        max-width: 1200px;
     }
     
     .news-left, .news-right {
-        width: 50%;
+        width: 48%;
+        max-width: 550px;
     }
     
     .exclusive-carousel {
-        max-width: 500px;
-        height: 500px;
+        height: 450px;
     }
     
     .ads-carousel {
-        max-width: 500px;
-        height: 500px;
+        height: 450px;
     }
     
     .videos-carousel {
-        max-width: 700px;
-        height: 450px;
+        max-width: 900px;
+        height: 500px;
     }
     
     .links-container {
