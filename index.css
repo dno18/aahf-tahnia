@@ -1287,14 +1287,14 @@ footer {
     .ads-carousel {
         width: 95vw;
         max-width: 95vw;
-        height: 300px;
-        max-height: 350px;
+        height: 350px;
+        max-height: 400px;
         transition: transform 0.3s ease;
     }
     .exclusive-carousel .carousel-img,
     .ads-carousel .carousel-img {
         object-fit: cover;
-        max-height: 300px;
+        max-height: 350px;
     }
     .exclusive-carousel .carousel-indicators,
     .ads-carousel .carousel-indicators {
@@ -1362,13 +1362,13 @@ footer {
     .ads-carousel {
         width: 98vw;
         max-width: 98vw;
-        height: 250px;
-        max-height: 300px;
+        height: 300px;
+        max-height: 350px;
     }
     .exclusive-carousel .carousel-img,
     .ads-carousel .carousel-img {
         object-fit: cover;
-        max-height: 250px;
+        max-height: 300px;
     }
     .exclusive-carousel .carousel-indicators,
     .ads-carousel .carousel-indicators {
