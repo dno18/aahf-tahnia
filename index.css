@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Variables */
 :root {
     --primary-blue: #292350;
@@ -150,6 +154,7 @@ html[dir="ltr"] h2.section-title::after {
     object-position: center;
     opacity: 0.9;
     filter: brightness(0.8);
+    transform: scale(1.1);
     pointer-events: none;
 }
 
@@ -1227,102 +1232,89 @@ footer {
 
 /* Mobile-Specific Fixes */
 @media (max-width: 768px) {
-    /* إصلاح خلفية الفيديو للجوال */
-    .video-background {
-        height: 100vh;
-        width: 100vw;
-    }
-    
     .video-iframe {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        transform: scale(1.05);
     }
-    
-    /* إصلاح تصميم الأخبار الحصرية والإعلانات للجوال */
-    .exclusive-carousel, .ads-carousel {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-        aspect-ratio: 16/9;
+    .news-section {
+        background-color: rgba(255, 255, 255, 0.95);
     }
-    
-    .exclusive-carousel .carousel-img,
-    .ads-carousel .carousel-img {
-        object-fit: contain;
-        background-color: #000;
-    }
-    
-    .videos-carousel {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-        aspect-ratio: 16/9;
-    }
-    
-    .videos-carousel .carousel-img {
-        height: 100%;
-        object-fit: contain;
-    }
-    
-    /* بقية إصلاحات الجوال */
     .program-container {
         display: flex;
         flex-direction: column;
         gap: 2rem;
     }
-    
     .program-item {
         flex-direction: column !important;
         gap: 1.5rem;
     }
-    
     .program-media,
     .program-content {
         width: 100% !important;
         max-width: 100% !important;
     }
-    
     .program-image {
         height: 300px;
         object-fit: contain;
     }
-
     .program-actions {
         margin-bottom: 1rem;
     }
-
     .fixed-nav .nav-links {
         display: none !important;
     }
-    
     .fixed-nav.scrolled .nav-links {
         display: none !important;
     }
-    
     .mode-toggle {
         top: 0.5rem;
         left: 0.5rem;
         flex-direction: column;
     }
-
     .news-container {
         flex-direction: column;
         gap: 2rem;
         align-items: center;
         justify-content: center;
     }
-
-    .news-left, .news-right {
+    .news-left,
+    .news-right {
         width: 100%;
         max-width: 95vw;
         margin: 0 auto;
+        padding: 0.5rem;
     }
-
+    .exclusive-carousel,
+    .ads-carousel {
+        width: 95vw;
+        max-width: 95vw;
+        height: 300px;
+        max-height: 350px;
+        transition: transform 0.3s ease;
+    }
+    .exclusive-carousel .carousel-img,
+    .ads-carousel .carousel-img {
+        object-fit: cover;
+        max-height: 300px;
+    }
+    .exclusive-carousel .carousel-indicators,
+    .ads-carousel .carousel-indicators {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin-top: 10px;
+    }
+    .news-left .read-more-btn,
+    .news-right .read-more-btn {
+        margin-top: 15px;
+    }
+    .videos-carousel {
+        max-width: 100%;
+        height: 350px;
+    }
     .links-container {
         grid-template-columns: 1fr;
     }
-
     .statistics-container {
         grid-template-columns: 1fr;
     }
@@ -1332,63 +1324,75 @@ footer {
     .mobile-menu {
         display: flex;
     }
-
     .sticky-nav {
         display: none;
     }
-
     .fixed-nav,
     .fixed-nav.scrolled {
         display: none;
     }
-
     .logo-1 {
         width: 10rem;
     }
-
     .hamburger {
         display: flex;
     }
-
     .program-item,
     .program-item.reversed {
         flex-direction: column !important;
     }
-
     .program-media,
     .program-content {
         width: 100% !important;
     }
-
     .news-container {
         flex-direction: column;
         gap: 2rem;
         align-items: center;
         justify-content: center;
     }
-
     .news-left,
     .news-right {
         width: 100%;
         max-width: 98vw;
         margin: 0 auto;
+        padding: 0.25rem;
     }
-
+    .exclusive-carousel,
+    .ads-carousel {
+        width: 98vw;
+        max-width: 98vw;
+        height: 250px;
+        max-height: 300px;
+    }
+    .exclusive-carousel .carousel-img,
+    .ads-carousel .carousel-img {
+        object-fit: cover;
+        max-height: 250px;
+    }
+    .exclusive-carousel .carousel-indicators,
+    .ads-carousel .carousel-indicators {
+        margin-top: 8px;
+    }
+    .news-left .read-more-btn,
+    .news-right .read-more-btn {
+        margin-top: 15px;
+    }
+    .videos-carousel {
+        height: 250px;
+    }
     .links-container {
         grid-template-columns: 1fr;
     }
-
     .statistics-container {
         grid-template-columns: 1fr;
     }
-
     .about-item {
         width: 100%;
         max-width: 100%;
         height: auto;
         padding: 1rem;
     }
-
     .program-image {
         max-height: 200px;
     }
