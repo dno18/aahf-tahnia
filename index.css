@@ -134,7 +134,7 @@ html[dir="ltr"] h2.section-title::after {
     100% { transform: perspective(400px) rotateY(0deg); opacity: 1; }
 }
 
-/* Video Background - Fixed for Mobile */
+/* Video Background */
 .video-background {
     position: fixed;
     top: 0;
@@ -143,7 +143,6 @@ html[dir="ltr"] h2.section-title::after {
     height: 100vh;
     z-index: -1;
     overflow: hidden;
-    pointer-events: none;
 }
 
 .video-iframe {
@@ -157,11 +156,8 @@ html[dir="ltr"] h2.section-title::after {
     filter: brightness(0.8);
     transform: scale(1.1);
     pointer-events: none;
-    /* Mobile fixes */
-    transform-origin: center;
 }
 
-/* Hide video controls */
 .video-iframe::-webkit-media-controls,
 .video-iframe::-webkit-media-controls-panel,
 .video-iframe::-webkit-media-controls-play-button {
@@ -1289,7 +1285,7 @@ footer {
     }
     .exclusive-carousel,
     .ads-carousel {
-        width: 95vw;
+        width: 90vw;
         max-width: 95vw;
         height: 450px;
         max-height: 500px;
@@ -1364,7 +1360,7 @@ footer {
     }
     .exclusive-carousel,
     .ads-carousel {
-        width: 98vw;
+        width: 90vw;
         max-width: 98vw;
         height: 450px;
         max-height: 500px;
