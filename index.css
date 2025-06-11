@@ -146,28 +146,6 @@ html[dir="ltr"] h2.section-title::after {
     pointer-events: none;
 }
 
-/* إصلاحات الفيديو للجوالات */
-@media (max-width: 768px) {
-    .video-background {
-        display: none; /* إخفاء الفيديو على الجوال */
-    }
-    
-    body::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url('https://placehold.co/600x400?text=Mobile+Background'); /* استبدل برابط الصورة الخاصة بك */
-        background-size: cover;
-        background-position: center;
-        z-index: -2;
-        opacity: 0.9;
-        filter: brightness(0.8);
-    }
-}
-
 .video-iframe {
     width: 100%;
     height: 100%;
@@ -603,14 +581,6 @@ html[dir="ltr"] .program-item.reversed {
     object-fit: contain;
     border-radius: 8px;
     transition: transform 1.2s ease, opacity 1.2s ease;
-}
-
-/* إصلاح ارتفاع الصور للجوالات */
-@media (max-width: 768px) {
-    .program-image {
-        height: auto;
-        max-height: 250px;
-    }
 }
 
 .image-overlay {
@@ -1319,7 +1289,7 @@ footer {
     }
     .exclusive-carousel,
     .ads-carousel {
-        width: 95vw;
+        width: 90vw;
         max-width: 95vw;
         height: 450px;
         max-height: 500px;
@@ -1394,7 +1364,7 @@ footer {
     }
     .exclusive-carousel,
     .ads-carousel {
-        width: 98vw;
+        width: 90vw;
         max-width: 98vw;
         height: 450px;
         max-height: 500px;
@@ -1429,18 +1399,5 @@ footer {
     }
     .program-image {
         max-height: 200px;
-    }
-    
-    /* تحسينات إضافية للجوال */
-    .about-section {
-        padding: 4rem 1rem 2rem;
-    }
-    
-    .section-title {
-        font-size: 1.5rem;
-    }
-    
-    .stat-card {
-        padding: 1.5rem;
     }
 }
