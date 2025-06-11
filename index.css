@@ -143,7 +143,6 @@ html[dir="ltr"] h2.section-title::after {
     height: 100vh;
     z-index: -1;
     overflow: hidden;
-    pointer-events: none;
 }
 
 .video-iframe {
@@ -156,9 +155,9 @@ html[dir="ltr"] h2.section-title::after {
     opacity: 0.9;
     filter: brightness(0.8);
     transform: scale(1.1);
-    pointer-events: none;
     /* Mobile fixes */
     transform-origin: center;
+    -webkit-transform: scale(1.1);
 }
 
 /* Hide video controls */
@@ -1238,6 +1237,7 @@ footer {
 @media (max-width: 768px) {
     .video-iframe {
         transform: scale(1.05);
+        -webkit-transform: scale(1.05);
     }
     .news-section {
         background-color: rgba(255, 255, 255, 0.95);
