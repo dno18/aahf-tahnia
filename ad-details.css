@@ -134,12 +134,13 @@ html[dir="ltr"] .h1_1 {
 .hamburger {
     display: none;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 30px;
-    height: 20px;
+    height: 25px;
     background: transparent;
     border: none;
     cursor: pointer;
+    padding: 0;
     z-index: 1001;
     position: fixed;
     top: 1rem;
@@ -150,7 +151,7 @@ html[dir="ltr"] .h1_1 {
     width: 100%;
     height: 3px;
     background: white;
-    border-radius: 2px;
+    border-radius: 10px;
     transition: all 0.3s ease;
 }
 
@@ -163,7 +164,7 @@ html[dir="ltr"] .h1_1 {
 }
 
 .hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+    transform: rotate(-45deg) translate(7px, -7px);
 }
 
 .mobile-menu {
@@ -172,33 +173,30 @@ html[dir="ltr"] .h1_1 {
     top: 0;
     right: 0;
     width: 100%;
-    min-height: 100vh;
-    background: rgba(41, 35, 80, 0.95);
+    height: 100%;
+    background: var(--primary-blue);
     z-index: 1000;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-    overflow-y: auto;
-    pointer-events: none;
+    transition: transform 0.3s ease;
 }
 
 .mobile-menu.active {
     display: flex;
     transform: translateX(0);
-    pointer-events: auto;
 }
 
 .mobile-menu .nav-links {
     flex-direction: column;
-    gap: 2rem;
-    padding: 2rem 0;
+    gap: 1.5rem;
 }
 
 .mobile-menu .nav-link {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: white;
+    text-shadow: none;
     padding: 0.75rem 1.5rem;
     text-align: center;
 }
@@ -293,7 +291,7 @@ html[dir="ltr"] .nav-link:hover::after {
     left: 1rem;
     display: flex;
     gap: 0.5rem;
-    z-index: 1000;
+    z-index: 1002; /* Above mobile-menu */
 }
 
 .mode-toggle-btn {
@@ -573,17 +571,15 @@ body.dark-mode .map-box {
     }
     .hamburger {
         display: flex;
-        top: 0.75rem;
-        right: 0.75rem;
     }
     .sticky-nav {
         display: none;
     }
     .mobile-menu {
-        display: none !important; /* Ensure hidden by default */
+        display: none;
     }
     .mobile-menu.active {
-        display: flex !important;
+        display: flex;
     }
     .mode-toggle {
         top: 0.75rem;
