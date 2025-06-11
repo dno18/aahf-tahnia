@@ -130,6 +130,74 @@ html[dir="ltr"] .h1_1 {
     left: 50%;
 }
 
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    position: fixed;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(41, 35, 80, 0.95);
+    z-index: 1000;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu.active {
+    display: flex;
+    transform: translateX(0);
+}
+
+.mobile-menu .nav-links {
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.mobile-menu .nav-link {
+    font-size: 1.25rem;
+    color: white;
+    padding: 0.5rem 1rem;
+}
+
 /* Navigation */
 .nav-links {
     position: relative;
@@ -483,17 +551,17 @@ body.dark-mode .map-box {
         font-size: 1.75rem;
         padding: 0.5rem;
     }
-    .nav-links {
-        gap: 0.5rem;
-    }
-    .nav-link {
-        font-size: 0.95rem;
-        padding: 0.5rem;
+    .hamburger {
+        display: flex;
     }
     .sticky-nav {
-        top: 0;
-        padding: 0.5rem;
-        width: 100%;
+        display: none;
+    }
+    .mobile-menu {
+        display: none;
+    }
+    .mobile-menu.active {
+        display: flex;
     }
     .mode-toggle {
         top: 0.5rem;
@@ -517,19 +585,19 @@ body.dark-mode .map-box {
         padding: 1rem;
     }
     .ad-panel {
-        padding: 0.75rem;
+        padding: 1rem;
     }
     .ad-panel img {
-        max-height: 300px;
+        max-height: 350px;
     }
     .panel-overlay {
         padding: 1rem;
     }
     .panel-overlay h3 {
-        font-size: 1.35rem;
+        font-size: 1.45rem;
     }
     .panel-overlay p {
-        font-size: 1rem;
+        font-size: 1.05rem;
     }
     .map-box {
         width: 250px;
@@ -547,20 +615,17 @@ body.dark-mode .map-box {
     .logo-1 {
         height: 3.5rem;
     }
-    .nav-link {
-        font-size: 0.9rem;
-    }
     .card {
         padding: 1.25rem;
     }
     .ad-panel img {
-        max-height: 250px;
+        max-height: 300px;
     }
     .panel-overlay h3 {
-        font-size: 1.25rem;
+        font-size: 1.35rem;
     }
     .panel-overlay p {
-        font-size: 0.95rem;
+        font-size: 1rem;
     }
     .map-box {
         width: 220px;
