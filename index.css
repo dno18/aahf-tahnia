@@ -134,7 +134,7 @@ html[dir="ltr"] h2.section-title::after {
     100% { transform: perspective(400px) rotateY(0deg); opacity: 1; }
 }
 
-/* Video Background - Optimized for All Devices */
+/* Video Background - Fixed for Mobile */
 .video-background {
     position: fixed;
     top: 0;
@@ -144,30 +144,14 @@ html[dir="ltr"] h2.section-title::after {
     z-index: -1;
     overflow: hidden;
     pointer-events: none;
-    contain: strict;
-    will-change: transform;
 }
 
-.video-iframe {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    opacity: 0.9;
-    filter: brightness(0.8);
-    pointer-events: none;
-    /* إزالة controls: none; لأنها غير صحيحة */
-}
-
-/* حل مشكلة الجوالات: إخفاء الفيديو واستبداله بخلفية ثابتة على الشاشات الصغيرة */
+/* إصلاحات الفيديو للجوالات */
 @media (max-width: 768px) {
     .video-background {
-        display: none;
+        display: none; /* إخفاء الفيديو على الجوال */
     }
+    
     body::before {
         content: '';
         position: fixed;
@@ -175,20 +159,36 @@ html[dir="ltr"] h2.section-title::after {
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+        background-image: url('https://placehold.co/600x400?text=Mobile+Background'); /* استبدل برابط الصورة الخاصة بك */
+        background-size: cover;
+        background-position: center;
         z-index: -2;
-        opacity: 0.8;
+        opacity: 0.9;
+        filter: brightness(0.8);
     }
 }
 
-/* Hide video controls across browsers */
+.video-iframe {
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.9;
+    filter: brightness(0.8);
+    transform: scale(1.1);
+    pointer-events: none;
+    /* Mobile fixes */
+    transform-origin: center;
+}
+
+/* Hide video controls */
 .video-iframe::-webkit-media-controls,
 .video-iframe::-webkit-media-controls-panel,
-.video-iframe::-webkit-media-controls-play-button,
-.video-iframe::-moz-media-controls {
+.video-iframe::-webkit-media-controls-play-button {
     display: none !important;
     -webkit-appearance: none;
-    -moz-appearance: none;
 }
 
 /* Header */
@@ -605,6 +605,14 @@ html[dir="ltr"] .program-item.reversed {
     transition: transform 1.2s ease, opacity 1.2s ease;
 }
 
+/* إصلاح ارتفاع الصور للجوالات */
+@media (max-width: 768px) {
+    .program-image {
+        height: auto;
+        max-height: 250px;
+    }
+}
+
 .image-overlay {
     position: absolute;
     top: 0;
@@ -726,21 +734,23 @@ html[dir="ltr"] .program-content {
 .exclusive-carousel,
 .ads-carousel {
     width: 100%;
-    border-radius: 20px;
-    overflow: auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
 }
 
 .exclusive-carousel {
     max-width: 500px;
     height: 600px;
-    border-image: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue)) 1;
+    border: 2px solid transparent;
+    border-image: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue)) 1;
 }
 
 .ads-carousel {
     max-width: 500px;
     height: 600px;
-    border: 2px solid var(--secondary-blue);
+    border: 3px solid var(--secondary-blue);
 }
 
 .exclusive-carousel:hover,
@@ -753,7 +763,7 @@ html[dir="ltr"] .program-content {
     position: relative;
     width: 100%;
     height: 100%;
-    overflow-y: auto;
+    overflow: hidden;
 }
 
 .exclusive-carousel .carousel-item,
@@ -789,7 +799,7 @@ html[dir="ltr"] .program-content {
     transform: translateX(-50%);
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 8px;
     z-index: 3;
 }
 
@@ -800,7 +810,7 @@ html[dir="ltr"] .program-content {
     background: rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.5s ease;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .exclusive-carousel .carousel-indicator.active,
@@ -1207,6 +1217,7 @@ footer {
     }
     .program-item {
         flex-direction: column;
+        align-items: center;
     }
     .program-media,
     .program-content {
@@ -1226,11 +1237,11 @@ footer {
     }
     .exclusive-carousel {
         max-width: 450px;
-        height: 450px;
+        height: 500px;
     }
     .ads-carousel {
         max-width: 450px;
-        height: 450px;
+        height: 500px;
     }
     .exclusive-carousel .carousel-indicators,
     .ads-carousel .carousel-indicators {
@@ -1256,9 +1267,7 @@ footer {
 /* Mobile-Specific Fixes */
 @media (max-width: 768px) {
     .video-iframe {
-        width: 100vw;
-        height: 100vh;
-        object-fit: cover;
+        transform: scale(1.05);
     }
     .news-section {
         background-color: rgba(255, 255, 255, 0.95);
@@ -1421,9 +1430,17 @@ footer {
     .program-image {
         max-height: 200px;
     }
-    .video-iframe {
-        width: 100vw;
-        height: 100vh;
-        object-fit: cover;
+    
+    /* تحسينات إضافية للجوال */
+    .about-section {
+        padding: 4rem 1rem 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .stat-card {
+        padding: 1.5rem;
     }
 }
