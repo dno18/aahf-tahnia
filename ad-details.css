@@ -9,7 +9,7 @@
     --light-gray: #F3F4F6;
     --glow-blue: rgba(59, 130, 246, 0.4);
     --dark-bg: #1a202c;
-    --dark-card-bg: #2d3748;
+    --dark-card-bg: transparent;
     --dark-text: #e2e8f0;
 }
 
@@ -141,7 +141,7 @@ html[dir="ltr"] .h1_1 {
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 1002; /* Above mobile-menu */
+    z-index: 1002;
     position: fixed;
     top: 1rem;
     right: 1rem;
@@ -176,17 +176,19 @@ html[dir="ltr"] .h1_1 {
     width: 100%;
     height: 100%;
     background: var(--primary-blue);
-    z-index: 1001; /* Below hamburger, above content */
+    z-index: 1001;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     transform: translateX(100%);
     transition: transform 0.3s ease;
+    pointer-events: none;
 }
 
 .mobile-menu.active {
     display: flex;
     transform: translateX(0);
+    pointer-events: auto;
 }
 
 .mobile-menu .nav-links {
@@ -200,6 +202,13 @@ html[dir="ltr"] .h1_1 {
     text-shadow: none;
     padding: 0.75rem 1.5rem;
     text-align: center;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.mobile-menu .nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
 }
 
 /* Navigation */
@@ -252,6 +261,7 @@ html[dir="ltr"] .h1_1 {
     color: white;
     font-size: 1.1rem;
     font-weight: 655;
+    text-decoration: none;
     transition: color 0.3s ease;
 }
 
@@ -292,7 +302,7 @@ html[dir="ltr"] .nav-link:hover::after {
     left: 1rem;
     display: flex;
     gap: 0.5rem;
-    z-index: 1003; /* Above hamburger and mobile-menu */
+    z-index: 1003;
 }
 
 .mode-toggle-btn {
@@ -546,7 +556,7 @@ body.dark-mode .map-box {
     .header-logos {
         height: auto;
         margin-bottom: 0.5rem;
-        margin-top: 2rem; /* Lower logo and title */
+        margin-top: 2rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
