@@ -184,7 +184,7 @@ header {
     left: 1rem;
     display: flex;
     gap: 0.5rem;
-    z-index: 1000;
+    z-index: 1003;
 }
 
 .mode-toggle-btn {
@@ -296,13 +296,20 @@ header {
     border: 2px solid var(--secondary-blue);
     transition: border-color 0.3s ease;
     margin: 0 auto;
+    overflow: hidden;
+}
+
+.map-box iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
 }
 
 body.dark-mode .map-box {
     border-color: var(--dark-text);
 }
 
-/* تنسيقات جديدة لشبكة البطاقات */
 .training-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -312,7 +319,7 @@ body.dark-mode .map-box {
 
 .training-card {
     position: relative;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(245, 245, 245, 0.85));
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(245, 245, 245, 25));
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -386,7 +393,6 @@ footer {
     background: #171923 !important;
 }
 
-/* Hamburger Menu */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -423,7 +429,6 @@ footer {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Mobile Menu */
 .mobile-menu {
     position: fixed;
     top: 0;
@@ -488,6 +493,16 @@ footer {
     100% { opacity: 1; transform: translateY(0); }
 }
 
+@media (min-width: 768px) {
+    .mobile-menu,
+    .mobile-menu.active {
+        display: none !important;
+    }
+    .hamburger {
+        display: none;
+    }
+}
+
 @media (max-width: 1024px) {
     .header-logos { height: 18rem; }
     .logo-1 { height: 9rem; top: 35%; left: 80%; }
@@ -502,60 +517,59 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
-    .header-logos { height: 20rem; flex-direction: column; justify-content: center; align-items: center; }
-    .logo-1 { position: static; transform: none; height: 6rem; }
-    .h1_1 { position: static; transform: none; }
-    .h1_1 h1 { font-size: 1.5rem; }
-    .nav-links { flex-direction: column; gap: 0.5rem; }
-    .sticky-nav { top: 150px; width: 95%; }
-    .card { padding: 1rem; }
-    .map-box { width: 200px; height: 200px; }
-    .training-grid {
-        grid-template-columns: 1fr;
+@media (max-width: 767px) {
+    header {
+        min-height: 12rem;
+        padding: 1rem 0;
     }
-    .training-card img {
-        height: 200px;
-    }
-}
-
-@media (max-width: 640px) {
     .header-logos {
-        height: 10rem;
+        height: auto;
+        margin-bottom: 0.5rem;
+        margin-top: 2rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 0.5rem;
     }
     .logo-1 {
         position: static;
         transform: none;
-        height: 5rem;
-        margin-bottom: 0.5rem;
+        height: 4rem;
+        margin: 0 auto;
     }
     .h1_1 {
         position: static;
         transform: none;
+        margin-top: 1.5rem;
+        width: 100%;
+        text-align: center;
     }
     .h1_1 h1 {
         font-size: 1.5rem;
-    }
-    .card {
-        padding: 0.75rem;
-    }
-    .map-box {
-        width: 180px;
-        height: 180px;
-    }
-    .sticky-nav, .sticky-nav.scrolled {
-        display: none;
+        padding: 0.5rem;
     }
     .hamburger {
         display: flex;
-        z-index: 1002;
     }
-    .mobile-menu {
-        display: flex;
+    .sticky-nav {
+        display: none;
+    }
+    .nav-links:not(.mobile-menu .nav-links) {
+        display: none;
+    }
+    .mode-toggle {
+        top: 0.75rem;
+        left: 0.75rem;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    .map-box {
+        width: 250px;
+        height: 250px;
+    }
+    .card {
+        padding: 1.25rem;
     }
     .card-content h3 {
         font-size: 1.15rem;
@@ -567,10 +581,20 @@ footer {
         width: 100%;
         height: 200px;
     }
-    .mode-toggle {
-        flex-direction: column;
-        top: 0.5rem;
-        left: 0.5rem;
-        z-index: 1000;
+}
+
+@media (max-width: 640px) {
+    .h1_1 h1 {
+        font-size: 1.3rem;
+    }
+    .logo-1 {
+        height: 3.5rem;
+    }
+    .map-box {
+        width: 220px;
+        height: 220px;
+    }
+    .card {
+        padding: 1rem;
     }
 }
