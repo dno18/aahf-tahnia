@@ -7,13 +7,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="all-programs.css?v=20250522">
+    <link rel="stylesheet" href="all-programs.css?v=20250612">
 </head>
 <body class="min-h-screen flex flex-col">
     <div class="mode-toggle">
         <button id="langToggle" class="mode-toggle-btn" aria-label="تبديل اللغة"><i class="fas fa-globe"></i> English</button>
         <button id="darkModeToggle" class="mode-toggle-btn" aria-label="تبديل الوضع الداكن"><i class="fas fa-moon"></i> Dark Mode</button>
     </div>
+    <button class="hamburger" aria-label="فتح القائمة">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
     <header class="text-white relative">
         <div class="h1_1">
             <h1 data-en="We Create Innovation and Innovate Solutions">نصنع الابداع و نبتكر الحلول</h1>
@@ -34,6 +39,15 @@
             </div>
         </div>
     </header>
+    <nav class="mobile-menu">
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link" data-en="Home">الرئيسية</a></li>
+            <li><a href="index.html#about" class="nav-link" data-en="About Us">من نحن</a></li>
+            <li><a href="index.html#news" class="nav-link" data-en="News">الأخبار</a></li>
+            <li><a href="index.html#programs" class="nav-link active" data-en="Our Programs">برامجنا التدريبية</a></li>
+            <li><a href="index.html#contact" class="nav-link" data-en="Contact Us">تواصل معنا</a></li>
+        </ul>
+    </nav>
     <nav class="container mx-auto px-6 py-4" aria-label="Breadcrumb">
         <ol class="flex flex-wrap gap-2 text-gray-600 text-sm sm:text-base justify-center">
             <li>
@@ -50,7 +64,7 @@
                 <div class="training-card">
                     <img src="https://i.postimg.cc/MHmmMT0W/1446-10-25-14-34-05-a4cf6874.jpg" alt="برنامج تدريبي 1">
                     <div class="card-content">
-                        <h3 class="text-xl font-bold" data-en="Technical Skills Bootcamp">مهارات واستراتيجيات القدرات العامعه</h3>
+                        <h3 class="text-xl font-bold" data-en="Technical Skills Bootcamp">مهارات واستراتيجيات القدرات العامة</h3>
                         <p data-en="Master technical skills in programming and development."></p>
                         <div class="card-actions">
                             <a href="https://maps.app.goo.gl/UAhka8wejeG68jhz6?g_st=iwb" target="_blank" class="program-link" data-en="Course Location"><i class="fas fa-map-marker-alt"></i> موقع الدورة</a>
@@ -119,7 +133,7 @@
             <div class="mt-8">
                 <h3 class="text-xl font-bold text-white mb-4 text-center" data-en="Our Location">موقعنا</h3>
                 <div id="map" class="map-box mx-auto">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3603.849580912568!2d49.56046748498617!3d25.409845183797668!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e3797ff55a738f9%3A0xed3bf94e5dd6a11d!2sAbdulmonem%20Alrashed%20Humanitarian%20Foundation!5e0!3m2!1sar!2ssa!4v1714820000000!5m2!1sar!2ssa" 
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3603.849580912568!2d49.56046748498617!3d25.409845183797d68!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e3797ff55a738f9%3A0xed3bf94e5dd6a11d!2sAbdulmonem%20Alrashed%20Humanitarian%20Foundation!5e0!3m2!1sar!2ssa!4v1714820000000!5m2!1sar!2ssa" 
                     width="300" height="297" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
@@ -171,6 +185,38 @@
                 }, index * 150);
             });
         });
+
+        // التحكم في قائمة الهامبرغر
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelectorAll('.mobile-menu .nav-link');
+
+        if (hamburger && mobileMenu) {
+            hamburger.addEventListener('click', () => {
+                const isActive = hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('active', isActive);
+                hamburger.setAttribute('aria-expanded', isActive);
+                document.body.style.overflow = isActive ? 'hidden' : 'auto';
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target) && mobileMenu.classList.contains('active')) {
+                    hamburger.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
     </script>
 </body>
 </html>
