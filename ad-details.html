@@ -7,7 +7,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="ad-details.css">
+        <link rel="stylesheet" href="ad-details.css?v=20250607">
+
+
 </head>
 <body class="min-h-screen flex flex-col">
     <div class="mode-toggle">
@@ -165,7 +167,7 @@
                 });
             }
 
-            // Hamburger Menu Toggle
+            // Hamburger Menu Toggle - الإصلاح هنا
             const hamburger = document.querySelector('.hamburger');
             const mobileMenu = document.querySelector('.mobile-menu');
             if (hamburger && mobileMenu) {
@@ -174,6 +176,16 @@
                     mobileMenu.classList.toggle('active');
                     // Toggle body scroll lock
                     document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+                });
+                
+                // إغلاق القائمة عند النقر على رابط
+                const mobileLinks = mobileMenu.querySelectorAll('.nav-link');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        hamburger.classList.remove('active');
+                        mobileMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
                 });
             }
 
