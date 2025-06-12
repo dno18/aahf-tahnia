@@ -228,12 +228,12 @@ html[dir="ltr"] .h1_1 {
 
 .sticky-nav {
     position: fixed;
-    top: 0;
+    top: 300px; /* Restored original position for laptops */
     left: 0;
     width: 100%;
     padding: 1rem;
     background: none;
-    transition: transform 0.3s ease, background 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s ease, top 0.3s ease;
     display: flex;
     justify-content: center;
     z-index: 1000;
@@ -241,6 +241,7 @@ html[dir="ltr"] .h1_1 {
 
 .sticky-nav.scrolled {
     background: linear-gradient(90deg, rgba(41, 35, 80, 0.9), rgba(0, 112, 95, 0.9));
+    top: 0; /* Move to top when scrolled */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -582,7 +583,7 @@ body.dark-mode .map-box {
     .h1_1 {
         position: static;
         transform: none;
-        margin-top: 1rem; /* Move title lower */
+        margin-top: 1.5rem; /* Move title lower */
         width: 100%;
         text-align: center;
     }
@@ -647,7 +648,7 @@ body.dark-mode .map-box {
 
 @media (max-width: 640px) {
     .h1_1 h1 {
-        font-size: 1.3rem; /* Even smaller font size */
+        font-size: 1.3rem; /* Smaller font size */
     }
     .logo-1 {
         height: 3.5rem;
