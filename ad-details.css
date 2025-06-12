@@ -75,7 +75,7 @@ header {
     overflow: hidden;
     padding: 2rem 0;
     min-height: 24rem;
-    z-index: 5;
+    z-index: 4;
 }
 
 .header-bg {
@@ -137,7 +137,7 @@ html[dir="ltr"] .h1_1 {
     display: none;
     flex-direction: column;
     justify-content: space-around;
-    width: 30px;
+    width: transparent;
     height: 25px;
     background: transparent;
     border: none;
@@ -582,19 +582,19 @@ body.dark-mode .map-box {
     .h1_1 {
         position: static;
         transform: none;
-        margin-top: 0.5rem;
+        margin-top: 1rem; /* Move title lower */
         width: 100%;
         text-align: center;
     }
     .h1_1 h1 {
-        font-size: 1.75rem;
+        font-size: 1.5rem; /* Smaller font size */
         padding: 0.5rem;
     }
     .hamburger {
         display: flex;
     }
     .sticky-nav {
-        display: none;
+        display: none; /* Hide nav-links on mobile */
     }
     .mode-toggle {
         top: 0.75rem;
@@ -644,7 +644,7 @@ body.dark-mode .map-box {
 
 @media (max-width: 640px) {
     .h1_1 h1 {
-        font-size: 1.5rem;
+        font-size: 1.25rem; /* Even smaller font size */
     }
     .logo-1 {
         height: 3.5rem;
