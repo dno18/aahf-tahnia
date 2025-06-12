@@ -135,13 +135,13 @@ html[dir="ltr"] .h1_1 {
     display: none;
     flex-direction: column;
     justify-content: space-around;
-    width: 30px;
-    height: 25px;
+    width: 40px;
+    height: 30px;
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 1002;
+    z-index: 5;
     position: fixed;
     top: 1rem;
     right: 1rem;
@@ -151,11 +151,11 @@ html[dir="ltr"] .h1_1 {
     width: 100%;
     height: 3px;
     background: white;
-    border-radius: 10px;
+    border-radius: 5px;
     transition: all 0.3s ease;
 }
 
-.hamburger.active span:nth-child(1) {
+.hamburger.active span:nth-child {
     transform: rotate(45deg) translate(5px, 5px);
 }
 
@@ -175,8 +175,8 @@ html[dir="ltr"] .h1_1 {
     right: 0;
     width: 100%;
     height: 100%;
-    background: var(--primary-blue);
-    z-index: 1001;
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    z-index: 4;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -193,22 +193,22 @@ html[dir="ltr"] .h1_1 {
 
 .mobile-menu .nav-links {
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .mobile-menu .nav-link {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: white;
-    text-shadow: none;
     padding: 0.75rem 1.5rem;
     text-align: center;
     text-decoration: none;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .mobile-menu .nav-link:hover {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
+    transform: scale(1.05);
 }
 
 /* Navigation */
@@ -227,7 +227,7 @@ html[dir="ltr"] .h1_1 {
     left: 0;
     width: 100%;
     margin: 0 auto;
-    padding: 1rem 1rem;
+    padding: 1rem;
     min-height: 60px;
     background: none;
     backdrop-filter: none;
@@ -240,10 +240,6 @@ html[dir="ltr"] .h1_1 {
 .sticky-nav.scrolled {
     background: linear-gradient(90deg, rgba(41, 35, 80, 0.9), rgba(0, 112, 95, 0.9));
     top: 0;
-    width: 100%;
-    margin: 0 auto;
-    padding: 1rem 1rem;
-    min-height: 60px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -302,7 +298,7 @@ html[dir="ltr"] .nav-link:hover::after {
     left: 1rem;
     display: flex;
     gap: 0.5rem;
-    z-index: 1003;
+    z-index: 5;
 }
 
 .mode-toggle-btn {
