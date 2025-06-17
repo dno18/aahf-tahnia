@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update Counters for visitors and programs
     async function updateCounters() {
         try {
+            // Update visitor count
             let visitors = parseInt(localStorage.getItem('visitors')) || 0;
             visitors++;
             localStorage.setItem('visitors', visitors);
@@ -53,13 +54,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 visitorCountElement.setAttribute('data-en', visitors);
             }
 
+            // Fetch and count programs from all-programs.html
             let programs = 0;
             try {
-                const response = await fetch('programs.json');
-                if (!response.ok) throw new Error('Failed to fetch programs.json');
-                const programsData = await response.json();
-                programs = programsData.length;
+                const response = await fetch('all-programs.html');
+                if (!response.ok) throw new Error('Failed to fetch all-programs.html');
+                const text = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(text, 'text/html');
+                programs = doc.querySelectorAll('.training-card').length;
             } catch (fetchError) {
+                console.error('Error fetching all-programs.html:', fetchError);
+                // Fallback to counting program-item on the current page
                 programs = document.querySelectorAll('.program-item').length;
             }
 
